@@ -13,9 +13,9 @@
 ### Collections
 
 ### Views
-* PostForm
+* EventForm
+* GroupForm
 
 ## Gems/Libraries
 * Filepicker
-* Markdown-js
-* Bootstrap Markdown
+* I'm not sure what gem I need for this, but something to convert a location zipcode to a city

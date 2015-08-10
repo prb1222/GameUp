@@ -4,17 +4,21 @@
 ### Models
 
 ### Controllers
-Api::PostsController (feed)
+Api::EventsController (feed)
 
 ### Views
-posts/feed.json.jbuilder
+events/feed.json.jbuilder
 
 ## Backbone
 ### Models
+* Comment
 
 ### Collections
+* Comments
+* Events (parse out 'comments' association)
 
 ### Views
-* FeedShow (composite view, contains PostsIndex subview)
+* Event Show (composite view, contains PostsIndex subview)
+* Comment Show
 
 ## Gems/Libraries
