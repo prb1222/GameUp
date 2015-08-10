@@ -8,23 +8,15 @@ GameUp is a clone of Meetup built on Rails and Backbone. Users can:
 - [ ] Create accounts
 - [ ] Create sessions (log in)
 - [ ] Create groups
-- [ ] Create blog posts
-- [ ] View blogs and posts
-- [ ] Subscribe to blogs
-- [ ] View a feed of subscribed blogs
-- [ ] Tag blog posts
-- [ ] Search for blogs by title
-- [ ] Search for posts by tag
-- [x] Create accounts
-- [x] Create sessions (log in)
-- [x] Create blogs
-- [x] Create blog posts
-- [ ] View blogs and posts
-- [ ] Subscribe to blogs
-- [ ] View a feed of subscribed blogs
-- [ ] Tag blog posts
-- [ ] Search for blogs by title
-- [ ] Search for posts by tag
+- [ ] Create events
+- [ ] View groups and events
+- [ ] Subscribe to groups
+- [ ] RSVP to events
+- [ ] View subscribed Groups
+- [ ] Edit Events
+- [ ] Edit Groups
+- [ ] Comment on Event
+- [ ] Add calendar view
 
 ## Design Docs
 * [View Wireframes][views]
