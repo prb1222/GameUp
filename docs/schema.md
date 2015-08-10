@@ -8,7 +8,7 @@ owner_id    | integer   | not null, foreign key (references users)
 title       | string    | not null
 location    | string    | not null
 description | string    | not null
-
+member_name | string    | not null
 ## events
 column name | data type | details
 ------------|-----------|-----------------------
