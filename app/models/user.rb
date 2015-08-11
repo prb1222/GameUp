@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
              foreign_key: :owner_id,
              class_name: :Group)
 
+  has_many :events, primary_key: :id, foreign_key: :organizer_id, class_name: :Event
+
   def generate_session_token
     SecureRandom.urlsafe_base64(16)
   end

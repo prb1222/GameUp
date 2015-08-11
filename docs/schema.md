@@ -15,9 +15,11 @@ column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 group_id    | integer   | not null, foreign key (references groups)
+organizer_id| integer   | not null, foreign key (references users)
 title       | string    | not null
 description | string    | not null
 date        | datetime  | not null
+location    | string    | not null
 
 ## eventAttendees
 column name | data type | details

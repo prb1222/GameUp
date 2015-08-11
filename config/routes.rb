@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   namespace :api do
     resources :groups, only: [:create, :update, :destroy, :index, :show]
+    resources :events, only: [:create, :update, :destroy, :index, :show]
   end
 end
