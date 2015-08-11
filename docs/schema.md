@@ -9,6 +9,7 @@ title       | string    | not null
 location    | string    | not null
 description | string    | not null
 member_name | string    | not null
+
 ## events
 column name | data type | details
 ------------|-----------|-----------------------
