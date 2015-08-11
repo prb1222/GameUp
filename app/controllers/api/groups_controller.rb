@@ -3,15 +3,15 @@ class Api::GroupsController < ApplicationController
     group = Group.new(group_params)
     group.owner_id = current_user.id
     if group.save
-      render json: group
+      render :show
     else
       render json: group.errors.full_messages, status: 422
     end
   end
 
   def show
-    group = Group.find(params[:id])
-    render json: group
+    @group = Group.find(params[:id])
+    render :show
   end
 
   def index
