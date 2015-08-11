@@ -21,4 +21,4 @@ GameUp.Collections.Events = Backbone.Collection.extend({
 
     return model;
   }
-})
+});

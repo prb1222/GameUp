@@ -9,7 +9,7 @@ GameUp.Routers.Router = Backbone.Router.extend({
 
   routes: {
     "": "groupsIndex",
-    "groups/:id": "groupShow"
+    "groups/:id": "groupShow",
   },
 
   groupsIndex: function () {
