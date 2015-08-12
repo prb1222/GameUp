@@ -4,12 +4,13 @@ class User < ActiveRecord::Base
   attr_reader :password
   after_initialize :ensure_session_token
 
-  has_many(:groups,
+  has_many(:owned_groups,
              primary_key: :id,
              foreign_key: :owner_id,
              class_name: :Group)
-
   has_many :events, primary_key: :id, foreign_key: :organizer_id, class_name: :Event
+  has_many :group_memberships, primary_key: :id, foreign_key: :user_id, class_name: :GroupMembership
+  has_many :member_groups, through: :group_memberships, source: :group
 
   def generate_session_token
     SecureRandom.urlsafe_base64(16)

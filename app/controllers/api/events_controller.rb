@@ -3,7 +3,7 @@ class Api::EventsController < ApplicationController
   def create
     event = Event.new(event_params)
     event.organizer_id = current_user.id
-    event.date = Time.now;
+    event.date = parse_datetime(params[:event][:date], params[:event][:time])
     if event.save
       render json: event
     else
@@ -23,11 +23,16 @@ class Api::EventsController < ApplicationController
 
   private
 
+  def parse_datetime(date_string, time_string)
+    date_arr = date_string.split("-")
+    date_arr.concat(time_string.split(":"))
+    Time.new(*date_arr)
+  end
+
   def event_params
     params.require(:event).permit(:group_id,
                                   :title,
                                   :description,
-                                  :location,
-                                  :date)
+                                  :location)
   end
 end

@@ -19,7 +19,6 @@ GameUp.Views.EventForm = Backbone.View.extend({
     event.preventDefault();
     var formData = $(event.currentTarget).serializeJSON();
     formData.event.group_id = $('div.group-detail-view').data("id");
-
     this.model.save(formData, {
       success: function (model) {
         this.collection.add(model);

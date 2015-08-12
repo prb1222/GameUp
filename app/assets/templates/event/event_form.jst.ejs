@@ -14,7 +14,11 @@
 </label>
 
 <label>Date
-  <input type="datetime" name="event[date]" value="<%= event.escape('date')%>">
+  <input type="date" name="event[date]" value="<%= event.escape('date')%>">
+</label>
+
+<label>Time
+  <input type="time" name="event[time]" value="<%= event.escape('date')%>">
 </label>
 
 <input type="submit" value="Create Event" class="create-event">

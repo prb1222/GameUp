@@ -23,7 +23,7 @@ GameUp.Routers.Router = Backbone.Router.extend({
 
   groupShow: function(id) {
     var group = this.groupsCollection.getOrFetch(id);
-    var view = new GameUp.Views.GroupShow({model: group, currentUser: this.currentUser});
+    var view = new GameUp.Views.GroupShow({model: group});
     this.swapView(view);
   },
 

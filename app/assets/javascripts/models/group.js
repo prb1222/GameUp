@@ -7,6 +7,16 @@ GameUp.Models.Group = Backbone.Model.extend({
       delete response.events;
     }
 
+    if (response.owned !== undefined) {
+      this.owned = response.owned;
+      delete response.owned;
+    }
+
+    if (response.member !== undefined) {
+      this.member = response.member;
+      delete response.member;
+    }
+
     return response;
   },
 
