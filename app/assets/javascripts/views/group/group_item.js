@@ -3,10 +3,6 @@ GameUp.Views.GroupItem = Backbone.View.extend({
 
   tagName: "li",
 
-  // events: {
-  //   "click a": "navigate"
-  // },
-
   initialize: function () {
     this.listenTo(this.model, "sync", this.render)
   },

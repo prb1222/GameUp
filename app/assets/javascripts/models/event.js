@@ -16,5 +16,6 @@ GameUp.Models.Event = Backbone.Model.extend({
     }
 
     return this._group;
-  }
+  },
+
 });

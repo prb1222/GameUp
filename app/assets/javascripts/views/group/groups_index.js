@@ -1,6 +1,10 @@
 GameUp.Views.GroupsIndex = Backbone.CompositeView.extend({
   template: JST['group/groups_index'],
 
+  events: {
+    "click button#new-group": "groupForm"
+  },
+
   initialize: function() {
     this.listenTo(this.collection, "sync", this.render);
     this.listenTo(this.collection, "add", this.addGroupSubview);
@@ -18,5 +22,12 @@ GameUp.Views.GroupsIndex = Backbone.CompositeView.extend({
   addGroupSubview: function (group) {
     var subView = new GameUp.Views.GroupItem({model: group});
     this.addSubview('ul.groups-index', subView);
+  },
+
+  groupForm: function (event) {
+    event.preventDefault();
+    var group = new GameUp.Models.Group();
+    var subview = new GameUp.Views.GroupForm({model: group, collection: this.collection});
+    this.addSubview('div.group-form', subview);
   }
 })

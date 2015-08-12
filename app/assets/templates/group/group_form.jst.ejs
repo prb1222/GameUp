@@ -1,0 +1,19 @@
+<ul class="errors"></ul>
+
+<label>Title
+  <input type="text" name="group[title]" value="<%= group.escape('title') %>">
+</label>
+
+<label>Location
+  <input type="text" name="group[location]" value="<%= group.escape('location')%>">
+</label>
+
+<label>Description
+  <textarea name="group[description]"><%= group.escape('location')%></textarea>
+</label>
+
+<label>Member name
+  <input type="text" name="group[member_name]" value="<%= group.escape('member_name')%>">
+</label>
+
+<input type="submit" value="Create Group" class="create-group">

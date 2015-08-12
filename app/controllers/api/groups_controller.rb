@@ -3,7 +3,7 @@ class Api::GroupsController < ApplicationController
     group = Group.new(group_params)
     group.owner_id = current_user.id
     if group.save
-      render :show
+      render json: group
     else
       render json: group.errors.full_messages, status: 422
     end
