@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150811173257) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "events", force: :cascade do |t|
     t.integer  "group_id",     null: false
     t.string   "title",        null: false
@@ -24,7 +27,7 @@ ActiveRecord::Schema.define(version: 20150811173257) do
     t.integer  "organizer_id"
   end
 
-  add_index "events", ["group_id"], name: "index_events_on_group_id"
+  add_index "events", ["group_id"], name: "index_events_on_group_id", using: :btree
 
   create_table "groups", force: :cascade do |t|
     t.integer  "owner_id",    null: false
@@ -36,7 +39,7 @@ ActiveRecord::Schema.define(version: 20150811173257) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "groups", ["owner_id"], name: "index_groups_on_owner_id"
+  add_index "groups", ["owner_id"], name: "index_groups_on_owner_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false

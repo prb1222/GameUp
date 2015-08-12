@@ -3,6 +3,12 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
 
   className: "group-detail-view",
 
+  attributes: function () {
+    return {
+      "data-id": this.model.id
+    }
+  },
+
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
   },

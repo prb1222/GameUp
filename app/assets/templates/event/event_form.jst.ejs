@@ -1,0 +1,20 @@
+<ul class="errors"></ul>
+
+
+<label>Title
+  <input type="text" name="event[title]" value="<%= event.escape('title') %>">
+</label>
+
+<label>Location
+  <input type="text" name="event[location]" value="<%= event.escape('location')%>">
+</label>
+
+<label>Description
+  <textarea name="event[description]"><%= event.escape('location')%></textarea>
+</label>
+
+<label>Date
+  <input type="datetime" name="event[date]" value="<%= event.escape('date')%>">
+</label>
+
+<input type="submit" value="Create Event" class="create-event">

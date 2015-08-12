@@ -26,6 +26,7 @@ GameUp.Views.GroupsIndex = Backbone.CompositeView.extend({
 
   groupForm: function (event) {
     event.preventDefault();
+    $('div.group-form').empty();
     var group = new GameUp.Models.Group();
     var subview = new GameUp.Views.GroupForm({model: group, collection: this.collection});
     this.addSubview('div.group-form', subview);
