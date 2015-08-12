@@ -1,6 +1,7 @@
 <div id="content"></div>
 <script type="text/javascript">
   $(document).ready(function(){
-    GameUp.initialize();
+    var current_user = <%=current_user.to_json.html_safe%>;
+    GameUp.initialize({currentUser: current_user});
   });
 </script>

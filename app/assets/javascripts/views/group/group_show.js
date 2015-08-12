@@ -5,14 +5,19 @@ GameUp.Views.GroupShow = Backbone.CompositeView.extend({
     "click button.new-event": "addEventForm"
   },
 
-  initialize: function () {
+  initialize: function (options) {
+    this.currentUser = options.currentUser;
     this.listenTo(this.model, "sync", this.addSidebar);
-    this.listenTo(this.model, "sync", this.addEventsFeed);
+    this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model.meets(), "add", this.addEventItem);
   },
 
   render: function () {
     this.$el.html(this.template());
+    if (this.currentUser.id === this.model.get('owner_id')) {
+      var $button = $('<button>').addClass('new-event').text('Create Event');
+      this.$el.find('div.events-feed').prepend($button);
+    }
     this.attachSubviews();
     return this;
   },
