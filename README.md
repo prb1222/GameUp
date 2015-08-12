@@ -1,5 +1,7 @@
 # Game Up
+[Heroku link][heroku]
 
+[heroku]: https://enigmatic-sierra-3429.herokuapp.com
 ## Minimum Viable Product
 GameUp is a clone of Meetup built on Rails and Backbone. Users can:
 
