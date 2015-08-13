@@ -23,7 +23,8 @@ GameUp.Views.EventForm = Backbone.View.extend({
       success: function (model) {
         this.collection.add(model);
         this.$el.empty();
-        Backbone.history.navigate('/#groups/' + model.group_id, {trigger: true});
+        Backbone.history.navigate('groups/' + model.get('group_id'), {trigger: true});
+        debugger;
       }.bind(this),
 
       error: function (error, errorText) {
