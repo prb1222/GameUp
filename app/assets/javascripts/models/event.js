@@ -8,7 +8,7 @@ GameUp.Models.Event = Backbone.Model.extend({
     }
 
     if (response.date) {
-      response.date = new Date(response.date).toString();
+      response.date = moment(response.date).format('MMMM Do YY h:mm a');
     }
 
     return response;
