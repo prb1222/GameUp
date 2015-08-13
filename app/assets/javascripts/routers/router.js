@@ -2,9 +2,7 @@ GameUp.Routers.Router = Backbone.Router.extend({
   initialize: function(options) {
     this.$rootEl = options.$rootEl;
     this.currentUser = options.currentUser;
-    this.groupsCollection = new GameUp.Collections.Groups();
     this.eventsCollection = new GameUp.Collections.Events();
-    this.groupsCollection.fetch();
     this.eventsCollection.fetch();
   },
 
@@ -17,12 +15,13 @@ GameUp.Routers.Router = Backbone.Router.extend({
   },
 
   groupsIndex: function () {
-    var view = new GameUp.Views.GroupsIndex({collection: this.groupsCollection});
+    GameUp.groups.fetch();
+    var view = new GameUp.Views.GroupsIndex({collection: GameUp.groups});
     this.swapView(view)
   },
 
   groupShow: function(id) {
-    var group = this.groupsCollection.getOrFetch(id);
+    var group = GameUp.groups.getOrFetch(id);
     var view = new GameUp.Views.GroupShow({model: group});
     this.swapView(view);
   },

@@ -2,11 +2,6 @@ GameUp.Models.Event = Backbone.Model.extend({
   urlRoot: 'api/events',
 
   parse: function (response) {
-    if (response.group) {
-      this.group().set(this.group().parse(response.group));
-      delete response.group;
-    }
-
     if (response.date) {
       response.date = moment(response.date).format('MMMM Do YY h:mm a');
     }
@@ -28,11 +23,7 @@ GameUp.Models.Event = Backbone.Model.extend({
   },
 
   group: function () {
-    if (!this._group) {
-      this._group = new GameUp.Models.Group();
-    }
-
-    return this._group;
+    return GameUp.groups.getOrFetch(this.get('group_id'));
   },
 
   is_attending: function () {
