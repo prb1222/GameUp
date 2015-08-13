@@ -5,6 +5,7 @@ class Api::EventsController < ApplicationController
     event.organizer_id = current_user.id
     event.date = parse_datetime(params[:event][:date], params[:event][:time])
     if event.save
+      EventAttendee.create(user_id: current_user.id, event_id: event.id)
       render json: event
     else
       render json: event.errors.full_messages, status: 422

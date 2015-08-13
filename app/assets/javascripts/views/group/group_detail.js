@@ -37,13 +37,13 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
           this.model.membership().clear();
         }.bind(this)
       });
-      $('button.leave-group').removeClass('leave-group').addClass('join-group').text('Join Group');
+      $('button.toggle-membership').text('Join Group');
     } else {
       var membership = new GameUp.Models.GroupMembership({group_id: this.model.id});
       membership.save({},{
         success: function (membership) {
-          this.model.membership().set(membership)
-          $('button.join-group').removeClass('join-group').addClass('leave-group').text('Leave Group');
+          this.model.membership().set(membership);
+          $('button.toggle-membership').text('Leave Group');
           this.disabled = false;
         }.bind(this)
       });

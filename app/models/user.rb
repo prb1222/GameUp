@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_many :events, primary_key: :id, foreign_key: :organizer_id, class_name: :Event
   has_many :group_memberships, primary_key: :id, foreign_key: :user_id, class_name: :GroupMembership
   has_many :member_groups, through: :group_memberships, source: :group
+  has_many :event_attendees, primary_key: :id, foreign_key: :user_id, class_name: :EventAttendee
+  has_many :attending_events, through: :event_attendees, source: :event
 
   def generate_session_token
     SecureRandom.urlsafe_base64(16)
@@ -38,5 +40,9 @@ class User < ActiveRecord::Base
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     user && user.is_password?(password) ? user : nil
+  end
+
+  def groups
+    member_groups + owned_groups
   end
 end
