@@ -33,8 +33,10 @@ GameUp.Routers.Router = Backbone.Router.extend({
   },
 
   eventShow: function(id) {
-    var event = this.eventsCollection.getOrFetch(id);
-    var view = new GameUp.Views.EventShow({model: event});
+    var group = this.eventsCollection.getOrFetch(id).group();
+    var view = new GameUp.Views.GroupShow({model: group,
+                                           startPage: "eventShow",
+                                           eventId: id});
     this.swapView(view);
   },
 

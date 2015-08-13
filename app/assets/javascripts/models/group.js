@@ -12,7 +12,6 @@ GameUp.Models.Group = Backbone.Model.extend({
       delete response.owned;
     }
 
-
     if (response.membership_id) {
       this.membership().set({id: response.membership_id});
       delete response.membership_id;

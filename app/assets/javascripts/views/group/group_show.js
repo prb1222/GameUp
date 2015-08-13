@@ -8,12 +8,16 @@ GameUp.Views.GroupShow = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
-    this.addEventsFeed();
+    if (options.startPage==='eventShow') {
+      this.showEvents(options.eventId);
+      this.model.fetch();
+    } else {
+      this.addEventsFeed();
+    }
     this.listenTo(this.model, "sync", this.addSidebar);
-    this.listenTo(this.model, "sync", this.render);
-    this.listenTo(this.model.meets(), "add", this.addEventItem);
     var jumboView = new GameUp.Views.GroupJumbo({model: this.model});
     this.addSubview('div.jumbotron', jumboView);
+    this.render();
   },
 
   render: function () {
@@ -30,6 +34,10 @@ GameUp.Views.GroupShow = Backbone.CompositeView.extend({
     $('div.sidebar').empty();
     var sidebar = new GameUp.Views.GroupDetail({model: this.model});
     this.addSubview('div.sidebar', sidebar);
+    if (this.model.owned) {
+      var $button = $('<button>').addClass('new-event').text('Create Event');
+      this.$el.find('div.sidebar').append($button);
+    }
   },
 
 
@@ -42,8 +50,12 @@ GameUp.Views.GroupShow = Backbone.CompositeView.extend({
   },
 
   showEvents: function (event) {
-    var $div = $(event.currentTarget);
-    var eventId = $div.data('event-id');
+    if (typeof event === "string") {
+      var eventId = event;
+    } else  {
+      var $div = $(event.currentTarget);
+      var eventId = $div.data('event-id');
+    }
     var selector = 'div.main-pane';
     this.subviews(selector).forEach(function(subview){
       this.removeSubview(selector, subview);
@@ -71,6 +83,7 @@ GameUp.Views.GroupShow = Backbone.CompositeView.extend({
 
   addEventsFeed: function () {
     $('div.main-pane').empty();
+    this.model.fetch();
     var subView = new GameUp.Views.EventsIndex({collection: this.model.meets()});
     this.addSubview('div.main-pane', subView);
   },
