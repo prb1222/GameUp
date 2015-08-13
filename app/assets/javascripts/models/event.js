@@ -3,8 +3,12 @@ GameUp.Models.Event = Backbone.Model.extend({
 
   parse: function (response) {
     if (response.group) {
-      this.group().set(response.group);
+      this.group().set(this.group().parse(response.group));
       delete response.group;
+    }
+
+    if (response.date) {
+      response.date = new Date(response.date).toString();
     }
 
     return response;
@@ -16,6 +20,6 @@ GameUp.Models.Event = Backbone.Model.extend({
     }
 
     return this._group;
-  },
+  }
 
 });
