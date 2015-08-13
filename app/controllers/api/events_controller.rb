@@ -22,6 +22,12 @@ class Api::EventsController < ApplicationController
     render json: groups
   end
 
+  def destroy
+    event = Event.find(params[:id])
+    event.destroy
+    render json: event
+  end
+
   private
 
   def parse_datetime(date_string, time_string)

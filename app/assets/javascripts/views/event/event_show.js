@@ -54,9 +54,15 @@ GameUp.Views.EventShow = Backbone.CompositeView.extend({
 
   deleteEvent: function () {
     this.model.destroy({
+      wait: true,
       success: function () {
-        Backbone.history.navigate("#groups" + this.model.group().id, {trigger: true})
-      }.bind(this)
+        Backbone.history.loadUrl();
+        // Backbone.history.navigate("#groups/" + this.model.group().id, {trigger: true})
+      }.bind(this),
+
+      error: function () {
+        debugger;
+      }
     })
   }
 })

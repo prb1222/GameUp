@@ -4,7 +4,8 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
   className: "group-detail-view",
 
   events: {
-    "click button": "toggleMembership"
+    "click button": "toggleMembership",
+    "click .delete-group": "deleteGroup"
   },
 
   attributes: function () {
@@ -22,6 +23,10 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
     var buttonText = this.model.is_member() ? "Leave group" : "Join group";
     var content = this.template({group: this.model, buttonText: buttonText});
     this.$el.html(content);
+    if (this.model.owned) {
+      var $button = $('<button>').addClass('delete-group').text("Delete Group");
+      this.$el.append($button);
+    }
     return this;
   },
 
@@ -48,5 +53,14 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
         }.bind(this)
       });
     }
+  },
+
+  deleteGroup: function (event) {
+    event.preventDefault();
+    this.model.destroy({
+      success: function () {
+        Backbone.history.navigate("/#groups", {trigger: true})
+      }.bind(this)
+    })
   }
 })
