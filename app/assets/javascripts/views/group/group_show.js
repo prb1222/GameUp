@@ -18,11 +18,11 @@ GameUp.Views.GroupShow = Backbone.CompositeView.extend({
 
   render: function () {
     this.$el.html(this.template());
+    this.attachSubviews();
     if (this.model.owned) {
       var $button = $('<button>').addClass('new-event').text('Create Event');
-      this.$el.find('div.events-feed').prepend($button);
+      this.$el.find('div.sidebar').append($button);
     }
-    this.attachSubviews();
     return this;
   },
 
@@ -32,14 +32,6 @@ GameUp.Views.GroupShow = Backbone.CompositeView.extend({
     this.addSubview('div.sidebar', sidebar);
   },
 
-  addEventsFeed: function (model) {
-    this.model.meets().each(this.addEventItem.bind(this));
-  },
-
-  addEventItem: function(event) {
-    var subView = new GameUp.Views.EventItem({model: event});
-    this.addSubview('ul.events-feed', subView);
-  },
 
   addEventForm: function(event) {
     event.preventDefault();
@@ -49,25 +41,38 @@ GameUp.Views.GroupShow = Backbone.CompositeView.extend({
     this.addSubview('div.event-form', subview);
   },
 
+  showEvents: function (event) {
+    var $div = $(event.currentTarget);
+    var eventId = $div.data('event-id');
+    var selector = 'div.main-pane';
+    this.subviews(selector).forEach(function(subview){
+      this.removeSubview(selector, subview);
+    }.bind(this));
+    var _event = this.model.meets().getOrFetch(eventId);
+    var subView = new GameUp.Views.EventShow({model: _event});
+    this.addSubview('div.main-pane', subView);
+  },
+
   switchMainPane: function (event) {
-    this.subviews('ul.events-feed').pop().remove();
+    var selector = 'div.main-pane';
+    this.subviews(selector).forEach(function(subview){
+      this.removeSubview(selector, subview);
+    }.bind(this));
     event.preventDefault();
     var $target = $(event.currentTarget);
     var type = $target.data("page-type");
     this["show" + type](event);
   },
 
-  showEvents: function (event) {
-    var $div = $(event.currentTarget);
-    var eventId = $div.data('event-id');
-    this.$('ul.events-feed').empty();
-    var _event = this.model.meets().getOrFetch(eventId);
-    var subView = new GameUp.Views.EventShow({model: _event});
-    this.addSubview('ul.events-feed', subView);
+  showHome: function () {
+    this.addEventsFeed();
+    this.render();
   },
 
-  showHome: function () {
-    this.render();
+  addEventsFeed: function () {
+    $('div.main-pane').empty();
+    var subView = new GameUp.Views.EventsIndex({collection: this.model.meets()});
+    this.addSubview('div.main-pane', subView);
   },
 
   showMembers: function () {
