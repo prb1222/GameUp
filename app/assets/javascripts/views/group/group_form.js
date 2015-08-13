@@ -9,8 +9,12 @@ GameUp.Views.GroupForm = Backbone.View.extend({
     "submit": "submitGroup"
   },
 
+  initialize: function (options) {
+    this.verb = options.verb;
+  },
+
   render: function () {
-    var content = this.template({group: this.model});
+    var content = this.template({group: this.model, verb: this.verb});
     this.$el.html(content);
     return this;
   },

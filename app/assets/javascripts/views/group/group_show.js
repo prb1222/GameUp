@@ -4,7 +4,8 @@ GameUp.Views.GroupShow = Backbone.CompositeView.extend({
   events: {
     "click button.new-event": "addEventForm",
     "click div.event-item": "showEvents",
-    "click .group-nav a": "switchMainPane"
+    "click .group-nav a": "switchMainPane",
+    "click button.edit-event": "editGroupForm"
   },
 
   initialize: function (options) {
@@ -24,8 +25,10 @@ GameUp.Views.GroupShow = Backbone.CompositeView.extend({
     this.$el.html(this.template());
     this.attachSubviews();
     if (this.model.owned) {
-      var $button = $('<button>').addClass('new-event').text('Create Event');
-      this.$el.find('div.sidebar').append($button);
+      var $buttonD = $('<button>').addClass('new-event').text('Create Event');
+      var $buttonE = $('<button>').addClass('edit-event').text('Edit Group');
+      this.$el.find('div.sidebar').append($buttonE);
+      this.$el.find('div.sidebar').append($buttonD);
     }
     return this;
   },
@@ -47,6 +50,12 @@ GameUp.Views.GroupShow = Backbone.CompositeView.extend({
     var event = new GameUp.Models.Event();
     var subview = new GameUp.Views.EventForm({model: event, collection: this.model.meets()});
     this.addSubview('div.event-form', subview);
+  },
+
+  editGroupForm: function(event) {
+    event.preventDefault();
+    $('div.event-form').empty();
+    var subview = new GameUp.Views.GroupForm({model: this.model, collection: GameUp.groups, verb: "Edit" })
   },
 
   showEvents: function (event) {
