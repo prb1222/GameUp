@@ -12,7 +12,6 @@ GameUp.Views.EventForm = Backbone.View.extend({
   render: function () {
     var content = this.template({event: this.model, verb: this.verb});
     this.$el.html(content);
-    debugger;
     return this;
   },
 

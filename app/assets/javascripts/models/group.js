@@ -21,7 +21,11 @@ GameUp.Models.Group = Backbone.Model.extend({
   },
 
   meets: function () {
-    return GameUp.events;
+    if (!this._meets) {
+      this._meets = new GameUp.Collections.Events([], {group: this});
+    }
+
+    return this._meets;
   },
 
   is_member: function () {

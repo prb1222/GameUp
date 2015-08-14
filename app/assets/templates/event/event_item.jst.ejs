@@ -1,4 +1,6 @@
-<div class="event-item" data-event-id="<%= event.escape('id')%>">
-  <%= event.escape('date')%>
-  <%= event.escape('title')%>
-</div>
+<a href="/#groups/<%= event.escape('group_id') %>/events/<%= event.escape('id') %>">
+  <div class="event-item" data-event-id="<%= event.escape('id')%>">
+    <%= event.escape('date')%>
+    <%= event.escape('title')%>
+  </div>
+</a>

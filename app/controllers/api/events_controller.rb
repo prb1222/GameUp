@@ -18,8 +18,16 @@ class Api::EventsController < ApplicationController
   end
 
   def index
-    groups = Event.all
-    render json: groups
+    if params[:flag] == "myUpcomingEvents"
+      events = current_user.attending_events.where('date > ?', Time.now)
+    elsif params[:flag] == "myPastEvents"
+      events = current_user.attending_events.where('date < ?', Time.now)
+    elsif params[:flag] == "myEventsAll"
+      events = current_user.attending_events
+    else
+      events = Event.all
+    end
+    render json: events
   end
 
   def update

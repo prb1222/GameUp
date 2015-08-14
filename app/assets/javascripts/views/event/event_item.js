@@ -11,5 +11,5 @@ GameUp.Views.EventItem = Backbone.View.extend({
     var content = this.template({event: this.model});
     this.$el.html(content);
     return this;
-  }
+  },
 })
