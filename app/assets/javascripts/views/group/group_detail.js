@@ -40,9 +40,13 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
         success: function () {
           this.disabled = false;
           this.model.membership().clear();
+          $('button.toggle-membership').text('Join Group');
+          this.model.fetch();
+          this.model.meets().each(function(meet){
+            meet.fetch();
+          })
         }.bind(this)
       });
-      $('button.toggle-membership').text('Join Group');
     } else {
       var membership = new GameUp.Models.GroupMembership({group_id: this.model.id});
       membership.save({},{

@@ -10,9 +10,12 @@ class Api::GroupMembershipsController < ApplicationController
   end
 
   def destroy
-    group_membership = GroupMembership.find(params[:id])
-    group_membership.destroy
-    render json: group_membership
+    @group_membership = GroupMembership.find(params[:id])
+    events = Event.where(group_id: @group_membership.group_id)
+    user_event_attendees = EventAttendee.where(user_id: current_user.id, event_id: events)
+    user_event_attendees.each{|event_attendee| event_attendee.destroy }
+    @group_membership.destroy
+    render json: @grup_membership
   end
 
   private
