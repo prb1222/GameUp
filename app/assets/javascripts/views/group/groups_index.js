@@ -20,15 +20,22 @@ GameUp.Views.GroupsIndex = Backbone.CompositeView.extend({
   },
 
   addGroupSubview: function (group) {
+    if (this.groupFormView) {
+      this.removeSubview('div.group-form', this.groupFormView)
+    }
     var subView = new GameUp.Views.GroupItem({model: group});
     this.addSubview('ul.groups-index', subView);
+
   },
 
   groupForm: function (event) {
+    if (this.groupFormView) {
+      this.removeSubview('div.group-form', this.groupFormView)
+    }
     event.preventDefault();
     $('div.group-form').empty();
     var group = new GameUp.Models.Group();
-    var subview = new GameUp.Views.GroupForm({model: group, collection: this.collection, verb: "Create"});
-    this.addSubview('div.group-form', subview);
+    this.groupFormView = new GameUp.Views.GroupForm({model: group, collection: this.collection, verb: "Create"});
+    this.addSubview('div.group-form', this.groupFormView);
   }
 })

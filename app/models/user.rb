@@ -44,6 +44,6 @@ class User < ActiveRecord::Base
   end
 
   def groups
-    member_groups + owned_groups
+    Group.where(id: member_groups.concat(owned_groups).first.map(&:id))
   end
 end

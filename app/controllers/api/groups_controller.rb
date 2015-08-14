@@ -16,7 +16,13 @@ class Api::GroupsController < ApplicationController
   end
 
   def index
-    groups = Group.all
+    if params[:flag] == "mine"
+      groups = current_user.groups
+    elsif params[:flag] == "other"
+      groups = Group.where.not(id: current_user.groups)
+    else
+      groups = Group.all
+    end
     render json: groups
   end
 
