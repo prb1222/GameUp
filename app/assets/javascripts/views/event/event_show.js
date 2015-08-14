@@ -9,15 +9,15 @@ GameUp.Views.EventShow = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
-    this.listenTo(this.model.group().membership(), "change sync", this.render)
+    this.listenTo(this.model.group().membership(), "change:id", this.render);
   },
 
   render: function () {
     var buttonText = !this.model.attendance().isNew() ? "Leave Event": "Join Event";
     this.$el.html(this.template({event: this.model, buttonText: buttonText}));
-    if (!this.model.group().is_member()) {
-      $('.toggle-attendance').remove();
-    }
+    // if (!this.model.group().is_member()) {
+    //   this.$('.toggle-attendance').remove();
+    // }
 
     if (this.model.organizer) {
       var $buttonD = $('<button>').addClass('delete-event').text("Delete Event");

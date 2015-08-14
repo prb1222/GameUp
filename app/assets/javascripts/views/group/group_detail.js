@@ -16,7 +16,7 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
-    this.listenTo(this.model.membership(), "change", this.render)
+    this.listenTo(this.model.membership(), "change:id", this.render)
   },
 
   render: function () {
@@ -34,25 +34,25 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
     if (this.disabled) {return;}
     this.disabled = true;
     event.preventDefault();
-    var membershipId = this.model.membership().id;
-    if (membershipId) {
+    // var membershipId = this.model.membership().id;
+    if (this.model.membership().has("id")) {
       this.model.membership().destroy({
         success: function () {
           this.disabled = false;
           this.model.membership().clear();
-          $('button.toggle-membership').text('Join Group');
-          this.model.fetch();
-          this.model.meets().each(function(meet){
-            meet.fetch();
-          })
+          this.$('button.toggle-membership').text('Join Group');
+          // this.model.fetch();
+          // this.model.meets().each(function(meet){
+          //   meet.fetch();
+          // })
         }.bind(this)
       });
     } else {
-      var membership = new GameUp.Models.GroupMembership({group_id: this.model.id});
-      membership.save({},{
+      this.model.membership().set({group_id: this.model.id});
+      this.model.membership().save({},{
         success: function (membership) {
-          this.model.membership().set(membership);
-          $('button.toggle-membership').text('Leave Group');
+          // this.model.membership().set(membership);
+          this.$('button.toggle-membership').text('Leave Group');
           this.disabled = false;
         }.bind(this)
       });

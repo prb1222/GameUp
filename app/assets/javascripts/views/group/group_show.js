@@ -16,6 +16,7 @@ GameUp.Views.GroupShow = Backbone.CompositeView.extend({
     }
     this.listenTo(this.model, "sync", this.addSidebar);
     this.listenTo(this.model, "sync", this.render)
+    this.listenTo(this.model.meets(), "sync", this.render);
     var jumboView = new GameUp.Views.GroupJumbo({model: this.model});
     this.addSubview('div.jumbotron', jumboView);
     this.render();
@@ -69,9 +70,13 @@ GameUp.Views.GroupShow = Backbone.CompositeView.extend({
     this.subviews(selector).forEach(function(subview){
       this.removeSubview(selector, subview);
     }.bind(this));
-    var _event = this.model.meets().getOrFetch(eventId);
-    var subView = new GameUp.Views.EventShow({model: _event});
-    this.addSubview(selector, subView);
+
+    var callback = function (model) {
+      var subView = new GameUp.Views.EventShow({model: model});
+      this.addSubview(selector, subView);
+    }.bind(this);
+
+    var _event = this.model.meets().getOrFetch(eventId, callback);
   },
 
   switchMainPane: function (event) {

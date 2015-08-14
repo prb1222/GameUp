@@ -1,5 +1,7 @@
 <div class="event-content">
-  <button type="button" class="toggle-attendance"><%= buttonText %></button>
+  <% if (this.model.group().is_member()) { %>
+    <button type="button" class="toggle-attendance"><%= buttonText %></button>
+  <% } %>
   <%= event.escape('date')%>
   <%= event.escape('title')%>
   <%= event.escape('description')%>
