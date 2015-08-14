@@ -11,6 +11,8 @@ GameUp.Models.Event = Backbone.Model.extend({
       delete response.attending_event;
     }
 
+    this.attendance().set({id: undefined});
+
     if (response.attendee_id) {
       this.attendance().set({id: response.attendee_id});
       delete response.attendee_id;

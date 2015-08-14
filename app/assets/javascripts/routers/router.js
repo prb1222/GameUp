@@ -2,8 +2,6 @@ GameUp.Routers.Router = Backbone.Router.extend({
   initialize: function(options) {
     this.$rootEl = options.$rootEl;
     this.currentUser = options.currentUser;
-    this.eventsCollection = new GameUp.Collections.Events();
-    this.eventsCollection.fetch();
   },
 
   routes: {
@@ -21,7 +19,8 @@ GameUp.Routers.Router = Backbone.Router.extend({
   },
 
   eventsIndex: function () {
-    var view = new GameUp.Views.EventsIndex({collection: this.eventsCollection});
+    GameUp.events.fetch();
+    var view = new GameUp.Views.EventsIndex({collection: GameUp.events});
     this.swapView(view);
   },
 
