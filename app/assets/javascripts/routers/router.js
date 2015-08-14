@@ -12,16 +12,23 @@ GameUp.Routers.Router = Backbone.Router.extend({
     "events": "eventsIndex"
   },
 
-  groupsIndex: function () {
-    GameUp.groups.fetch();
-    var view = new GameUp.Views.GroupsIndex({collection: GameUp.groups});
+  index: function (options) {
+    if (options && options.default === "events") {
+      GameUp.events.fetch();
+      var view = new GameUp.Views.IndexContainer({start: "events"});
+    } else {
+      GameUp.groups.fetch();
+      var view = new GameUp.Views.IndexContainer({start: "groups"});
+    }
     this.swapView(view)
   },
 
+  groupsIndex: function () {
+    this.index();
+  },
+
   eventsIndex: function () {
-    GameUp.events.fetch();
-    var view = new GameUp.Views.EventsIndex({collection: GameUp.events});
-    this.swapView(view);
+    this.index({default: "events"})
   },
 
   groupShow: function(id) {
@@ -43,15 +50,5 @@ GameUp.Routers.Router = Backbone.Router.extend({
     this._view = view;
     this.$rootEl.html(view.$el)
     view.render();
-  },
-
-  index: function (options) {
-    var view = new GameUp.Views.IndexContainer();
-    this.swapView(view)
-    // if (options.default === "events") {
-    //
-    // } else {
-    //
-    // }
-  },
+  }
 })

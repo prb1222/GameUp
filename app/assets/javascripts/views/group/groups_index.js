@@ -5,7 +5,8 @@ GameUp.Views.GroupsIndex = Backbone.CompositeView.extend({
     "click button#new-group": "groupForm"
   },
 
-  initialize: function() {
+  initialize: function(options) {
+    this.titleDiv = options.title;
     this.listenTo(this.collection, "sync", this.render);
     this.listenTo(this.collection, "add", this.addGroupSubview);
     this.collection.each(function(group){
@@ -14,7 +15,7 @@ GameUp.Views.GroupsIndex = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    this.$el.html(this.template());
+    this.$el.html(this.template({title: this.titleDiv}));
     this.attachSubviews();
     return this;
   },

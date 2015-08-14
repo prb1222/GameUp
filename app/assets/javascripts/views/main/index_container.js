@@ -1,9 +1,18 @@
 GameUp.Views.IndexContainer = Backbone.CompositeView.extend({
   template: JST['main/index_container'],
 
-  initialize: function () {
+  initialize: function (options) {
     this.addJumbotron();
-    this.addGroupsIndeces();
+    if (options.start === "events") {
+      this.addEventsIndeces();
+    } else {
+      this.addGroupsIndeces();
+    }
+  },
+
+  events: {
+    "click button#show-groups-index": "addGroupsIndeces",
+    "click button#show-events-index": "addEventsIndeces"
   },
 
   render: function () {
@@ -19,16 +28,23 @@ GameUp.Views.IndexContainer = Backbone.CompositeView.extend({
   },
 
   addGroupsIndeces: function () {
-    if (this.indeces) {
-      this.removeSubview('div.index-container', this.indeces);
-    }
+    var selector = 'div.index-container';
+    this.removeSubviews(selector);
     var myGroups = new GameUp.Collections.Groups();
     var otherGroups = new GameUp.Collections.Groups();
     myGroups.fetch({data: {flag: "mine"}});
     otherGroups.fetch({data: {flag: "other"}});
-    otherGroupsView = new GameUp.Views.GroupsIndex({collection: otherGroups});
-    myGroupsView = new GameUp.Views.GroupsIndex({collection: myGroups});
-    this.addSubview('div.index-container', myGroupsView);
-    this.addSubview('div.index-container', otherGroupsView);
+    otherGroupsView = new GameUp.Views.GroupsIndex({collection: otherGroups, title: "OTHER GROUPS"});
+    myGroupsView = new GameUp.Views.GroupsIndex({collection: myGroups, title: "MY GROUPS"});
+    this.addSubview(selector, myGroupsView);
+    this.addSubview(selector, otherGroupsView);
+  },
+
+  addEventsIndeces: function () {
+    var selector = 'div.index-container';
+    this.removeSubviews(selector);
+    GameUp.events.fetch();
+    var eventsIndexView = new GameUp.Views.EventsIndex({collection: GameUp.events});
+    this.addSubview(selector, eventsIndexView);
   }
 });
