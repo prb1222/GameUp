@@ -1,24 +1,24 @@
-<ul class="errors"></ul>
+<form class="event-form-fields" action="" method="post">
+  <ul class="errors"></ul>
+  <label>Title
+    <input type="text" name="event[title]" value="<%= event.escape('title') %>">
+  </label>
 
+  <label>Location
+    <input type="text" name="event[location]" value="<%= event.escape('location')%>">
+  </label>
 
-<label>Title
-  <input type="text" name="event[title]" value="<%= event.escape('title') %>">
-</label>
+  <label>Description
+    <textarea name="event[description]"><%= event.escape('location')%></textarea>
+  </label>
 
-<label>Location
-  <input type="text" name="event[location]" value="<%= event.escape('location')%>">
-</label>
+  <label>Date
+    <input type="date" name="event[date]" value="<%= event.formDate() %>">
+  </label>
 
-<label>Description
-  <textarea name="event[description]"><%= event.escape('location')%></textarea>
-</label>
+  <label>Time
+    <input type="time" name="event[time]" value="<%= event.formTime() %>">
+  </label>
 
-<label>Date
-  <input type="date" name="event[date]" value="<%= event.escape('date')%>">
-</label>
-
-<label>Time
-  <input type="time" name="event[time]" value="<%= event.escape('date')%>">
-</label>
-
-<input type="submit" value="Create Event" class="create-event">
+  <input type="submit" value="<%= verb %> Event" class="<%= verb %>-event">
+</form>

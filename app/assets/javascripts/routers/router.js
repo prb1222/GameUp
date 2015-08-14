@@ -10,8 +10,8 @@ GameUp.Routers.Router = Backbone.Router.extend({
     "": "groupsIndex",
     "groups": "groupsIndex",
     "groups/:id": "groupShow",
-    "events": "eventsIndex",
-    "events/:id": "eventShow"
+    "groups/:group_id/events/:event_id":"eventShow",
+    "events": "eventsIndex"
   },
 
   groupsIndex: function () {
@@ -31,11 +31,11 @@ GameUp.Routers.Router = Backbone.Router.extend({
     this.swapView(view);
   },
 
-  eventShow: function(id) {
-    var group = this.eventsCollection.getOrFetch(id).group();
+  eventShow: function(group_id, event_id) {
+    var group = GameUp.groups.getOrFetch(group_id);
     var view = new GameUp.Views.GroupShow({model: group,
                                            startPage: "eventShow",
-                                           eventId: id});
+                                           eventId: event_id});
     this.swapView(view);
   },
 

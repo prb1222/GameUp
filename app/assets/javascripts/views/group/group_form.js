@@ -1,12 +1,8 @@
 GameUp.Views.GroupForm = Backbone.View.extend({
   template: JST['group/group_form'],
 
-  tagName: "form",
-
-  className: "group-form-fields",
-
   events: {
-    "submit": "submitGroup"
+    "submit form.group-form-fields": "submitGroup"
   },
 
   initialize: function (options) {
@@ -25,7 +21,7 @@ GameUp.Views.GroupForm = Backbone.View.extend({
     this.model.save(formData, {
       success: function (model) {
         this.collection.add(model);
-        this.$el.empty();
+        this.remove();
       }.bind(this),
 
       error: function (error, errorText) {

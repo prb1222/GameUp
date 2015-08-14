@@ -3,7 +3,8 @@ GameUp.Views.EventShow = Backbone.CompositeView.extend({
 
   events: {
     "click .toggle-attendance": "toggleAttendance",
-    "click .delete-event": "deleteEvent"
+    "click .delete-event": "deleteEvent",
+    "click .edit-event": "editEvent"
   },
 
   initialize: function () {
@@ -19,8 +20,10 @@ GameUp.Views.EventShow = Backbone.CompositeView.extend({
     }
 
     if (this.model.organizer) {
-      var $button = $('<button>').addClass('delete-event').text("Delete Event");
-      this.$el.append($button);
+      var $buttonD = $('<button>').addClass('delete-event').text("Delete Event");
+      var $buttonE = $('<button>').addClass('edit-event').text("Edit Event");
+      this.$el.append($buttonD);
+      this.$el.append($buttonE);
     }
 
     this.attachSubviews();
@@ -56,13 +59,14 @@ GameUp.Views.EventShow = Backbone.CompositeView.extend({
     this.model.destroy({
       wait: true,
       success: function () {
-        Backbone.history.loadUrl();
-        // Backbone.history.navigate("#groups/" + this.model.group().id, {trigger: true})
-      }.bind(this),
-
-      error: function () {
-        debugger;
-      }
+        this.remove();
+        Backbone.history.navigate("#groups/" + this.model.group().id, {trigger: true})
+      }.bind(this)
     })
+  },
+
+  editEvent: function () {
+    var formView = new GameUp.Views.EventForm({model: this.model, collection: this.model.group().meets(), verb: "Edit" })
+    $('body').append(formView.render().$el);
   }
 })

@@ -1,17 +1,18 @@
 GameUp.Views.EventForm = Backbone.View.extend({
   template: JST['event/event_form'],
 
-  tagName: "form",
-
-  className: "event-form-fields",
-
   events: {
-    "submit": "submitEvent"
+    "submit form.event-form-fields": "submitEvent"
+  },
+
+  initialize: function (options) {
+    this.verb = options.verb;
   },
 
   render: function () {
-    var content = this.template({event: this.model});
+    var content = this.template({event: this.model, verb: this.verb});
     this.$el.html(content);
+    debugger;
     return this;
   },
 
@@ -22,8 +23,8 @@ GameUp.Views.EventForm = Backbone.View.extend({
     this.model.save(formData, {
       success: function (model) {
         this.collection.add(model);
-        this.$el.empty();
-        Backbone.history.navigate('groups/' + model.get('group_id'), {trigger: true});
+        this.remove();
+        Backbone.history.navigate('groups/' + model.get('group_id') + "/events/" + model.get('id'), {trigger: true});
       }.bind(this),
 
       error: function (error, errorText) {
