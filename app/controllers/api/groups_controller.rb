@@ -37,6 +37,8 @@ class Api::GroupsController < ApplicationController
 
   def destroy
     group = Group.find(params[:id])
+    GroupMembership.where(group_id: group.id).destroy_all
+    group.events.destroy_all
     group.destroy
     render json: group
   end
