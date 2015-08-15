@@ -18,6 +18,11 @@ GameUp.Models.Event = Backbone.Model.extend({
       delete response.attendee_id;
     }
 
+    if (response.comments) {
+      this.comments().set(response.comments);
+      delete response.comments;
+    }
+
     this.organizer = response.organizer;
     delete response.organizer;
 
@@ -38,6 +43,14 @@ GameUp.Models.Event = Backbone.Model.extend({
     }
 
     return this._attendance;
+  },
+
+  comments: function () {
+    if (!this._comments) {
+      this._comments = new GameUp.Collections.Comments([], {event: this});
+    }
+
+    return this._comments;
   },
 
   formDate: function () {

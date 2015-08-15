@@ -4,3 +4,4 @@ if attendee
   json.attendee_id attendee.id
 end
 json.organizer event.organizer_id == current_user.id
+json.comments event.comments unless event.comments.empty?

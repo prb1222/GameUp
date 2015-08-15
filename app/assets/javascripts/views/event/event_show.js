@@ -8,6 +8,7 @@ GameUp.Views.EventShow = Backbone.CompositeView.extend({
   },
 
   initialize: function () {
+    this.listenTo(this.model, "sync", this.addCommentsIndex);
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model.group().membership(), "change:id", this.render);
   },
@@ -64,5 +65,11 @@ GameUp.Views.EventShow = Backbone.CompositeView.extend({
   editEvent: function () {
     var formView = new GameUp.Views.EventForm({model: this.model, collection: this.model.group().meets(), verb: "Edit" })
     $('body').append(formView.render().$el);
+  },
+
+  addCommentsIndex: function (model) {
+    this.removeSubviews('div.comments-index');
+    var subview = new GameUp.Views.CommentsIndex({collection: model.comments()});
+    this.addSubview('div.comments-index', subview);
   }
 })
