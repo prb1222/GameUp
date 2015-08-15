@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
   has_many :member_groups, through: :group_memberships, source: :group
   has_many :event_attendees, primary_key: :id, foreign_key: :user_id, class_name: :EventAttendee, dependent: :destroy
   has_many :attending_events, through: :event_attendees, source: :event
-
+  has_many :comments
+  has_many :commented_events, through: :comments, source: :event
   def generate_session_token
     SecureRandom.urlsafe_base64(16)
   end
