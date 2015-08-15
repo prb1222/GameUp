@@ -9,7 +9,8 @@ GameUp.Routers.Router = Backbone.Router.extend({
     "groups": "groupsIndex",
     "groups/:id": "groupShow",
     "groups/:group_id/events/:event_id":"eventShow",
-    "events": "eventsIndex"
+    "events": "eventsIndex",
+    "users/:id":"userShow"
   },
 
   index: function (options) {
@@ -43,6 +44,16 @@ GameUp.Routers.Router = Backbone.Router.extend({
                                            startPage: "eventShow",
                                            eventId: event_id});
     this.swapView(view);
+  },
+
+  userShow: function (id) {
+    var user = new GameUp.Models.User({ id: id });
+    user.fetch({
+      success: function (user) {
+        var view = new GameUp.Views.UserShow({model: user});
+        this.swapView(view);
+      }.bind(this)
+    })
   },
 
   swapView: function(view) {

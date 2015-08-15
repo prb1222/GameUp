@@ -12,9 +12,14 @@ GameUp.Models.Group = Backbone.Model.extend({
       delete response.owned;
     }
 
-    if (response.membership_id) {
-      this.membership().set({id: response.membership_id});
-      delete response.membership_id;
+    if (response.membership) {
+      this.membership().set({id: response.membership.id, user_id: response.membership.user_id});
+      delete response.membership;
+    }
+
+    if (response.members) {
+      this.members().set(response.members, {parse: true});
+      delete response.members;
     }
 
     return response;
@@ -38,5 +43,13 @@ GameUp.Models.Group = Backbone.Model.extend({
     }
 
     return this._membership;
+  },
+
+  members: function () {
+    if (!this._members) {
+      this._members = new GameUp.Collections.Users();
+    }
+
+    return this._members;
   }
 })

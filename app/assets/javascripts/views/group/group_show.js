@@ -17,6 +17,7 @@ GameUp.Views.GroupShow = Backbone.CompositeView.extend({
     this.listenTo(this.model, "sync", this.addSidebar);
     this.listenTo(this.model, "sync", this.render)
     this.listenTo(this.model.meets(), "sync", this.render);
+    this.listenTo(this.model.members(), "add remove", this.render)
     var jumboView = new GameUp.Views.GroupJumbo({model: this.model});
     this.addSubview('div.jumbotron', jumboView);
     this.render();
@@ -81,9 +82,7 @@ GameUp.Views.GroupShow = Backbone.CompositeView.extend({
 
   switchMainPane: function (event) {
     var selector = 'div.main-pane';
-    this.subviews(selector).forEach(function(subview){
-      this.removeSubview(selector, subview);
-    }.bind(this));
+    this.removeSubviews(selector);
     event.preventDefault();
     var $target = $(event.currentTarget);
     var type = $target.data("page-type");
@@ -103,6 +102,7 @@ GameUp.Views.GroupShow = Backbone.CompositeView.extend({
   },
 
   showMembers: function () {
-    debugger;
+    var subView = new GameUp.Views.UsersIndex({collection: this.model.members()});
+    this.addSubview('div.main-pane', subView);
   }
 });
