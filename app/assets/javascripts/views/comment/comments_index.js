@@ -15,7 +15,11 @@ GameUp.Views.CommentsIndex = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    var content = this.template({attending: !this.event.attendance().isNew()});
+    var attending = !this.event.attendance().isNew();
+    var content = this.template({attending: attending});
+    if (!attending && this.formView) {
+      this.removeSubview('div.comment-form', this.formView)
+    }
     this.$el.html(content);
     this.removeSubviews('ul.comments-index');
     this.collection.each(function(comment){
