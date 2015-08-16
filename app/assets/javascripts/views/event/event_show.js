@@ -37,6 +37,9 @@ GameUp.Views.EventShow = Backbone.CompositeView.extend({
         success: function () {
           this.disabled = false;
           this.model.attendance().clear();
+          if (this.model.organizer) {
+            this.deleteEvent();
+          }
         }.bind(this)
       })
       $('button.toggle-attendance').text('Join Event');
