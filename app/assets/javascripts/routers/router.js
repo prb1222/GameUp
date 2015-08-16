@@ -4,6 +4,11 @@ GameUp.Routers.Router = Backbone.Router.extend({
     this.currentUser = options.currentUser;
   },
 
+  addNavbar: function () {
+    var view = new GameUp.Views.NavBar({currentUser: this.currentUser});
+    this.$rootEl.prepend(view.render().$el);
+  },
+
   routes: {
     "": "index",
     "groups": "groupsIndex",
@@ -59,7 +64,8 @@ GameUp.Routers.Router = Backbone.Router.extend({
   swapView: function(view) {
     this._view && this._view.remove();
     this._view = view;
-    this.$rootEl.html(view.$el)
+    this.$rootEl.html(view.$el);
+    this.addNavbar();
     view.render();
   }
 })
