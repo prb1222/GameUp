@@ -1,11 +1,44 @@
 GameUp.Views.EventsDaysIndex = Backbone.CompositeView.extend({
   template: JST['event/events_days_index'],
 
-  initialize: function() {
+  events: {
+    "click .my-events":"showMyEvents",
+    "click .upcoming-events":"showUpcomingEvents"
+  },
+
+  initialize: function(options) {
+    this.flag = options.flag;
+    this.header = "My Upcoming Events"
+    this.findEvents();
+  },
+
+  render: function () {
+    this.$el.html(this.template({header: this.header}));
+    this.attachSubviews();
+    return this;
+  },
+
+  showMyEvents: function () {
+    this.removeSubviews('ul.events-days-index');
+    this.header = "My Upcoming Events";
+    this.flag = "myUpcomingEvents";
+    this.findEvents();
+    this.render();
+  },
+
+  showUpcomingEvents: function () {
+    this.removeSubviews('ul.events-days-index');
+    this.header = "Upcoming Events";
+    this.flag = "upcomingEvents";
+    this.findEvents();
+    this.render();
+  },
+
+  findEvents: function() {
     var eventsCollection = new GameUp.Collections.Events();
     var self = this;
     eventsCollection.fetch({
-      data: {flag: "myUpcomingEvents"},
+      data: {flag: this.flag},
       success: function () {
         var uniqueDates = eventsCollection.getUniqueDates();
         uniqueDates.forEach(function(uniqueDate){
@@ -18,15 +51,4 @@ GameUp.Views.EventsDaysIndex = Backbone.CompositeView.extend({
       }.bind(this)
     });
   },
-
-  render: function () {
-    this.$el.html(this.template());
-    this.attachSubviews();
-    return this;
-  },
-
-  addEventSubview: function (event) {
-    var subView = new GameUp.Views.EventItem({model: event});
-    this.addSubview('ul.events-days-index', subView);
-  }
 })
