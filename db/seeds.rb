@@ -18,7 +18,8 @@ bowser_army = bowser.groups.create(title: "BOWSER'S ARMY",
                      location: "Mushroom Kingdom",
                      member_name: "koopas",
                      owner_id: 1)
-GroupMembership.create(user_id: 1, group_id: 1)
+
+GroupMembership.create(user_id: 1, group_id: 1) # Ask about association data and how to seed it
 
 # bowser_army.events.create(title: "Kidnap Peach",
 #                           location: "Peach's castle",

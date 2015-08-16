@@ -17,12 +17,15 @@ ActiveRecord::Schema.define(version: 20150815085719) do
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.string   "user_id",    null: false
-    t.string   "event_id",   null: false
-    t.string   "body",       null: false
+    t.integer  "user_id",    null: false
+    t.integer  "event_id",   null: false
+    t.text     "body",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "comments", ["event_id"], name: "index_comments_on_event_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "event_attendees", force: :cascade do |t|
     t.integer  "event_id",   null: false

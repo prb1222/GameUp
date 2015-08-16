@@ -69,7 +69,10 @@ GameUp.Views.EventShow = Backbone.CompositeView.extend({
 
   addCommentsIndex: function (model) {
     this.removeSubviews('div.comments-index');
-    var subview = new GameUp.Views.CommentsIndex({collection: model.comments()});
+    var subview = new GameUp.Views.CommentsIndex({collection: model.comments(),
+                                                  attending: this.model.attending_event,
+                                                  event: this.model
+                                                });
     this.addSubview('div.comments-index', subview);
   }
 })
