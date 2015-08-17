@@ -5,7 +5,8 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
 
   events: {
     "click button.toggle-membership": "toggleMembership",
-    "click .delete-group": "deleteGroup"
+    "click .delete-group": "deleteGroup",
+    "click .upload-image": "upload"
   },
 
   attributes: function () {
@@ -66,5 +67,26 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
         Backbone.history.navigate("/#groups", {trigger: true})
       }.bind(this)
     })
+  },
+
+  upload: function (event) {
+    if (this.disabled) {return;}
+    this.disabled = true;
+    var image = new GameUp.Models.Image({imageable_type: "Group",
+                                         imageable_id: this.model.get('id')
+                                       });
+    event.preventDefault();
+    cloudinary.openUploadWidget(CLOUDINARY_OPTIONS, function(error, result){
+      var data = result[0];
+      image.set({image_url: data.url});
+      image.save({}, {
+        success: function (model) {
+          this.model.images[0].image_url = model.get('image_url');
+          this.render();
+        }.bind(this)
+      })
+    }.bind(this));
+    this.image = image;
+    this.disabled = false;
   }
 })

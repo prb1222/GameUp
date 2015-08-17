@@ -1,5 +1,8 @@
 <h3>Group Info:</h3>
 <p><img src="<%= group.images[0].image_url %>" /></p>
+<% if (group.owned) { %>
+  <button type="button" class="upload-image">Upload Group Image</button>
+<% } %>
 <p>About us: <br><%= group.escape('description') %></p>
 <p>Location: <%= group.escape('location') %></p>
 <p>Organizer: <%= group.owner %></p>
