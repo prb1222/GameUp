@@ -25,6 +25,7 @@ GameUp.Routers.Router = Backbone.Router.extend({
       var view = new GameUp.Views.IndexContainer({start: "events"});
     } else {
       GameUp.groups.fetch();
+      debugger;
       var view = new GameUp.Views.IndexContainer({start: "groups"});
     }
     this.swapView(view)

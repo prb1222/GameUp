@@ -54,6 +54,14 @@ ul.comments-index {
     }
 }
 
+ul.groups-index {
+    padding: 0px;
+
+    li {
+      list-style-type: none;
+    }
+}
+
 .new-comment {
   margin-left: 40%;
   width: 20%;
@@ -98,4 +106,10 @@ ul.events-index li {
 
 .comment-form {
   text-align: center;
+}
+
+div.groups-index {
+  h1 {
+    text-align: center;
+  }
 }

@@ -4,7 +4,7 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
   className: "group-detail-view",
 
   events: {
-    "click button": "toggleMembership",
+    "click button.toggle-membership": "toggleMembership",
     "click .delete-group": "deleteGroup"
   },
 
@@ -20,7 +20,6 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
   },
 
   render: function () {
-    debugger;
     var buttonText = this.model.is_member() ? "Leave group" : "Join group";
     var content = this.template({group: this.model, buttonText: buttonText});
     this.$el.html(content);
@@ -35,6 +34,7 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
     if (this.disabled) {return;}
     this.disabled = true;
     event.preventDefault();
+    debugger;
     if (this.model.membership().has("id")) {
       this.model.membership().destroy({
         success: function (membership) {
@@ -42,6 +42,9 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
           this.disabled = false;
           this.model.membership().clear();
           this.$('button.toggle-membership').text('Join Group');
+          if (this.model.owned) {
+            this.deleteGroup();
+          }
         }.bind(this)
       });
     } else {
@@ -58,8 +61,7 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
     }
   },
 
-  deleteGroup: function (event) {
-    event.preventDefault();
+  deleteGroup: function () {
     this.model.destroy({
       success: function () {
         Backbone.history.navigate("/#groups", {trigger: true})

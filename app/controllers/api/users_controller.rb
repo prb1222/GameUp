@@ -1,6 +1,14 @@
 class Api::UsersController < ApplicationController
   def index
-    @users = User.all
+    if params[:flag] == "groupMembers"
+      group = Group.find(params[:groupId])
+      @users = group.members
+    elsif params[:flag] == "eventAttendees"
+      event = Event.find(params[:eventId])
+      @users = event.attendees
+    else
+      @users = User.all
+    end
     render json: @users
   end
 

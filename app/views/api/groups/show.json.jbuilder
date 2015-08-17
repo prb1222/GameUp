@@ -5,4 +5,4 @@ end
 json.members do
   json.partial! 'api/users/user', collection: @group.members, as: :user
 end
-json.owned @group.owner_id == current_user.id
+json.owner @group.owner.username

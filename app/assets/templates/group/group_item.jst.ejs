@@ -1,1 +1,5 @@
-<a href="/#groups/<%=group.escape('id')%>"><%= group.escape('title')%></a>
+
+<a href="/#groups/<%=group.escape('id')%>">
+  <%= group.escape('title')%><br>
+  We're <%= group.members().length%> <%= group.escape('member_name')%>!
+</a>

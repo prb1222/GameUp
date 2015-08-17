@@ -2,7 +2,8 @@
 <p>This will be a link to the profile picture</p>
 <p>About us: <br><%= group.escape('description') %></p>
 <p>Location: <%= group.escape('location') %></p>
-<p>Organizer: <%= group.escape('owner_id') %></p>
+<p>Organizer: <%= group.owner %></p>
+<p>We're <%= group.members().models.length %> <%= group.escape('member_name')%></p>
 <button type="button" class="toggle-membership"><%= buttonText %></button>
 <% if (group.owned) {%>
   <button type="button" class="edit-group">Edit Group</button>
