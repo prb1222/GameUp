@@ -4,11 +4,11 @@
   <p>Description: <%= event.escape('description')%></p>
   <p>Location: <%= event.escape('location') %></p>
   <p>Organizer: <%= event.escape('organizername') %></p>
-  <button type="button" class="event-members">Who's going</button>
+  <button type="button" class="event-attendees">Who's going</button>
+  <button type="button" class="event-comments">Comments</button>
   <% if (event.group().is_member()) { %>
     <button type="button" class="toggle-attendance"><%= buttonText %></button>
   <% } %>
 </div>
 
-<div class="comments-index"></ul>
-<div class="attendees-index"></div>
+<div class="event-display-info"></div>

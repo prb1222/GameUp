@@ -100,7 +100,7 @@ GameUp.Views.GroupShow = Backbone.CompositeView.extend({
   },
 
   showMembers: function () {
-    var subView = new GameUp.Views.UsersIndex({collection: this.model.members()});
+    var subView = new GameUp.Views.UsersIndex({collection: this.model.members(), title: "Members"});
     this.addSubview('div.main-pane', subView);
   }
 });

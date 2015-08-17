@@ -1,7 +1,8 @@
 GameUp.Views.UsersIndex = Backbone.CompositeView.extend({
   template: JST['user/users_index'],
 
-  initialize: function() {
+  initialize: function(options) {
+    this.title = options.title;
     this.listenTo(this.collection, "sync", this.render);
     this.listenTo(this.collection, "add", this.addUserSubview);
     this.listenTo(this.collection, "remove", this.removeUserSubview);
@@ -11,7 +12,7 @@ GameUp.Views.UsersIndex = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    this.$el.html(this.template());
+    this.$el.html(this.template({title: this.title}));
     this.attachSubviews();
     return this;
   },

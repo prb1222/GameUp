@@ -6,7 +6,9 @@ GameUp.Views.EventShow = Backbone.CompositeView.extend({
   events: {
     "click .toggle-attendance": "toggleAttendance",
     "click .delete-event": "deleteEvent",
-    "click .edit-event": "editEvent"
+    "click .edit-event": "editEvent",
+    "click .event-attendees": "addAttendeesIndex",
+    "click .event-comments": "addCommentsIndex"
   },
 
   initialize: function () {
@@ -36,8 +38,10 @@ GameUp.Views.EventShow = Backbone.CompositeView.extend({
     var attendanceId = this.model.attendance().id;
     if (attendanceId) {
       this.model.attendance().destroy({
-        success: function () {
+        success: function (attendance) {
           this.disabled = false;
+          var userId = attendance.attributes.get('user_id');
+          this.model.attendees().remove(userId);
           this.model.attendance().clear();
           if (this.model.organizer) {
             this.deleteEvent();
@@ -50,6 +54,7 @@ GameUp.Views.EventShow = Backbone.CompositeView.extend({
       attendance.save({},{
         success: function (attendance) {
           this.model.attendance().set(attendance);
+          this.model.attendees().getOrFetch(attendance.get('user_id'));
           $('button.toggle-attendance').text('Leave Event');
           this.disabled = false;
         }.bind(this)
@@ -72,11 +77,17 @@ GameUp.Views.EventShow = Backbone.CompositeView.extend({
     $('body').append(formView.render().$el);
   },
 
-  addCommentsIndex: function (model) {
-    this.removeSubviews('div.comments-index');
-    var subview = new GameUp.Views.CommentsIndex({collection: model.comments(),
+  addCommentsIndex: function () {
+    this.removeSubviews('div.event-display-info');
+    var subview = new GameUp.Views.CommentsIndex({collection: this.model.comments(),
                                                   event: this.model
                                                 });
-    this.addSubview('div.comments-index', subview);
+    this.addSubview('div.event-display-info', subview);
+  },
+
+  addAttendeesIndex: function () {
+    this.removeSubviews('div.event-display-info');
+    var subview = new GameUp.Views.UsersIndex({title: "Attendee List", collection: this.model.attendees()})
+    this.addSubview('div.event-display-info', subview);
   }
 })

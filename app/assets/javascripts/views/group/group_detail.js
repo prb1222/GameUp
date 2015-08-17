@@ -34,7 +34,6 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
     if (this.disabled) {return;}
     this.disabled = true;
     event.preventDefault();
-    debugger;
     if (this.model.membership().has("id")) {
       this.model.membership().destroy({
         success: function (membership) {

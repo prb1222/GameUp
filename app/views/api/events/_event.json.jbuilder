@@ -5,4 +5,6 @@ if attendee
 end
 json.organizer event.organizer_id == current_user.id
 json.comments event.comments unless event.comments.empty?
-json.attendees event.attendees unless event.attendees.empty?
+json.attendees do
+  json.partial! 'api/users/user', collection: event.attendees, as: :user
+end

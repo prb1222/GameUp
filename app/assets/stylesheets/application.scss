@@ -62,6 +62,14 @@ ul.groups-index {
     }
 }
 
+ul.users-index {
+    padding: 0px;
+
+    li {
+      list-style-type: none;
+    }
+}
+
 .new-comment {
   margin-left: 40%;
   width: 20%;
