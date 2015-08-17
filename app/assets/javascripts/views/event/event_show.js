@@ -2,7 +2,7 @@ GameUp.Views.EventShow = Backbone.CompositeView.extend({
   template: JST['event/event_show'],
 
   className: "event-show",
-  
+
   events: {
     "click .toggle-attendance": "toggleAttendance",
     "click .delete-event": "deleteEvent",

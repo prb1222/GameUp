@@ -16,6 +16,7 @@ GameUp.Views.GroupNew = Backbone.View.extend({
     var formData = $(event.currentTarget).serializeJSON();
     this.model.save(formData,{
       success: function () {
+        debugger;
         this.remove();
         Backbone.history.navigate("#/groups/" + this.model.get('id'), {trigger: true});
       }.bind(this),

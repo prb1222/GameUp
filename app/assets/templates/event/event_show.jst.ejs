@@ -4,7 +4,7 @@
   <p>Description: <%= event.escape('description')%></p>
   <p>Location: <%= event.escape('location') %></p>
   <p>Organizer: <%= event.escape('organizername') %></p>
-  <% if (this.model.group().is_member()) { %>
+  <% if (event.group().is_member()) { %>
     <button type="button" class="toggle-attendance"><%= buttonText %></button>
   <% } %>
 </div>

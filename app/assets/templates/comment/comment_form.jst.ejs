@@ -1,9 +1,9 @@
 <form class="comment-form" action="" method="post">
   <ul class="errors"></ul>
-  <label class="comment-label">Body
-    <textarea type="text" name="comment[body]" class="comment-textarea"></textarea>
-  </label>
-
+  <div class=form-group>
+    <label for="comment-body">Body</label><br>
+    <textarea type="text" name="comment[body]" class="form-control comment-textarea" id="comment-body"></textarea>
+  </div>
   <br>
 
   <input type="submit" class="create-comment btn btn-primary" value="Create Comment">

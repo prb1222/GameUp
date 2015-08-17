@@ -1,23 +1,23 @@
 class Api::CommentsController < ApplicationController
   def create
-    comment = Comment.new(comment_params)
-    comment.user_id = current_user.id
-    if comment.save
-      render json: comment
+    @comment = Comment.new(comment_params)
+    @comment.user_id = current_user.id
+    if @comment.save
+      render :show
     else
-      render json: comment.errors.full_messages, status: 422
+      render json: @comment.errors.full_messages, status: 422
     end
   end
 
   def index
     if params[:flag] == "event"
       event = Event.find(params[:eventId])
-      comments = event.comments
+      @comments = event.comments
     else
-      comments = Comment.all
+      @comments = Comment.all
     end
-    
-    render json: comments
+
+    render :index
   end
 
   def update

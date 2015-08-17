@@ -1,2 +1,5 @@
-Body: <%= comment.escape('body') %> <br>
-Created at:<%= comment.escape('created_at')%>
+<% if (comment.user) { %>
+  <%= comment.user.username %> <br>
+<% } %>
+<%= comment.escape('body') %> <br>
+Created at: <%= comment.displayDate() %>

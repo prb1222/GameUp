@@ -20,6 +20,7 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
   },
 
   render: function () {
+    debugger;
     var buttonText = this.model.is_member() ? "Leave group" : "Join group";
     var content = this.template({group: this.model, buttonText: buttonText});
     this.$el.html(content);

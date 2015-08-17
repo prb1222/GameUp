@@ -46,18 +46,17 @@
   text-align: center;
 }
 
-ul.comments-index li {
-  list-style-type: none;
-}
+ul.comments-index {
+    padding: 0px;
 
-.create-comment {
-  margin-left: 10%;
-  width: 80%;
+    li {
+      list-style-type: none;
+    }
 }
 
 .new-comment {
-  margin-left: 10%;
-  width: 80%;
+  margin-left: 40%;
+  width: 20%;
 }
 
 .m-background {
@@ -95,4 +94,8 @@ ul.comments-index li {
 
 ul.events-index li {
   list-style-type: none;
+}
+
+.comment-form {
+  text-align: center;
 }
