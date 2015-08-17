@@ -1,6 +1,8 @@
 GameUp.Views.GroupShow = Backbone.CompositeView.extend({
   template: JST['group/group_show'],
 
+  className: "group-show",
+
   events: {
     "click button.new-event": "addEventForm",
     "click div.event-item": "showEvents",
@@ -19,19 +21,13 @@ GameUp.Views.GroupShow = Backbone.CompositeView.extend({
     this.listenTo(this.model.meets(), "sync", this.render);
     this.listenTo(this.model.members(), "add remove", this.render)
     var jumboView = new GameUp.Views.GroupJumbo({model: this.model});
-    this.addSubview('div.jumbotron', jumboView);
+    this.addSubview('div.jumbotron-container', jumboView);
     this.render();
   },
 
   render: function () {
     this.$el.html(this.template());
     this.attachSubviews();
-    if (this.model.owned) {
-      var $buttonD = $('<button>').addClass('new-event').text('Create Event');
-      var $buttonE = $('<button>').addClass('edit-group').text('Edit Group');
-      this.$el.find('div.sidebar').append($buttonE);
-      this.$el.find('div.sidebar').append($buttonD);
-    }
     return this;
   },
 

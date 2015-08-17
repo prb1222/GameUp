@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   before_action :require_logged_out!, only: [:new, :create]
-  
+
   def new
     @user = User.new
     render :new
@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
                                      params[:user][:password])
     if @user
       login_user!(@user)
-      redirect_to user_url(@user)
+      redirect_to root_url
     else
       flash.now[:errors] = ["Invalid login info!"]
       render :new

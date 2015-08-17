@@ -2,3 +2,54 @@
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
+.group-show {
+  position: absolute;
+}
+ .group-nav {
+   text-align: center;
+   p {
+     display: inline-block;
+     margin-left: 30px;
+     margin-right: 30px;
+   }
+   padding: 10px;
+ }
+
+.group-detail-view {
+  display: inline-block;
+  border: 1px solid #ddd;
+  padding: 20px;
+}
+
+.main-pane {
+  display: inline-block;
+  border: 1px solid #ddd;
+}
+
+.sidebar {
+  display: inline-block;
+  position: relative;
+  top: 25%;
+}
+
+.event-content {
+  padding: 20px;
+}
+
+.new-comment {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ div.comments-index-view h6 {
+  text-align: center;
+}
+
+ul.comments-index li {
+  list-style-type: none;
+}
+
+.create-comment {
+  margin-left: 10%;
+  width: 80%;
+}

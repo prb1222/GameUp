@@ -26,6 +26,7 @@ GameUp.Views.CommentForm = Backbone.View.extend({
         }.bind(this),
 
         error: function (error, errorText) {
+          this.$el.find('.errors').empty();
           errorText.responseJSON.forEach(function(error) {
             var $li = $('<li>'+ error +'</li>')
             this.$el.find('.errors').append($li);

@@ -1,6 +1,8 @@
 GameUp.Views.CommentsIndex = Backbone.CompositeView.extend({
   template: JST['comment/comments_index'],
 
+  className: "comments-index-view",
+
   initialize: function (options) {
     this.attending = options.attending;
     this.event = options.event;
@@ -47,7 +49,6 @@ GameUp.Views.CommentsIndex = Backbone.CompositeView.extend({
   },
 
   handleClick: function (event) {
-    event.preventDefault();
     var $form = $('div.comment-form');
     var $target = $(event.currentTarget);
     if ($form.find($target).length || $form.is($target)) {
