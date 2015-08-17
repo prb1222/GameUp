@@ -43,7 +43,7 @@ GameUp.Views.IndexContainer = Backbone.CompositeView.extend({
   addEventsIndeces: function () {
     var selector = 'div.index-container';
     this.removeSubviews(selector);
-    var eventsIndexView = new GameUp.Views.EventsDaysIndex({flag: "myUpcomingEvents"});
+    var eventsIndexView = new GameUp.Views.UserEventsIndex();
     this.addSubview(selector, eventsIndexView);
   }
 });

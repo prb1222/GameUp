@@ -1,14 +1,12 @@
 GameUp.Views.EventsDaysIndex = Backbone.CompositeView.extend({
   template: JST['event/events_days_index'],
 
-  events: {
-    "click .my-events":"showMyEvents",
-    "click .upcoming-events":"showUpcomingEvents"
-  },
+  className: "events-days-index",
 
   initialize: function(options) {
     this.flag = options.flag;
-    this.header = "My Upcoming Events"
+    this.header = options.header;
+    this.groupId = options.groupId
     this.findEvents();
   },
 
@@ -18,35 +16,20 @@ GameUp.Views.EventsDaysIndex = Backbone.CompositeView.extend({
     return this;
   },
 
-  showMyEvents: function () {
-    this.removeSubviews('ul.events-days-index');
-    this.header = "My Upcoming Events";
-    this.flag = "myUpcomingEvents";
-    this.findEvents();
-    this.render();
-  },
-
-  showUpcomingEvents: function () {
-    this.removeSubviews('ul.events-days-index');
-    this.header = "Upcoming Events";
-    this.flag = "upcomingEvents";
-    this.findEvents();
-    this.render();
-  },
-
   findEvents: function() {
-    var eventsCollection = new GameUp.Collections.Events();
+    this.collection = new GameUp.Collections.Events();
+    this.listenTo(this.collection, "sync", this.render);
     var self = this;
-    eventsCollection.fetch({
-      data: {flag: this.flag},
+    this.collection.fetch({
+      data: {flag: this.flag, groupId: this.groupId},
       success: function () {
-        var uniqueDates = eventsCollection.getUniqueDates();
+        var uniqueDates = self.collection.getUniqueDates();
         uniqueDates.forEach(function(uniqueDate){
           var dateCollection = new GameUp.Collections.Events();
-          var dateEvents = eventsCollection.filterByDate(uniqueDate);
+          var dateEvents = self.collection.filterByDate(uniqueDate);
           dateCollection.set(dateEvents);
           var view = new GameUp.Views.EventsDayIndex({date: uniqueDate, collection: dateCollection});
-          self.attachSubview('ul.events-days-index', view);
+          self.addSubview('ul.events-days-index', view);
         })
       }.bind(this)
     });

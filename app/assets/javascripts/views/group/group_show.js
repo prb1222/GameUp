@@ -94,8 +94,7 @@ GameUp.Views.GroupShow = Backbone.CompositeView.extend({
 
   addEventsFeed: function () {
     $('div.main-pane').empty();
-    this.model.fetch();
-    var subView = new GameUp.Views.EventsIndex({collection: this.model.meets()});
+    var subView = new GameUp.Views.GroupEventsIndex({model: this.model});
     this.addSubview('div.main-pane', subView);
   },
 

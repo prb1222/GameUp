@@ -26,6 +26,12 @@ class Api::EventsController < ApplicationController
       events = current_user.attending_events
     elsif params[:flag] == "upcomingEvents"
       events = current_user.groups.map(&:events).flatten
+    elsif params[:flag] == "groupUpcomingEvents"
+      group = Group.find(params[:groupId])
+      events = group.events.where('date > ?', Time.now)
+    elsif params[:flag] == "groupPastEvents"
+      group = Group.find(params[:groupId])
+      events = group.events.where('date < ?', Time.now)
     else
       events = Event.all
     end

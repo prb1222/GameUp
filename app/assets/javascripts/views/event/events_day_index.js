@@ -1,6 +1,8 @@
 GameUp.Views.EventsDayIndex = Backbone.CompositeView.extend({
   template: JST['event/events_day_index'],
 
+  className: "event-day-index",
+
   initialize: function(options) {
     this.date = options.date;
     this.collection.each(function(event){
