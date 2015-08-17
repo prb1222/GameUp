@@ -2,7 +2,9 @@ GameUp.Views.GroupForm = Backbone.View.extend({
   template: JST['group/group_form'],
 
   events: {
-    "submit form.group-form-fields": "submitGroup"
+    "submit form.group-form-fields": "submitGroup",
+    "click .m-background":"remove",
+    "click .close":"removeBtn"
   },
 
   initialize: function (options) {
@@ -13,6 +15,11 @@ GameUp.Views.GroupForm = Backbone.View.extend({
     var content = this.template({group: this.model, verb: this.verb});
     this.$el.html(content);
     return this;
+  },
+
+  removeBtn: function(event) {
+    event.preventDefault();
+    this.remove();
   },
 
   submitGroup: function (event) {

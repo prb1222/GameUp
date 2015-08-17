@@ -2,7 +2,9 @@ GameUp.Views.EventForm = Backbone.View.extend({
   template: JST['event/event_form'],
 
   events: {
-    "submit form.event-form-fields": "submitEvent"
+    "submit form.event-form-fields": "submitEvent",
+    "click .m-background":"remove",
+    "click .close":"removeBtn"
   },
 
   initialize: function (options) {
@@ -13,6 +15,11 @@ GameUp.Views.EventForm = Backbone.View.extend({
     var content = this.template({event: this.model, verb: this.verb});
     this.$el.html(content);
     return this;
+  },
+
+  removeBtn: function(event) {
+    event.preventDefault();
+    this.remove();
   },
 
   submitEvent: function (event) {

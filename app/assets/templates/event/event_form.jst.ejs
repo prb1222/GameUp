@@ -1,24 +1,37 @@
-<form class="event-form-fields" action="" method="post">
-  <ul class="errors"></ul>
-  <label>Title
-    <input type="text" name="event[title]" value="<%= event.escape('title') %>">
-  </label>
+<div class="m-background"></div>
 
-  <label>Location
-    <input type="text" name="event[location]" value="<%= event.escape('location')%>">
-  </label>
+<div class="m-content">
+  <form class="event-form-fields" action="" method="post">
 
-  <label>Description
-    <textarea name="event[description]"><%= event.escape('location')%></textarea>
-  </label>
+    <button class="close">&times;</button>
+    <h4>New Event!</h4>
+    <ul class="errors"></ul>
 
-  <label>Date
-    <input type="date" name="event[date]" value="<%= event.formDate() %>">
-  </label>
+    <div class="form-group">
+      <label for="title-field">Title</label><br>
+      <input id="title-field" type="text" name="event[title]" value="<%= event.escape('title') %>">
+    </div>
 
-  <label>Time
-    <input type="time" name="event[time]" value="<%= event.formTime() %>">
-  </label>
+    <div class="form-group">
+      <label for="location-field">Location</label><br>
+      <input id="location-field" type="text" name="event[location]" value="<%= event.escape('location')%>">
+    </div>
 
-  <input type="submit" value="<%= verb %> Event" class="<%= verb %>-event">
-</form>
+    <div class="form-group">
+      <label for="description-field">Description</label><br>
+      <textarea id="description-field" class="text-field" name="event[description]"><%= event.escape('location')%></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="date-field">Date</label><br>
+      <input id="date-field" type="date" name="event[date]" value="<%= event.formDate() %>">
+    </div>
+
+    <div class="form-group">
+      <label for="time-field">Time</label><br>
+      <input id="time-field" type="time" name="event[time]" value="<%= event.formTime() %>">
+    </div>
+
+    <input type="submit" class="btn btn-primary" value="<%= verb %> Event" class="<%= verb %>-event">
+  </form>
+</div>

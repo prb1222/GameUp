@@ -1,20 +1,32 @@
-<form class="group-form-fields" action="" method="post">
-  <ul class="errors"></ul>
-  <label>Title
-    <input type="text" name="group[title]" value="<%= group.escape('title') %>">
-  </label>
+<div class="m-background"></div>
 
-  <label>Location
-    <input type="text" name="group[location]" value="<%= group.escape('location')%>">
-  </label>
+<div class="m-content">
+  <form class="group-form-fields" action="" method="post">
 
-  <label>Description
-    <textarea name="group[description]"><%= group.escape('location')%></textarea>
-  </label>
+    <button class="close">&times;</button>
+    <h4>Edit Group</h4>
+    <ul class="errors"></ul>
 
-  <label>Member name
-    <input type="text" name="group[member_name]" value="<%= group.escape('member_name')%>">
-  </label>
+    <div class="form-group">
+      <label for="title-field">Title</label><br>
+      <input id="title-field" type="text" name="group[title]" value="<%= group.escape('title') %>">
+    </div>
 
-  <input type="submit" value="<%= verb %> Group" class="<%= verb %>-group">
-</form>
+    <div class="form-group">
+      <label for="location-field">Location</label><br>
+      <input id="location-field" type="text" name="group[location]" value="<%= group.escape('location')%>">
+    </div>
+
+    <div class="form-group">
+      <label for="description-field">Description</label><br>
+      <textarea id="description-field" class="text-field" name="group[description]"><%= group.escape('location')%></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="member-name-field">Date</label><br>
+      <input id="member-name-field" type="text" name="group[member_name]" value="<%= group.escape('member_name') %>">
+    </div>
+
+    <input type="submit" class="btn btn-primary" value="<%= verb %> Group" class="<%= verb %>-group">
+  </form>
+</div>
