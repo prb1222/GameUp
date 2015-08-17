@@ -6,8 +6,8 @@ window.GameUp = {
   initialize: function(options) {
     GameUp.groups = new GameUp.Collections.Groups();
     GameUp.events = new GameUp.Collections.Events();
-    var router = new GameUp.Routers.Router({$rootEl: $('div#content'),
-                                            currentUser: options.currentUser});
+    GameUp.currentUser = options.currentUser;
+    var router = new GameUp.Routers.Router({$rootEl: $('div#content')});
     Backbone.history.start();
   }
 };

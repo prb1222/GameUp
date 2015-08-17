@@ -1,7 +1,12 @@
 <div id="content"></div>
 <script type="text/javascript">
   $(document).ready(function(){
-    var current_user = "<%= current_user.username %>";
-    GameUp.initialize({currentUser: current_user});
+    var username = "<%= current_user.username %>";
+    var user_id = "<%= current_user.id %>"
+    var currentUser = {
+      userId: user_id,
+      username: username
+    }
+    GameUp.initialize({currentUser: currentUser});
   });
 </script>

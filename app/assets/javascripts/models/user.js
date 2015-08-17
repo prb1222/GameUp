@@ -7,6 +7,11 @@ GameUp.Models.User = Backbone.Model.extend({
       delete response.groups;
     }
 
+    if (response.created_at) {
+      this.created_at = response.created_at;
+      delete response.created_at;
+    }
+
     return response;
   },
 
@@ -16,5 +21,9 @@ GameUp.Models.User = Backbone.Model.extend({
     }
 
     return this._groups;
+  },
+
+  createdAt: function () {
+    return moment(this.created_at).format("MMMM DD[,] YYYY");
   }
 });

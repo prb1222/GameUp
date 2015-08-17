@@ -1,5 +1,8 @@
 <% if (comment.user) { %>
   <%= comment.user.username %> <br>
 <% } %>
-<%= comment.escape('body') %> <br>
+<div class="comment-body"><%= comment.escape('body') %></div><br>
 Created at: <%= comment.displayDate() %>
+<%if (comment.get('user_id') === parseInt(GameUp.currentUser.userId)) { %>
+  <button class="delete-comment">Delete</button>
+<% } %>

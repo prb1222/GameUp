@@ -16,6 +16,12 @@
    padding: 10px;
 }
 
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
 .group-detail-view {
   display: inline-block;
   border: 1px solid #ddd;
@@ -43,7 +49,7 @@
 }
 
  div.comments-index-view h6 {
-  text-align: center;
+  text-align: left;
 }
 
 ul.comments-index {
@@ -85,6 +91,16 @@ ul.users-index {
   z-index: 1;
 }
 
+.c-background {
+  background: rgba(92, 88, 88, 0);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
 .m-content {
   z-index: 2;
   position: absolute;
@@ -114,10 +130,18 @@ ul.events-index li {
 
 .comment-form {
   text-align: center;
+  z-index: 2;
+  position: relative;
 }
 
 div.groups-index {
   h1 {
     text-align: center;
+  }
+}
+
+.user-item {
+  .user-timestamp {
+    font-size: 10px;
   }
 }

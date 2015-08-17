@@ -5,4 +5,7 @@ end
 json.members do
   json.partial! 'api/users/user', collection: @group.members, as: :user
 end
+json.images do
+  json.partial! 'api/images/image', collection: @group.images, as: :image
+end
 json.owner @group.owner.username

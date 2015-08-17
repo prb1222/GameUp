@@ -20,7 +20,6 @@ GameUp.Views.CommentForm = Backbone.View.extend({
     var formData = $(event.currentTarget).serializeJSON();
     this.model.save(formData.comment, {
         success: function (model) {
-          debugger;
           this.collection.add(model);
           this.$el.empty();
           this.remove();

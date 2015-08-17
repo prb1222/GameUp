@@ -1,12 +1,12 @@
 GameUp.Routers.Router = Backbone.Router.extend({
   initialize: function(options) {
     this.$rootEl = options.$rootEl;
-    this.currentUser = options.currentUser;
   },
 
   addNavbar: function () {
-    var view = new GameUp.Views.NavBar({currentUser: this.currentUser});
-    this.$rootEl.prepend(view.render().$el);
+    this.navBar = this.navBar || new GameUp.Views.NavBar({currentUser: GameUp.currentUser,
+                                        router: this});
+    this.$rootEl.prepend(this.navBar.render().$el);
   },
 
   routes: {
@@ -60,19 +60,16 @@ GameUp.Routers.Router = Backbone.Router.extend({
 
   userShow: function (id) {
     var user = new GameUp.Models.User({ id: id });
-    user.fetch({
-      success: function (user) {
-        var view = new GameUp.Views.UserShow({model: user});
-        this.swapView(view);
-      }.bind(this)
-    })
+    var view = new GameUp.Views.UserShow({model: user});
+    user.fetch();
+    this.swapView(view);
   },
 
   swapView: function(view) {
     this._view && this._view.remove();
     this._view = view;
     this.$rootEl.html(view.$el);
-    this.addNavbar();
     view.render();
+    this.addNavbar();
   }
 })

@@ -27,6 +27,11 @@ GameUp.Models.Group = Backbone.Model.extend({
       delete response.owner;
     }
 
+    if (response.images) {
+      this.images = response.images;
+      delete response.images;
+    }
+
     return response;
   },
 

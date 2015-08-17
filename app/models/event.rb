@@ -12,4 +12,5 @@ class Event < ActiveRecord::Base
   has_many :attendees, through: :event_attendees, source: :user
   has_many :comments, dependent: :destroy
   has_many :commenting_users, through: :comments, source: :user
+  has_many :images, as: :imageable
 end
