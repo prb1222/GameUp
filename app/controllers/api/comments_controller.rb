@@ -10,7 +10,13 @@ class Api::CommentsController < ApplicationController
   end
 
   def index
-    comments = Comment.all
+    if params[:flag] == "event"
+      event = Event.find(params[:eventId])
+      comments = event.comments
+    else
+      comments = Comment.all
+    end
+    
     render json: comments
   end
 

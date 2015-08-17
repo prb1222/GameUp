@@ -7,18 +7,19 @@ GameUp.Views.CommentsIndex = Backbone.CompositeView.extend({
     this.listenTo(this.collection, "sync", this.render);
     this.listenTo(this.collection, "add", this.addCommentSubview)
     this.listenTo(this.event.attendance(), "change:id", this.render);
-    this.collection.fetch();
+    this.collection.fetch({data: {flag: "event", eventId: this.event.get('id')}});
   },
 
   events: {
-    "click .new-comment":"addCommentForm"
+    "click .new-comment":"addCommentForm",
+    "click :not(.new-comment)":"handleClick"
   },
 
   render: function () {
     var attending = !this.event.attendance().isNew();
     var content = this.template({attending: attending});
-    if (!attending && this.formView) {
-      this.removeSubview('div.comment-form', this.formView)
+    if (!attending) {
+      this.removeCommentForm();
     }
     this.$el.html(content);
     this.removeSubviews('ul.comments-index');
@@ -35,12 +36,24 @@ GameUp.Views.CommentsIndex = Backbone.CompositeView.extend({
   },
 
   addCommentForm: function (event) {
-    if (this.commentFormView) {
-      this.removeSubview('div.comment-form', this.groupFormView)
-    }
+    this.removeCommentForm();
     var comment = new GameUp.Models.Comment({event_id: this.event.get('id')});
     this.formView = new GameUp.Views.CommentForm({model: comment, collection: this.collection, verb: "Create"});
     this.addSubview('div.comment-form', this.formView);
+  },
+
+  removeCommentForm: function () {
+    this.formView && this.removeSubview('div.comment-form', this.formView);
+  },
+
+  handleClick: function (event) {
+    event.preventDefault();
+    var $form = $('div.comment-form');
+    var $target = $(event.currentTarget);
+    if ($form.find($target).length || $form.is($target)) {
+      return; // ASK HOW TO BIND OUTSIDE EL
+    }
+    this.removeCommentForm();
   }
 
 

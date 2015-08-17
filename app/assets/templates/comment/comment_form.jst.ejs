@@ -1,7 +1,7 @@
 <form class="comment-form" action="" method="post">
   <ul class="errors"></ul>
-  <label>Body
-    <textarea type="text" name="comment[body]"><%= comment.escape('body')%></textarea>
+  <label class="comment-label">Body
+    <textarea type="text" name="comment[body]" class="comment-textarea"><%= comment.escape('body')%></textarea>
   </label>
 
   <input type="submit" value="<%= verb %> Comment">
