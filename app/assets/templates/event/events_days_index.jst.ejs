@@ -1,2 +1,5 @@
 <h2><%= header %></h2>
 <ul class="events-days-index"></ul>
+<% if (!events.length) { %>
+  <p>No events found</p>
+<% } %>

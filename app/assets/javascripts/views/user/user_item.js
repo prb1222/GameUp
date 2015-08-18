@@ -6,6 +6,7 @@ GameUp.Views.UserItem = Backbone.View.extend({
   initialize: function () {
     this.listenTo(this.model, "sync change:title", this.render);
     this.listenTo(this.model.image(), "sync", this.render)
+    this.model.image().fetch();
   },
 
   render: function () {

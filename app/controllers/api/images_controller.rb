@@ -18,9 +18,14 @@ class Api::ImagesController < ApplicationController
     end
   end
 
+  def show
+    image = Image.find(params[:id])
+    render json: image
+  end
+
   def index
     @images = Image.all
-    render :index
+    render json: @images
   end
 
   def destroy

@@ -1,7 +1,7 @@
 GameUp.Views.NavBar = Backbone.View.extend({
   template: JST['main/navbar'],
 
-  className: "",
+  className: "navigation-container",
 
   initialize: function (options) {
     this.router = options.router;

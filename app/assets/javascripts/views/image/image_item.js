@@ -7,8 +7,6 @@ GameUp.Views.ImageItem = Backbone.View.extend({
 
   events: {
     "click":"handleClick",
-    "click .m-background":"closeModal",
-    "click .m-content":"handleSubmit"
   },
 
   initialize: function (options) {
@@ -25,9 +23,6 @@ GameUp.Views.ImageItem = Backbone.View.extend({
   handleClick: function (event) {
     event.preventDefault();
     var $target = $(event.CurrentTarget)
-    if (this.modal) {
-      return;
-    }
     this.modal = new GameUp.Views.ImageModal({model: this.model, groupModel: this.ownerModel});
     $('body').append(this.modal.render().$el);
   },
@@ -35,5 +30,6 @@ GameUp.Views.ImageItem = Backbone.View.extend({
   closeModal: function (event) {
     event.preventDefault();
     this.modal.remove();
+    this.modal = null;
   }
 })

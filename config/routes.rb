@@ -9,6 +9,6 @@ Rails.application.routes.draw do
     resources :group_memberships, only: [:create, :destroy]
     resources :event_attendees, only: [:create, :destroy]
     resources :comments, only: [:create, :update, :destroy, :index]
-    resources :images, only: [:create, :update, :destroy, :index]
+    resources :images, only: [:create, :update, :destroy, :index, :show]
   end
 end

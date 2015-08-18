@@ -1,3 +1,118 @@
 // Place all the styles related to the Api::Groups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.group-detail-view {
+  width: 100%;
+  img {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  p {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+.sidebar {
+  width: 30%;
+  float: left;
+}
+
+.main-pane {
+  width: 70%;
+  float: left;
+}
+
+.group-show {
+  width: 90%;
+}
+
+.group-events-index {
+  padding: 20px;
+  text-align: center;
+
+}
+
+.group-jumbo {
+  img {
+    width: 100%;
+  }
+
+  .group-nav {
+    border-bottom: 2px solid #ccc;
+  }
+}
+
+div.users-index-view {
+  padding: 20px;
+
+  ul.users-index {
+      padding: 0px;
+
+      li {
+        list-style-type: none;
+
+        .user-item {
+            padding: 10px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ccc;
+            border-left:  2px solid #ccc;
+            border-right:  2px solid #ccc;
+            img {
+              display: inline-block;
+            }
+
+            div {
+              display: inline-block;
+            }
+
+        }
+      }
+  }
+
+  h1 {
+    text-align: center;
+    margin: 0px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+  }
+}
+
+.images-index {
+  padding: 20px;
+  text-align: center;
+
+  h2 {
+    padding: 0px;
+    text-align: center;
+  }
+
+  .index-image-upload {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .image-item {
+    * {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    padding: 10px;
+    margin: 0px;
+    float: left;
+    width: 33.33%;
+  }
+}
+
+.image-modal {
+  img {
+    padding-bottom: 10px;
+  }
+
+  text-align: center;
+}

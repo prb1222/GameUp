@@ -1,16 +1,16 @@
 GameUp.Models.Image = Backbone.Model.extend({
   urlRoot: "api/images",
 
-  groupThumbnail: function () {
-    if (!this.get("image_url")) {return "";}
-    var properties_string = "w_300,h_200/";
+  groupThumbnail: function (width) {
+    if (!this.get("image_url") || !width) {return "";}
+    var properties_string = "w_" + width +",h_190/";
     properties_string += this.get('image_url').slice(61);
     return this.get('image_url').slice(0, 49) + properties_string;
   },
 
   groupJumbo: function (width) {
-    if (!this.get("image_url")) {return "";}
-    var properties_string = "w_" + width + ",h_120/";
+    if (!this.get("image_url") || !width) {return "";}
+    var properties_string = "w_" + width + ",h_146/";
     properties_string += this.get('image_url').slice(61);
     return this.get('image_url').slice(0, 49) + properties_string;
   },

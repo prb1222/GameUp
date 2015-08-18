@@ -1,6 +1,8 @@
 GameUp.Views.UsersIndex = Backbone.CompositeView.extend({
   template: JST['user/users_index'],
 
+  className: "users-index-view",
+
   initialize: function(options) {
     this.title = options.title;
     this.listenTo(this.collection, "sync", this.render);
