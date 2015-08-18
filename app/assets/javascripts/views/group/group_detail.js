@@ -76,15 +76,19 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
                                          imageable_id: this.model.get('id')
                                        });
     event.preventDefault();
-    cloudinary.openUploadWidget(CLOUDINARY_OPTIONS, function(error, result){
+    cloudinary.openUploadWidget(CLOUDINARY_OPTIONS, function(error, result) {
+      if (error) {return;}
       var data = result[0];
       image.set({image_url: data.url});
       image.save({}, {
         success: function (model) {
-          this.model.images[0].image_url = model.get('image_url');
-          this.render();
+          this.model.profilePic().set({image_url: model.get('image_url')});
+          this.model.save({profile_id: model.get('id')}, {
+            success: function () {
+              this.render();
+            }.bind(this)});
         }.bind(this)
-      })
+      });
     }.bind(this));
     this.image = image;
     this.disabled = false;

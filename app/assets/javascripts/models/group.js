@@ -28,8 +28,18 @@ GameUp.Models.Group = Backbone.Model.extend({
     }
 
     if (response.images) {
-      this.images = response.images;
+      this.images().set(response.images, {parse: true});
       delete response.images;
+    }
+
+    if (response.profile_pic) {
+      this.profilePic().set(response.profile_pic);
+      delete response.profile_pic;
+    }
+
+    if (response.jumbo_pic) {
+      this.jumboPic().set(response.jumbo_pic);
+      delete response.jumbo_pic;
     }
 
     return response;
@@ -61,5 +71,29 @@ GameUp.Models.Group = Backbone.Model.extend({
     }
 
     return this._members;
-  }
+  },
+
+  images: function () {
+    if (!this._images) {
+      this._images = new GameUp.Collections.Images([], {group: this});
+    }
+
+    return this._images;
+  },
+
+  profilePic: function () {
+    if (!this._profilePic) {
+      this._profilePic = new GameUp.Models.Image();
+    }
+
+    return this._profilePic;
+  },
+
+  jumboPic: function () {
+    if (!this._jumboPic) {
+      this._jumboPic = new GameUp.Models.Image();
+    }
+
+    return this._jumboPic;
+  },
 })

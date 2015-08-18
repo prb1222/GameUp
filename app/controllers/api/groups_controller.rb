@@ -2,6 +2,7 @@ class Api::GroupsController < ApplicationController
   def create
     group = Group.new(group_params)
     group.owner_id = current_user.id
+    group.profile_id = 1 unless group.profile_id
     if group.save
       GroupMembership.create!(user_id: current_user.id, group_id: group.id)
       render json: group
@@ -46,6 +47,6 @@ class Api::GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:title, :location, :description, :member_name)
+    params.require(:group).permit(:title, :location, :description, :member_name, :profile_id, :jumbo_id)
   end
 end

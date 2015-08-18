@@ -17,10 +17,12 @@ bowser_army = bowser.groups.create(title: "BOWSER'S ARMY",
                      description: "It's the koopa king's army!",
                      location: "Mushroom Kingdom",
                      member_name: "koopas",
-                     owner_id: 1)
+                     owner_id: 1
+                     profile_id: 1)
 
 GroupMembership.create(user_id: 1, group_id: 1) # Ask about association data and how to seed it
 
+Image.create(imageable_type: "Group", imageable_id: 1, image_url: "http://res.cloudinary.com/dj7rafx1m/image/upload/v1439854666/default-image.png.png")
 # bowser_army.events.create(title: "Kidnap Peach",
 #                           location: "Peach's castle",
 #                           description: "Stealth raid to take Princess Peach from her castle.",

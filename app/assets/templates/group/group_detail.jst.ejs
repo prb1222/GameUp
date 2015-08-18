@@ -1,5 +1,5 @@
 <h3>Group Info:</h3>
-<p><img src="<%= group.images[0].image_url %>" /></p>
+<p><img src="<%= group.profilePic().groupThumbnail() %>" /></p>
 <% if (group.owned) { %>
   <button type="button" class="upload-image">Upload Group Image</button>
 <% } %>

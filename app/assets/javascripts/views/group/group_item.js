@@ -4,7 +4,9 @@ GameUp.Views.GroupItem = Backbone.View.extend({
   tagName: "li",
 
   initialize: function () {
-    this.listenTo(this.model, "sync", this.render)
+    this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model.members(),"sync", this.render);
+    this.model.members().fetch({data: {flag: "groupMembers", groupId: this.model.get('id')}});
   },
 
   render: function () {
@@ -12,6 +14,4 @@ GameUp.Views.GroupItem = Backbone.View.extend({
     this.$el.html(content);
     return this;
   }
-
-
 })

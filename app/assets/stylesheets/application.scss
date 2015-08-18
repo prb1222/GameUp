@@ -6,7 +6,7 @@
   position: absolute;
   width: 100%;
 }
-.group-nav {
+div.group-nav {
    text-align: center;
    p {
      display: inline-block;
@@ -14,6 +14,17 @@
      margin-right: 30px;
    }
    padding: 10px;
+   position: relative;
+   background: rgba(255,255,255,0.5);
+}
+
+.image-jumbo {
+  position: absolute;
+  width: inherit;
+}
+
+.group-jumbo {
+  position: relative;
 }
 
 .clearfix:after {
@@ -48,7 +59,7 @@
   margin-right: auto;
 }
 
- div.comments-index-view h6 {
+div.comments-index-view h6 {
   text-align: left;
 }
 
@@ -69,6 +80,14 @@ ul.groups-index {
 }
 
 ul.users-index {
+    padding: 0px;
+
+    li {
+      list-style-type: none;
+    }
+}
+
+ul.images-index {
     padding: 0px;
 
     li {

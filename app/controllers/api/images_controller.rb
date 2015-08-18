@@ -1,6 +1,7 @@
 class Api::ImagesController < ApplicationController
   def create
     @image = Image.new(image_params)
+    @image.image_url = Image.first.image_url unless @image.image_url
     if @image.save
       render json: @image
     else

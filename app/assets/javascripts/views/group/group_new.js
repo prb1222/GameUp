@@ -18,8 +18,13 @@ GameUp.Views.GroupNew = Backbone.View.extend({
     this.model.save(formData,{
       success: function (model) {
         this.remove();
+        if (!this.image) {
+          this.image = new GameUp.Models.Image({imageable_type: "Group"});
+        }
         this.image.save({imageable_id: model.get('id')}, {
           success: function () {
+            this.model.profilePic().set(this.image);
+            this.model.save({profile_id: this.image.get('id')}, {});
             Backbone.history.navigate("#/groups/" + this.model.get('id'), {trigger: true});
           }.bind(this)
         });
@@ -40,6 +45,7 @@ GameUp.Views.GroupNew = Backbone.View.extend({
     var image = new GameUp.Models.Image({imageable_type: "Group"});
     event.preventDefault();
     cloudinary.openUploadWidget(CLOUDINARY_OPTIONS, function(error, result){
+      if (error) {return;}
       var data = result[0];
       image.set({image_url: data.url});
       this.$el.find('p.current-image').remove();
