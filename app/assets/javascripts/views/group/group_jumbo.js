@@ -26,8 +26,11 @@ GameUp.Views.GroupJumbo = Backbone.View.extend({
   upload: function (event) {
     if ($(event.currentTarget).attr('class') === "group-jumbo-link" || $(event.currentTarget).attr('class') === "jumbotron group-nav") {
       return;
+    } else if (!this.model.owned) {
+      return;
+    } else if (this.disabled) {
+      return;
     }
-    if (this.disabled) {return;}
     this.disabled = true;
     var image = new GameUp.Models.Image({imageable_type: "Group",
                                          imageable_id: this.model.get('id')

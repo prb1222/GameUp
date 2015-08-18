@@ -25,5 +25,12 @@ GameUp.Models.Image = Backbone.Model.extend({
   displayDate: function () {
     var date = this.get('created_at');
     return moment(date).format("MMMM DD YYYY HH:mm");
+  },
+
+  userProfile: function () {
+    if (!this.get("image_url")) {return "";}
+    var properties_string = "w_150,h_150/";
+    properties_string += this.get('image_url').slice(61);
+    return this.get('image_url').slice(0, 49) + properties_string;
   }
 });

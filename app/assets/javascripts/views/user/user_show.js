@@ -4,7 +4,8 @@ GameUp.Views.UserShow = Backbone.CompositeView.extend({
   className: "user-show",
   events: {
     "click p.user-bio":"editBio",
-    "click .c-background":"submitBio"
+    "click .c-background":"submitBio",
+    "click div.user-image":"editImage"
   },
 
   initialize: function () {
@@ -62,7 +63,30 @@ GameUp.Views.UserShow = Backbone.CompositeView.extend({
         this.editing = false;
       }.bind(this)
     })
+  },
+
+  editImage: function () {
+    if (this.disabled) {
+      return;
+    } else if (!this.model.isUser) {
+      return;
+    }
+    this.disabled = true;
+    var image = new GameUp.Models.Image({imageable_type: "User",
+                                         imageable_id: this.model.get('id')
+                                       });
+    event.preventDefault();
+    cloudinary.openUploadWidget(CLOUDINARY_OPTIONS, function(error, result) {
+      if (error) {return;}
+      var data = result[0];
+      image.set({image_url: data.url});
+      image.save({}, {
+        success: function (model) {
+          this.model.image().set({image_url: model.get('image_url')});
+        }.bind(this)
+      });
+    }.bind(this));
+    this.image = image;
+    this.disabled = false;
   }
-
-
 });
