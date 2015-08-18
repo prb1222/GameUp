@@ -5,6 +5,7 @@ GameUp.Views.ImagesIndex = Backbone.CompositeView.extend({
 
   initialize: function(options) {
     this.titleDiv = options.title;
+    this.ownerModel = options.ownerModel;
     this.listenTo(this.collection, "sync", this.render);
     this.listenTo(this.collection, "add", this.addImageSubview);
     this.collection.each(function(group){
@@ -19,7 +20,7 @@ GameUp.Views.ImagesIndex = Backbone.CompositeView.extend({
   },
 
   addImageSubview: function (image) {
-    var subView = new GameUp.Views.ImageItem({model: image});
+    var subView = new GameUp.Views.ImageItem({model: image, ownerModel: this.ownerModel});
     this.addSubview('ul.images-index', subView);
   }
 

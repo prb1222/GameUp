@@ -83,6 +83,7 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
       image.save({}, {
         success: function (model) {
           this.model.profilePic().set({image_url: model.get('image_url')});
+          this.model.images().add(model);
           this.model.save({profile_id: model.get('id')}, {
             success: function () {
               this.render();

@@ -104,7 +104,7 @@ GameUp.Views.GroupShow = Backbone.CompositeView.extend({
   },
 
   showPhotos: function () {
-    var subView = new GameUp.Views.ImagesIndex({collection: this.model.images(), title: "Images"});
+    var subView = new GameUp.Views.ImagesIndex({collection: this.model.images(), title: "Images", ownerModel: this.model});
     this.addSubview('div.main-pane', subView);
   }
 });
