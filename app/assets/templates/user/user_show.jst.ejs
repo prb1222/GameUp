@@ -1,3 +1,24 @@
 WELCOME TO <%= user.escape('username') %>'s PAGE!
 <br>
+<div class="user-info">
+  <p class="user-location">Location: <br>
+    <%= user.escape('location') %>
+  </p>
+  <p class="user-joined">Joined: <br>
+    <%= user.createdAt() %>
+  </p>
+  <p class="user-bio">Bio: <br>
+    <% if (user.escape('bio')) {%>
+      <%= user.escape('bio') %>
+    <% } else { %>
+      There's nothing here yet.
+      <% if (user.isUser) { %>
+        Add a bio!
+      <% } %>
+    <% } %>
+  </p>
+</div>
+<div class="user-image">
+  <img src="<%= user.image().groupThumbnail() %>" />
+</div>
 <div class="groups-index"></div>

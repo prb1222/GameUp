@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-bowser = User.create(username: "bowser", password: "bowser")
+bowser = User.create(username: "bowser", password: "bowser", location: "Mushroom Kingdom")
 
 users = [];
 10.times do |i|
@@ -17,7 +17,7 @@ bowser_army = bowser.groups.create(title: "BOWSER'S ARMY",
                      description: "It's the koopa king's army!",
                      location: "Mushroom Kingdom",
                      member_name: "koopas",
-                     owner_id: 1
+                     owner_id: 1,
                      profile_id: 1)
 
 GroupMembership.create(user_id: 1, group_id: 1) # Ask about association data and how to seed it
