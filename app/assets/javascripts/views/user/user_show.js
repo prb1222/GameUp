@@ -28,16 +28,10 @@ GameUp.Views.UserShow = Backbone.CompositeView.extend({
     var $div = $('p.user-bio');
     if (!this.model.isUser) {
       return;
-    } else if (this.editing) {
-      return;
     }
-    this.editing = true;
-    $div.empty();
-    $form = $('<form>').addClass('user-form').append($('<textarea>'));
-    $form.find('textarea').val(this.model.get('bio'));
-    $background = $('<div>').addClass('c-background');
-    $('.user-show').append($form).append($background);
-    $form.find('textarea').focus();
+
+    this.modal = new GameUp.Views.UserBioModal({model: this.model});
+    $('body').append(this.modal.render().$el);
   },
 
   submitBio: function (event) {

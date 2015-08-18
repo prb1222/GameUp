@@ -24,16 +24,12 @@ GameUp.Views.ImageItem = Backbone.View.extend({
 
   handleClick: function (event) {
     event.preventDefault();
-    var $target = $(eventCurrentTarget)
-    if (GameUp.currentUser.userId !== this.ownerModel.get('owner_id')) {
+    var $target = $(event.CurrentTarget)
+    if (this.modal) {
       return;
     }
-    debugger;
-    if (this.modal && $target === "images") {
-      this.modal.remove();
-      this.modal = undefined;
-    }
-
+    this.modal = new GameUp.Views.ImageModal({model: this.model, groupModel: this.ownerModel});
+    $('body').append(this.modal.render().$el);
   },
 
   closeModal: function (event) {

@@ -1,0 +1,10 @@
+<div class="m-background"></div>
+
+<div class="user-modal">
+    <form class="user-bio-form" action="" method="post">
+      <label for="user-bio">Bio</label>
+      <textarea name="user[bio]" id="user-bio"><%= user.escape('body') %></textarea>
+
+      <input type="submit" class="btn btn-primary" value="Update Bio">
+    </form>
+</div>
