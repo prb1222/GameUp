@@ -17,6 +17,7 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model.members(), "add remove", this.render)
     this.listenTo(this.model.membership(), "change:id", this.render)
   },
 
