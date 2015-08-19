@@ -37,10 +37,6 @@ GameUp.Views.GroupShow = Backbone.CompositeView.extend({
     }
     this.sidebar = new GameUp.Views.GroupDetail({model: this.model});
     this.addSubview('div.sidebar', this.sidebar);
-    if (this.model.owned) {
-      var $button = $('<button>').addClass('new-event').text('Create Event');
-      this.$el.find('div.sidebar').append($button);
-    }
   },
 
 

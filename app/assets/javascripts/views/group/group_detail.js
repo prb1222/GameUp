@@ -25,10 +25,6 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
     var buttonText = this.model.is_member() ? "Leave group" : "Join group";
     var content = this.template({group: this.model, buttonText: buttonText});
     this.$el.html(content);
-    if (this.model.owned) {
-      var $button = $('<button>').addClass('delete-group').text("Delete Group");
-      this.$el.append($button);
-    }
     return this;
   },
 

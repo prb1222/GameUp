@@ -1,3 +1,79 @@
 // Place all the styles related to the Api::Events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.buttons-row {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.events-days-index {
+  h2 {
+    text-align: center;
+  }
+  padding: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  padding-bottom: 20px;
+}
+
+.event-day-index {
+  font-size: 20px;
+  position: relative;
+  li {
+    list-style-type: none;
+  }
+
+  margin-bottom: 20px;
+}
+
+.events-date {
+  top: 10px;
+  left: 10px;
+  text-align: left;
+}
+
+.event-item {
+  background: white;
+  position: relative;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 1%;
+  text-align: left;
+}
+
+ul.events-day-index {
+  padding: 0px;
+}
+
+.event-time {
+  margin: 0px;
+  display: inline-block;
+  float: left;
+  position: relative;
+  left: 10px;
+  font-size: 20px;
+}
+
+.event-information {
+  display: inline-block;
+  position: relative;
+  float: left;
+  left: 80px;
+}
+
+.event-group-title {
+  font-size: 14px;
+}
+
+.event-title {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-size: 30px;
+}
+
+.event-attendees {
+  font-size: 14px;
+}

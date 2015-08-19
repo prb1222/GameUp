@@ -13,6 +13,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
   }
+
 }
 
 .sidebar {
@@ -21,12 +22,15 @@
 }
 
 .main-pane {
-  width: 70%;
+  width: 68%;
   float: left;
 }
 
 .group-show {
   width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
 }
 
 .group-events-index {
@@ -132,7 +136,17 @@ div.users-index-view {
 
 .group-item {
   text-decoration: none;
-  color: white;
+
+  a {
+    color: white;
+    font-size: 20px;
+    text-shadow: black 2px 2px 4px;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: white;
+  }
 
   .group-background-image {
     margin: 20px;
@@ -155,4 +169,21 @@ div.users-index-view {
     bottom: 30px;
     right: 30px;
   }
+}
+
+.group-jumbo-link:hover {
+  cursor: pointer;
+}
+
+.group-detail-view button {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.spacer {
+  height: 1px;
+  width: 2%;
+  float: left;
 }

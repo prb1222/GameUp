@@ -13,7 +13,6 @@ GameUp.Views.GroupForm = Backbone.View.extend({
 
   render: function () {
     var content = this.template({group: this.model, verb: this.verb});
-    debugger;
     this.$el.html(content);
     this.$el.find('.m-background').css('height', $(document).height() )
     return this;

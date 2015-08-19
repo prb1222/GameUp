@@ -28,6 +28,16 @@ GameUp.Models.Event = Backbone.Model.extend({
       delete response.attendees;
     }
 
+    if (response.groupmembername) {
+      this.groupMemberName = response.groupmembername;
+      delete response.groupmembername;
+    }
+
+    if (response.groupname) {
+      this.groupName = response.groupname;
+      delete response.groupname;
+    }
+
     this.organizer = response.organizer;
     delete response.organizer;
 

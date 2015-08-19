@@ -1,6 +1,20 @@
 <a href="/#groups/<%= event.escape('group_id') %>/events/<%= event.escape('id') %>">
-  <div class="event-item" data-event-id="<%= event.escape('id')%>">
-    <%= event.escape('date')%>
-    <%= event.escape('title')%>
+  <div class="event-item clearfix" data-event-id="<%= event.escape('id')%>">
+    <div class="event-time">
+      <%= event.formTime() %>
+    </div>
+    <div class="event-information">
+      <div class="event-group-title">
+        <%= event.groupName %>
+      </div>
+
+      <div class="event-title">
+        <%= event.escape('title') %>
+      </div>
+
+      <div class="event-attendees">
+        <%= event.attendees().length %> <%= event.groupMemberName %> going.
+      </div>
+    </div>
   </div>
 </a>

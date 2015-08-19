@@ -6,7 +6,7 @@ GameUp.Views.EventsDaysIndex = Backbone.CompositeView.extend({
   initialize: function(options) {
     this.flag = options.flag;
     this.header = options.header;
-    this.groupId = options.groupId
+    this.groupId = options.groupId;
     this.findEvents();
   },
 
