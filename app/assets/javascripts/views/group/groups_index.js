@@ -13,7 +13,7 @@ GameUp.Views.GroupsIndex = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    this.$el.html(this.template({title: this.titleDiv}));
+    this.$el.html(this.template({title: this.titleDiv, groups: this.collection}));
     this.attachSubviews();
     return this;
   },

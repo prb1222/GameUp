@@ -18,8 +18,8 @@ bowser_army = bowser.owned_groups.create!(title: "BOWSER'S ARMY",
                      description: "It's the koopa king's army!",
                      location: "Mushroom Kingdom",
                      member_name: "koopas",
-                     profile_id: 1,
-                     jumbo_id: 1)
+                     profile_id: 2,
+                     jumbo_id: 2)
 
 GroupMembership.create!(user_id: 1, group_id: 1)
 
@@ -29,7 +29,7 @@ Image.create!(imageable_type: "Group", imageable_id: 1, image_url: "http://res.c
 bowser_army.events.create!(title: "Kidnap Peach",
                           location: "Peach's castle",
                           description: "Stealth raid to take Princess Peach from her castle.",
-                          date: Time.now,
+                          date: Time.now + 1.day,
                           organizer_id: 1)
 
 EventAttendee.create!(user_id: 1, event_id: 1);

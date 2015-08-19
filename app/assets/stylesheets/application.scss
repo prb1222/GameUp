@@ -106,17 +106,24 @@ div.user-modal {
   display: inline-block;
   border: 1px solid #ddd;
   padding: 20px;
+  // background-color: #f7f7f7;
 }
 
 .main-pane {
   display: inline-block;
   border: 1px solid #ddd;
+  background-color: #ddd;
+  margin-right: 20px;
+  border-radius: 10px;
 }
 
 .sidebar {
   display: inline-block;
+  margin-left: 20px;
   position: relative;
   top: 25%;
+  background-color: #ddd;
+  border-radius: 10px;
 }
 
 .event-content {
@@ -228,6 +235,8 @@ ul.events-index li {
 div.groups-index {
   h1 {
     text-align: center;
+    border-bottom: 3px solid #ccc;
+    padding-bottom: 10px;
   }
 }
 
@@ -243,6 +252,7 @@ div.groups-index {
   width: 100%;
 
   .jumbo-back-display {
+    border-radius: 10px 10px 0px 0px;
     width: 100%;
     height: 200px;
     background-image: url(http://res.cloudinary.com/dj7rafx1m/image/upload/v1439940064/46153-collection_iw97ht.jpg);
@@ -283,5 +293,14 @@ nav.nabar.navbar-default {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
-  background-color: #f2f2f2;
+  background-color: #999;
+}
+
+.no-events {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.index-container-view {
+  border-radius: 10px 10px 0px 0px;
 }

@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .group-detail-view {
   width: 100%;
+  border-radius: 10px 10px 0px 0px;
   img {
     width: 100%;
     padding-top: 10px;
@@ -23,7 +24,7 @@
 }
 
 .main-pane {
-  width: 68%;
+  width: 60%;
   float: left;
 }
 
@@ -32,6 +33,7 @@
   margin-left: auto;
   margin-right: auto;
   position: relative;
+  border-radius: 10px 10px 0px 0px;
 }
 
 .group-events-index {
@@ -186,6 +188,8 @@ div.users-index-view {
   width: 100%;
   display: block;
   height: 225px;
+  border-radius: 10px 10px 0px 0px;
+  margin-bottom: 20px;
   h2 {
     color: white;
     text-align: center;
