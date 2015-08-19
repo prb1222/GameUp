@@ -1,24 +1,38 @@
-WELCOME TO <%= user.escape('username') %>'s PAGE!
-<br>
-<div class="user-info">
-  <p class="user-location">Location: <br>
-    <%= user.escape('location') %>
-  </p>
-  <p class="user-joined">Joined: <br>
-    <%= user.createdAt() %>
-  </p>
-  <p class="user-bio">Bio: <br>
-    <% if (user.escape('bio')) {%>
-      <%= user.escape('bio') %>
-    <% } else { %>
-      There's nothing here yet.
-      <% if (user.isUser) { %>
-        Add a bio!
+<div class="user-show-content">
+  <div class="user-show-username">
+    <%= user.escape('username') %>
+  </div>
+  <div class="user-show-info">
+    <div class="user-info-location">
+      <p class="user-location">Location:</p>
+      <div class="user-show-info-display">
+        <%= user.escape('location') %>
+      </div>
+    </div>
+    <div class="user-info-joined">
+      <p class="user-joined">Joined:</p>
+      <div class="user-show-info-display">
+        <%= user.createdAt() %>
+      </div>
+    </div>
+  </div>
+  <div class="user-show-bio">
+    <p class="user-bio">Bio: </p>
+    <div class="user-show-bio-display">
+      <% if (user.escape('bio')) {%>
+        <%= user.escape('bio') %>
+      <% } else { %>
+        There's nothing here yet.
+        <% if (user.isUser) { %>
+          Add a bio!
+        <% } %>
       <% } %>
-    <% } %>
-  </p>
+    </div>
+  </div>
+  <div class="groups-index"></div>
 </div>
-<div class="user-image">
-  <img src="<%= user.image().userProfile() %>" />
+<div class="user-show-sidebar">
+  <div class="user-image">
+    <img src="<%= user.image().userProfile() %>" />
+  </div>
 </div>
-<div class="groups-index"></div>

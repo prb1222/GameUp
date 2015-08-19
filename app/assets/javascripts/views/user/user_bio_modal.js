@@ -2,7 +2,8 @@ GameUp.Views.UserBioModal = Backbone.View.extend({
   template: JST['user/user_bio_modal'],
 
   events: {
-    "click .m-background": "remove",
+    "click .m-background": "removeSelf",
+    "click .close": "removeSelf",
     "submit form.user-bio-form":"submitForm",
   },
 
@@ -10,6 +11,11 @@ GameUp.Views.UserBioModal = Backbone.View.extend({
     var content = this.template({user: this.model});
     this.$el.html(content);
     return this;
+  },
+
+  removeSelf: function (event) {
+    event.preventDefault();
+    this.remove();
   },
 
   submitForm: function (event) {

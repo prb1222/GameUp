@@ -73,7 +73,7 @@ div.users-index-view {
   h1 {
     text-align: center;
     margin: 0px;
-    border-bottom: 2px solid #ccc;
+    border-bottom: 2px solid #bbb;
     padding-bottom: 10px;
   }
 }
@@ -141,7 +141,7 @@ div.users-index-view {
   }
 
   .group-background-image {
-    margin: 20px;
+    margin: 15%;
     border: 0px;
   }
 
@@ -153,21 +153,22 @@ div.users-index-view {
 
   .group-title {
     position: absolute;
-    font-size: 15px;
-    bottom: 120px;
+    font-size: 2vmin;
+    bottom: 50%;
     left: 50%;
     text-align: center;
-    transform: translateX(-50%);
+    transform: translate(-50%);
+
   }
 
   .group-count {
     width: 150px;
     position: absolute;
-    font-size: 15px;
-    bottom: 90px;
+    font-size: 2vmin;
+    bottom: 30%;
     left: 50%;
     text-align: center;
-    transform: translateX(-50%);
+    transform: translate(-50%);
   }
 }
 

@@ -21,6 +21,7 @@ GameUp.Views.GroupsIndex = Backbone.CompositeView.extend({
   addGroupSubview: function (group) {
     var subView = new GameUp.Views.GroupItem({model: group});
     this.addSubview('ul.groups-index', subView);
+    this.render();
   }
 
 })

@@ -85,6 +85,15 @@ div.user-modal {
   padding: 1pc;
   border: 1px solid;
   border-radius: 5px;
+  text-align: center;
+
+  .close {
+    color: #ccc;
+  }
+
+  label {
+    display: block;
+  }
 }
 
 .image-jumbo {
@@ -202,6 +211,9 @@ ul.images-index {
   padding: 1pc;
   border: 1px solid;
   border-radius: 5px;
+  button.close {
+    color: #bbb;
+  }
 }
 
 .event-form-fields {
@@ -234,8 +246,9 @@ ul.events-index li {
 
 div.groups-index {
   h1 {
+    width: 100%;
     text-align: center;
-    border-bottom: 3px solid #ccc;
+    border-bottom: 3px solid #bbb;
     padding-bottom: 10px;
   }
 }
@@ -293,7 +306,7 @@ nav.nabar.navbar-default {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
-  background-color: #999;
+  background-color: #ddd;
 }
 
 .no-events {

@@ -2,10 +2,9 @@ GameUp.Views.UserShow = Backbone.CompositeView.extend({
   template: JST['user/user_show'],
 
   className: "user-show content-padding",
-  
+
   events: {
     "click p.user-bio":"editBio",
-    "click .c-background":"submitBio",
     "click div.user-image":"editImage"
   },
 
@@ -35,30 +34,6 @@ GameUp.Views.UserShow = Backbone.CompositeView.extend({
     $('body').append(this.modal.render().$el);
   },
 
-  submitBio: function (event) {
-    event.preventDefault();
-    var form = this.$el.find('.user-form textarea').val();
-    if (form === "") {
-      this.render();
-      this.editing = false;
-      return;
-    }
-    var $div = this.$el.find('p.user-bio');
-
-    this.model.save({user: {bio: form}}, {
-      success: function (model) {
-        $('.user-form, c-background').remove();
-        $div.empty();
-        $div.html("Bio: <br>" + model.escape('bio'));
-        this.editing = false;
-      }.bind(this),
-
-      error: function () {
-        this.render();
-        this.editing = false;
-      }.bind(this)
-    })
-  },
 
   editImage: function () {
     if (this.disabled) {
