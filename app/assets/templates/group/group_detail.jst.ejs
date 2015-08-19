@@ -8,7 +8,7 @@
 <p>We're <%= group.members().models.length %> <%= group.escape('member_name')%></p>
 <button type="button" class="toggle-membership btn btn-primary"><%= buttonText %></button>
 <% if (group.owned) {%>
-  <button type="button" class="edit-group btn btn-primary">Edit Group</button>
-  <button type="button" class="new-event btn btn-primary">Create Event</button>
-  <button type="button" class="delete-group btn btn-primary">Delete Group</button>
+  <button type="button" class="edit-group btn btn-warning">Edit Group</button>
+  <button type="button" class="new-event btn btn-info">Create Event</button>
+  <button type="button" class="delete-group btn btn-danger">Delete Group</button>
 <% } %>

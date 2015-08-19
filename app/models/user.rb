@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   has_many :attending_events, through: :event_attendees, source: :event
   has_many :comments, dependent: :destroy
   has_many :commented_events, through: :comments, source: :event
-  has_one :image, as: :imageable
+  has_one :image, as: :imageable, dependent: :destroy
 
   def generate_session_token
     SecureRandom.urlsafe_base64(16)

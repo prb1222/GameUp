@@ -7,10 +7,10 @@
     <p>Organizer: <%= event.escape('organizername') %></p>
   </div>
   <div class="event-buttons-row">
-    <button type="button" class="event-attendees btn btn-primary">Who's going</button>
-    <button type="button" class="event-comments btn btn-primary">Comments</button>
+    <button type="button" class="event-attendees btn btn-info">Who's going</button>
+    <button type="button" class="event-comments btn btn-info">Comments</button>
     <% if (event.group().is_member()) { %>
-      <button type="button" class="toggle-attendance btn btn-primary"><%= buttonText %></button>
+      <button type="button" class="toggle-attendance btn btn-info"><%= buttonText %></button>
     <% } %>
   </div>
 </div>
@@ -19,7 +19,7 @@
 
 <div class="organizer-buttons-container">
   <% if(event.organizer) { %>
-    <button type="button" class="delete-event btn btn-primary">Delete Event</button>
-    <button type="button" class="edit-event btn btn-primary">Edit Event</button>
+    <button type="button" class="delete-event btn btn-danger">Delete Event</button>
+    <button type="button" class="edit-event btn btn-warning">Edit Event</button>
   <% } %>
 </div>

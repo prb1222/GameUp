@@ -1,12 +1,15 @@
 <% if (attending) { %>
   <div class="new-comment-wrapper">
-    <button type="button" class="new-comment btn btn-primary">New Comment</button>
+    <button type="button" class="new-comment btn btn-info">New Comment</button>
   </div>
 <% } %>
+
 <div class="comment-form"></div>
+
 <% if (!comments.length) { %>
-  <h6>No comments yet.</h6>
+  <h4>No comments yet.</h4>
 <% } else { %>
-  <h6>Comments:</h6>
+  <h4>Comments:</h4>
 <% } %>
+
 <ul class="comments-index"></ul>

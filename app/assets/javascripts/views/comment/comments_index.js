@@ -14,7 +14,7 @@ GameUp.Views.CommentsIndex = Backbone.CompositeView.extend({
 
   events: {
     "click .new-comment":"addCommentForm",
-    "click :not(.new-comment)":"handleClick"
+    "click :not(.new-comment, .new-comment-wrapper)":"handleClick"
   },
 
   render: function () {
