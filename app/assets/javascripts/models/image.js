@@ -7,6 +7,7 @@ GameUp.Models.Image = Backbone.Model.extend({
     properties_string += this.get('image_url').slice(61);
     return this.get('image_url').slice(0, 49) + properties_string;
   },
+  
 
   groupJumbo: function (width) {
     if (!this.get("image_url") || !width) {return "";}

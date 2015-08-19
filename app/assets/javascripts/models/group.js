@@ -42,6 +42,11 @@ GameUp.Models.Group = Backbone.Model.extend({
       delete response.jumbo_pic;
     }
 
+    if (response.profile_id) {
+      this.profilePic().set({id: response.profile_id});
+      delete response.profile_id;
+    }
+
     return response;
   },
 

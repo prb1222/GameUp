@@ -35,6 +35,7 @@
 
 }
 
+
 .group-jumbo {
   img {
     width: 100%;
@@ -115,4 +116,43 @@ div.users-index-view {
   }
 
   text-align: center;
+}
+
+.groups-index {
+  display: block;
+  clear: both;
+  position: relative;
+
+  li {
+    position: relative;
+    float: left;
+    width: 33.33%;
+  }
+}
+
+.group-item {
+  text-decoration: none;
+  color: white;
+
+  .group-background-image {
+    margin: 20px;
+    border: 1px solid red;
+  }
+
+  .group-background-image img {
+    z-index: -1;
+    width: 100%;
+  }
+
+  .group-title {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+  }
+
+  .group-count {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+  }
 }

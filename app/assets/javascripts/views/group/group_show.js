@@ -1,7 +1,7 @@
 GameUp.Views.GroupShow = Backbone.CompositeView.extend({
   template: JST['group/group_show'],
 
-  className: "group-show",
+  className: "group-show content-padding",
 
   events: {
     "click button.new-event": "addEventForm",

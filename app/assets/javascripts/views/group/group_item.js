@@ -3,9 +3,13 @@ GameUp.Views.GroupItem = Backbone.View.extend({
 
   tagName: "li",
 
+  className: "group-item",
+
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model.members(),"sync", this.render);
+    this.listenTo(this.model.profilePic(), "sync", this.render);
+    this.model.profilePic().fetch();
     this.model.members().fetch({data: {flag: "groupMembers", groupId: this.model.get('id')}});
   },
 

@@ -6,6 +6,8 @@ GameUp.Views.GroupNew = Backbone.View.extend({
     "click button.image-upload":"upload"
   },
 
+   className: "group-new-view content-padding",
+
   render: function () {
     var content = this.template();
     this.$el.html(content);

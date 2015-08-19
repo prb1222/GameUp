@@ -1,6 +1,8 @@
 GameUp.Views.IndexContainer = Backbone.CompositeView.extend({
   template: JST['main/index_container'],
 
+  className: "index-container-view content-padding",
+
   initialize: function (options) {
     this.addJumbotron();
     if (options.start === "events") {

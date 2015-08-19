@@ -1,5 +1,13 @@
-
 <a href="/#groups/<%=group.escape('id')%>">
-  <%= group.escape('title')%><br>
-  We're <%= group.members().length%> <%= group.escape('member_name')%>!
+  <div class="group-background-image">
+    <img src="<%= group.profilePic().imageItem() %>" />
+  </div>
+
+
+    <div class="group-title">
+      <%= group.escape('title')%>
+    </div>
+    <div class="group-count">
+      We're <%= group.members().length%> <%= group.escape('member_name')%>!
+    </div>
 </a>
