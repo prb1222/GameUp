@@ -12,6 +12,7 @@
   p {
     padding-top: 10px;
     padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
   }
 
 }
@@ -37,18 +38,6 @@
   padding: 20px;
   text-align: center;
 
-}
-
-
-.group-jumbo {
-  img {
-    width: 100%;
-    height: 154.5px;
-  }
-
-  .group-nav {
-    border-bottom: 2px solid #ccc;
-  }
 }
 
 div.users-index-view {
@@ -151,29 +140,33 @@ div.users-index-view {
 
   .group-background-image {
     margin: 20px;
-    border: 1px solid red;
+    border: 0px;
   }
 
   .group-background-image img {
+    border-radius: 10px;
     z-index: -1;
     width: 100%;
   }
 
   .group-title {
     position: absolute;
-    top: 30px;
-    left: 30px;
+    font-size: 15px;
+    bottom: 120px;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%);
   }
 
   .group-count {
+    width: 150px;
     position: absolute;
-    bottom: 30px;
-    right: 30px;
+    font-size: 15px;
+    bottom: 90px;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%);
   }
-}
-
-.group-jumbo-link:hover {
-  cursor: pointer;
 }
 
 .group-detail-view button {
@@ -187,4 +180,46 @@ div.users-index-view {
   height: 1px;
   width: 2%;
   float: left;
+}
+
+.image-container {
+  width: 100%;
+  display: block;
+  height: 225px;
+  h2 {
+    color: white;
+    text-align: center;
+    font-size: 40px;
+    text-shadow: 0px 0px 4px black;
+  }
+
+  h4 {
+    color: white;
+    text-align: center;
+    text-shadow: 0px 0px 4px black;
+  }
+}
+
+.group-jumbo {
+  position: relative;
+}
+
+.jumbotron.group-nav {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  margin: 0px;
+  padding: 0px;
+  transform: translateX(-50%);
+  width: 100%;
+  background: transparent;
+  .group-jumbo-link {
+    width: 31%;
+    position: relative;
+    display:inline-block;
+    font-size: 20px;
+    color: white;
+    text-shadow: 0px 0px 4px black;
+    background: transparent;
+  }
 }

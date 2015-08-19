@@ -17,6 +17,10 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+.errors {
+  color: red;
+}
+
 a {
   color: black;
 }
@@ -126,6 +130,13 @@ div.user-modal {
   margin-right: auto;
 }
 
+.new-comment {
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 div.comments-index-view h6 {
   text-align: left;
 }
@@ -229,23 +240,38 @@ div.groups-index {
 .jumbo-container {
   text-align: center;
   position: relative;
+  width: 100%;
 
   .jumbo-back-display {
     width: 100%;
-    height: 100%;
+    height: 200px;
     background-image: url(http://res.cloudinary.com/dj7rafx1m/image/upload/v1439940064/46153-collection_iw97ht.jpg);
-    opacity: 0.4;
-    position: absolute;
-    z-index: -1;
+    position: relative;
+    z-index: 1;
   }
 
-  .jumbo-front-display div, h1 {
-    margin-top: 0px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    opacity: 1;
-    z-index: 3;
+  .jumbo-front-display {
+    position: absolute;
+    bottom: 0px;
+    color: white;
+    text-shadow: 0px 0px 10px black;
+    font-size: 40px;
+    z-index: 4;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    div, h1 {
+      font-color: white;
+      margin-top: 0px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      width: 100%;
+      opacity: 1;
+      z-index: 3;
+    }
   }
+
+
   border-bottom: 3px solid #ccc;
 }
 

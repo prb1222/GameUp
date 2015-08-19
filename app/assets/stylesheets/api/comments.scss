@@ -7,7 +7,48 @@
 }
 
 .comment-item {
+  button {
+    width: 100%;
+  }
+
+  form, div.comment-body {
+    width: 100%;
+  }
+
+  textarea {
+    float: left;
+    width: 90%;
+  }
+
   div {
-    display: inline-block
+    float: left;
+    div {
+      display: block;
+    }
+  }
+
+  .comment-content-main {
+    width: 60%;
+  }
+
+  .delete-button-wrapper {
+    width: 19%;
+    text-align: right;
+  }
+
+  .delete-comment {
+    border: 0px;
+  }
+
+  .comment-user {
+    width: 20%;
+  }
+
+  .comment-date {
+    font-size: 11px;
+  }
+
+  .comment-body: {
+    padding-bottom: 10px;
   }
 }

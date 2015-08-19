@@ -4,7 +4,7 @@ GameUp.Views.GroupJumbo = Backbone.View.extend({
   className: "group-jumbo",
 
   events: {
-    "click :not('p')":"upload"
+    "click :not('.group-jumbo-link')":"upload"
   },
 
   prevent: function (event) {
@@ -13,13 +13,14 @@ GameUp.Views.GroupJumbo = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model.jumboPic(), "change:id", this.render)
   },
 
   render: function () {
     this.$el.html(this.template({group: this.model}));
-    var $jumboNav = this.$el.find('div.group-nav');
+    var $jumboNav = this.$el.find('div.image-container');
     var width = $jumboNav.width();
-    $jumboNav.css("background-image", this.model.jumboPic().groupJumbo(width));
+    $jumboNav.css("background-image", 'url(' + this.model.jumboPic().groupJumbo(width) + ')');
     return this;
   },
 
@@ -42,7 +43,8 @@ GameUp.Views.GroupJumbo = Backbone.View.extend({
       image.set({image_url: data.url});
       image.save({}, {
         success: function (model) {
-          this.model.jumboPic().set({image_url: model.get('image_url')});
+          this.model.jumboPic().set({image_url: model.get('image_url'), id: model.get('id')});
+          this.model.images().add(model);
           this.model.save({jumbo_id: model.get('id')}, {success: this.render.bind(this)});
         }.bind(this)
       });

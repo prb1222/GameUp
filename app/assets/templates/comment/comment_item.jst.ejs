@@ -1,15 +1,16 @@
-<div class="comment-item">
+<div class="comment-item clear-fix">
   <% if (comment.user) { %>
     <div class="comment-user">
       <%= comment.user.username %> <br>
     </div>
   <% } %>
-
-  <div class="comment-body">
-    <%= comment.escape('body') %>
-  </div>
-  <div class="comment-date">
-    Created at: <%= comment.displayDate() %>
+  <div class="comment-content-main">
+    <div class="comment-body">
+      <%= comment.escape('body') %>
+    </div>
+    <div class="comment-date">
+      Created at: <%= comment.displayDate() %>
+    </div>
   </div>
 
   <%if (comment.get('user_id') === parseInt(GameUp.currentUser.userId)) { %>

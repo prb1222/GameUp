@@ -1,8 +1,10 @@
-<p>Location: <%= group.escape('location') %></p>
-<img src="<%= group.profilePic().groupThumbnail($('.sidebar').width()) %>" />
+<%if (group.profilePic().get('id')) { %>
+  <img src="<%= group.profilePic().groupThumbnail($('.sidebar').width()) %>" />
+<% } %>
 <% if (group.owned) { %>
   <button type="button" class="btn btn-primary upload-image">Upload Group Image</button>
 <% } %>
+<p>Location: <%= group.escape('location') %></p>
 <p>About us: <br><%= group.escape('description') %></p>
 <p>Organizer: <%= group.owner %></p>
 <p>We're <%= group.members().models.length %> <%= group.escape('member_name')%></p>

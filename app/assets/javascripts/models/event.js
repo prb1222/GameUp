@@ -3,7 +3,7 @@ GameUp.Models.Event = Backbone.Model.extend({
 
   parse: function (response) {
     if (response.date) {
-      response.date = moment(response.date).format('MMMM DD YYYY HH:mm');
+      response.date = moment(response.date).format('MMMM DD YYYY HH:mm A');
     }
 
     if (response.attending_event) {
@@ -86,7 +86,7 @@ GameUp.Models.Event = Backbone.Model.extend({
 
   formTime: function() {
     if (this.get('date')) {
-      return moment(this.get('date'), 'MMMM DD YYYY HH:mm').format("HH[:]mm");
+      return moment(this.get('date'), 'MMMM DD YYYY HH:mm').format("HH[:]mm A");
     } else {
       return "";
     }

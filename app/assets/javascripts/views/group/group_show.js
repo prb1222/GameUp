@@ -6,7 +6,7 @@ GameUp.Views.GroupShow = Backbone.CompositeView.extend({
   events: {
     "click button.new-event": "addEventForm",
     "click div.event-item": "showEvents",
-    "click .group-nav a": "switchMainPane",
+    "click .group-jumbo-link": "switchMainPane",
     "click button.edit-group": "editGroupForm"
   },
 
@@ -79,7 +79,7 @@ GameUp.Views.GroupShow = Backbone.CompositeView.extend({
     this.removeSubviews(selector);
     event.preventDefault();
     var $target = $(event.currentTarget);
-    var type = $target.data("page-type");
+    var type = $target.text();
     this["show" + type](event);
   },
 

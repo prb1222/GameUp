@@ -1,10 +1,11 @@
-<img class="image-jumbo" src="<%= group.jumboPic().groupJumbo($('div.jumbotron.group-nav').width()) %>"/>
-<div class="jumbotron group-nav">
+<div class="image-container">
   <h2><%= group.escape('title') %></h2>
-  <p><a class="group-jumbo-link" data-page-type="Home">Home</a></p>
-  <p><a class="group-jumbo-link" data-page-type="Members">Members</a></p>
-  <p><a class="group-jumbo-link" data-page-type="Photos">Photos</a></p>
-  <% if (group.owned) {%>
-    <div class="switch-jumbo">Click here to edit Jumbotron Image</div>
+  <% if(!group.jumboPic().get('id')) { %>
+    <h4>Click here to upload an image.</h4>
   <% } %>
+</div>
+<div class="jumbotron group-nav">
+  <div class="group-jumbo-link">Home</div>
+  <div class="group-jumbo-link">Members</div>
+  <div class="group-jumbo-link">Photos</div>
 </div>
