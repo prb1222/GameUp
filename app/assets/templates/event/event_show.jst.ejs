@@ -1,14 +1,25 @@
 <div class="event-content">
   <h2><%= event.escape('title')%></h2>
-  <p>When: <%= event.escape('date')%></p>
-  <p>Description: <%= event.escape('description')%></p>
-  <p>Location: <%= event.escape('location') %></p>
-  <p>Organizer: <%= event.escape('organizername') %></p>
-  <button type="button" class="event-attendees">Who's going</button>
-  <button type="button" class="event-comments">Comments</button>
-  <% if (event.group().is_member()) { %>
-    <button type="button" class="toggle-attendance"><%= buttonText %></button>
-  <% } %>
+  <div class="event-show-date"><%= event.escape('date')%></div>
+  <div class="event-info-group">
+    <p>Description: <%= event.escape('description')%></p>
+    <p>Location: <%= event.escape('location') %></p>
+    <p>Organizer: <%= event.escape('organizername') %></p>
+  </div>
+  <div class="event-buttons-row">
+    <button type="button" class="event-attendees btn btn-primary">Who's going</button>
+    <button type="button" class="event-comments btn btn-primary">Comments</button>
+    <% if (event.group().is_member()) { %>
+      <button type="button" class="toggle-attendance btn btn-primary"><%= buttonText %></button>
+    <% } %>
+  </div>
 </div>
 
 <div class="event-display-info"></div>
+
+<div class="organizer-buttons-container">
+  <% if(event.organizer) { %>
+    <button type="button" class="delete-event btn btn-primary">Delete Event</button>
+    <button type="button" class="edit-event btn btn-primary">Edit Event</button>
+  <% } %>
+</div>

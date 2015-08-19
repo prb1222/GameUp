@@ -119,7 +119,9 @@ div.user-modal {
   padding: 20px;
 }
 
-.new-comment {
+.new-comment-wrapper {
+  text-align: center;
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -151,11 +153,6 @@ ul.images-index {
     li {
       list-style-type: none;
     }
-}
-
-.new-comment {
-  margin-left: 40%;
-  width: 20%;
 }
 
 .m-background {

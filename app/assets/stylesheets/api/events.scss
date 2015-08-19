@@ -77,3 +77,46 @@ ul.events-day-index {
 .event-attendees {
   font-size: 14px;
 }
+
+.event-content {
+  position: relative;
+
+  h2 {
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: 3px;
+  }
+
+  .event-show-date {
+    padding-bottom: 5px;
+    text-align: center;
+  }
+
+  p {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .event-buttons-row {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  button {
+    text-align: center;
+  }
+}
+
+.organizer-buttons-container {
+  text-align: center;
+  width: 80%;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.event-info-group {
+  padding-bottom: 20px;
+}

@@ -19,7 +19,7 @@ GameUp.Views.CommentsIndex = Backbone.CompositeView.extend({
 
   render: function () {
     var attending = !this.event.attendance().isNew();
-    var content = this.template({attending: attending});
+    var content = this.template({attending: attending, comments: this.collection});
     if (!attending) {
       this.removeCommentForm();
     }
@@ -55,7 +55,7 @@ GameUp.Views.CommentsIndex = Backbone.CompositeView.extend({
     var $form = $('div.comment-form');
     var $target = $(event.currentTarget);
     if ($form.find($target).length || $form.is($target)) {
-      return; // ASK HOW TO BIND OUTSIDE EL
+      return;
     }
     this.removeCommentForm();
   }
