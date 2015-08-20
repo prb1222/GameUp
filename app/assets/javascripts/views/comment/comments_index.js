@@ -6,7 +6,7 @@ GameUp.Views.CommentsIndex = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.attending = options.attending;
     this.event = options.event;
-    this.listenTo(this.collection, "sync", this.render);
+    this.listenTo(this.collection, "sync remove", this.render);
     this.listenTo(this.collection, "add", this.addCommentSubview)
     this.listenTo(this.event.attendance(), "change:id", this.render);
     this.collection.fetch({data: {flag: "event", eventId: this.event.get('id')}});

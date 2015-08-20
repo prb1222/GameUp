@@ -33,7 +33,7 @@ GameUp.Views.EventShow = Backbone.CompositeView.extend({
       this.model.attendance().destroy({
         success: function (attendance) {
           this.disabled = false;
-          var userId = attendance.attributes.get('user_id');
+          var userId = GameUp.currentUser.userId;
           this.model.attendees().remove(userId);
           this.model.attendance().clear();
           if (this.model.organizer) {

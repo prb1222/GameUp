@@ -100,13 +100,16 @@ ul.events-day-index {
   }
 
   .event-buttons-row {
-    width: 80%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     button {
       padding-top: 5px;
       padding-bottom: 5px;
+      min-width: 115px;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 
