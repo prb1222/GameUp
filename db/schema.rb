@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150820211751) do
+ActiveRecord::Schema.define(version: 20150820220614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,7 +47,9 @@ ActiveRecord::Schema.define(version: 20150820211751) do
     t.integer  "organizer_id"
     t.string   "address",      null: false
     t.string   "city",         null: false
-    t.string   "state",        null: false
+    t.string   "state"
+    t.float    "longitude",    null: false
+    t.float    "latitude",     null: false
   end
 
   add_index "events", ["group_id"], name: "index_events_on_group_id", using: :btree
@@ -72,7 +74,9 @@ ActiveRecord::Schema.define(version: 20150820211751) do
     t.integer  "profile_id"
     t.integer  "jumbo_id"
     t.string   "city",        null: false
-    t.string   "state",       null: false
+    t.string   "state"
+    t.float    "longitude",   null: false
+    t.float    "latitude",    null: false
   end
 
   add_index "groups", ["owner_id"], name: "index_groups_on_owner_id", using: :btree
@@ -95,6 +99,8 @@ ActiveRecord::Schema.define(version: 20150820211751) do
     t.datetime "updated_at",      null: false
     t.text     "bio"
     t.string   "location",        null: false
+    t.float    "longitude",       null: false
+    t.float    "latitude",        null: false
   end
 
 end

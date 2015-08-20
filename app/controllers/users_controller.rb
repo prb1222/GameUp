@@ -4,11 +4,13 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.location = request.location.data['zipcode']
     render :new
   end
 
   def create
     @user = User.new(user_params)
+    @user.location = Geocoder.search(params[:user][:location]).first.zipcode
     if @user.save
       login_user!(@user)
       redirect_to root_url
@@ -26,6 +28,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :bio, :location)
+    params.require(:user).permit(:username, :password, :bio)
   end
 end

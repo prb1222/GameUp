@@ -4,6 +4,10 @@ class Api::EventsController < ApplicationController
     event = Event.new(event_params)
     event.organizer_id = current_user.id
     event.date = parse_datetime(params[:event][:date], params[:event][:time])
+    location = Geocoder.search(params[:event][:location]).first
+    event.address = location.street_address
+    event.city = location.city
+    event.state = location.state_code
     if event.save
       EventAttendee.create(user_id: current_user.id, event_id: event.id)
       render json: event
@@ -64,7 +68,6 @@ class Api::EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:group_id,
                                   :title,
-                                  :description,
-                                  :location)
+                                  :description)
   end
 end

@@ -3,8 +3,12 @@ class Event < ActiveRecord::Base
             :title,
             :description,
             :date,
-            :location,
+            :address,
+            :city,
             presence: true)
+
+  geocoded_by :location
+  after_validation :geocode
 
   belongs_to :group
   belongs_to :organizer, primary_key: :id, foreign_key: :organizer_id, class_name: :User
@@ -13,4 +17,8 @@ class Event < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :commenting_users, through: :comments, source: :user
   has_many :images, as: :imageable, dependent: :destroy
+
+  def location
+    "#{address}, #{city}, #{state}"
+  end
 end

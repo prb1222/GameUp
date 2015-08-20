@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   validates :username, :password_digest, :session_token, :location, presence: true
   validates :password, length: {minimum: 6, allow_nil: true}
   attr_reader :password
+  geocoded_by :location
+  after_validation :geocode
+
   after_initialize :ensure_session_token, :ensure_image
 
   has_many(:owned_groups,

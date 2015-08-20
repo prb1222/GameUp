@@ -1,6 +1,9 @@
 class Api::GroupsController < ApplicationController
   def create
     group = Group.new(group_params)
+    location = Geocoder.search(params[:group][:location]).first
+    group.city = location.city
+    group.state = location.state_code
     group.owner_id = current_user.id
     if group.save
       GroupMembership.create!(user_id: current_user.id, group_id: group.id)
@@ -46,6 +49,6 @@ class Api::GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:title, :location, :description, :member_name, :profile_id, :jumbo_id)
+    params.require(:group).permit(:title, :description, :member_name, :profile_id, :jumbo_id)
   end
 end
