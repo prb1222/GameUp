@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150818161030) do
+ActiveRecord::Schema.define(version: 20150820211751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,10 +42,12 @@ ActiveRecord::Schema.define(version: 20150818161030) do
     t.string   "title",        null: false
     t.string   "description",  null: false
     t.datetime "date",         null: false
-    t.string   "location",     null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "organizer_id"
+    t.string   "address",      null: false
+    t.string   "city",         null: false
+    t.string   "state",        null: false
   end
 
   add_index "events", ["group_id"], name: "index_events_on_group_id", using: :btree
@@ -63,13 +65,14 @@ ActiveRecord::Schema.define(version: 20150818161030) do
   create_table "groups", force: :cascade do |t|
     t.integer  "owner_id",    null: false
     t.string   "title",       null: false
-    t.string   "location",    null: false
     t.string   "description", null: false
     t.string   "member_name", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "profile_id"
     t.integer  "jumbo_id"
+    t.string   "city",        null: false
+    t.string   "state",       null: false
   end
 
   add_index "groups", ["owner_id"], name: "index_groups_on_owner_id", using: :btree
@@ -90,8 +93,8 @@ ActiveRecord::Schema.define(version: 20150818161030) do
     t.string   "session_token",   null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.string   "location"
     t.text     "bio"
+    t.string   "location",        null: false
   end
 
 end

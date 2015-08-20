@@ -23,7 +23,9 @@ GameUp.Views.GroupJumbo = Backbone.View.extend({
       $jumboNav.addClass('hover-fix');
     }
     var width = $jumboNav.width();
-    $jumboNav.css("background-image", 'url(' + this.model.jumboPic().groupJumbo(width) + ')');
+    if (this.model.jumboPic().get('image_url')) {
+      $jumboNav.css("background-image", 'url(' + this.model.jumboPic().groupJumbo(width) + ')');
+    }
     return this;
   },
 
