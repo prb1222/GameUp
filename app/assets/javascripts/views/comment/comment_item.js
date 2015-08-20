@@ -16,6 +16,9 @@ GameUp.Views.CommentItem = Backbone.View.extend({
   render: function () {
     var content = this.template({comment: this.model});
     this.$el.html(content);
+    if (this.model.get('user_id') === parseInt(GameUp.currentUser.userId)) {
+      this.$el.find('.comment-body').addClass('hover-fix');
+    }
     return this;
   },
 

@@ -19,6 +19,11 @@ GameUp.Views.UserShow = Backbone.CompositeView.extend({
   render: function () {
     var content = this.template({user: this.model});
     this.$el.html(content);
+    if (this.model.isUser) {
+      this.$el.find('.user-image').addClass('hover-fix');
+      this.$el.find('.user-bio').addClass('hover-fix');
+      this.$el.find('.user-show-bio-display').addClass('hover-fix');
+    }
     this.attachSubviews();
     return this;
   },

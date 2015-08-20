@@ -20,16 +20,7 @@ GameUp.Views.GroupNew = Backbone.View.extend({
     this.model.save(formData,{
       success: function (model) {
         this.remove();
-        if (!this.image) {
-          this.image = new GameUp.Models.Image({imageable_type: "Group"});
-        }
-        this.image.save({imageable_id: model.get('id')}, {
-          success: function () {
-            this.model.profilePic().set(this.image);
-            this.model.save({profile_id: this.image.get('id')}, {});
-            Backbone.history.navigate("#/groups/" + this.model.get('id'), {trigger: true});
-          }.bind(this)
-        });
+        Backbone.history.navigate("#/groups/" + this.model.get('id'), {trigger: true});
       }.bind(this),
 
       error: function (error, errorText) {

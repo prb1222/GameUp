@@ -19,6 +19,9 @@ GameUp.Views.GroupJumbo = Backbone.View.extend({
   render: function () {
     this.$el.html(this.template({group: this.model}));
     var $jumboNav = this.$el.find('div.image-container');
+    if (this.model.owned) {
+      $jumboNav.addClass('hover-fix');
+    }
     var width = $jumboNav.width();
     $jumboNav.css("background-image", 'url(' + this.model.jumboPic().groupJumbo(width) + ')');
     return this;
