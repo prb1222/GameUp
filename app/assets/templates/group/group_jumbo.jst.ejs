@@ -1,6 +1,6 @@
 <div class="image-container">
   <h2><%= group.escape('title') %></h2>
-  <% if(!group.jumboPic().get('id')) { %>
+  <% if(!group.jumboPic().get('id') && group.owned) { %>
     <h4>Click here to upload an image.</h4>
   <% } %>
 </div>

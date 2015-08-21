@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.location = Geocoder.search(params[:user][:location]).first.zipcode
+    @user.location = Geocoder.search(params[:user][:location]).first.city
     if @user.save
       login_user!(@user)
       redirect_to root_url

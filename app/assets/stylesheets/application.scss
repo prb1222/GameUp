@@ -322,3 +322,45 @@ nav.nabar.navbar-default {
   margin-bottom: 0px !important;
   border-radius: 0px !important;
 }
+
+.group-search-form {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+
+  .form-group {
+    padding-right: 20px;
+    width: 65%;
+  }
+
+  * {
+    display: inline-block;
+  }
+
+  .distance-input {
+    width: 40px;
+    text-align: right;
+  }
+
+  .btn {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 30%;
+  }
+}
+
+@font-face {
+    font-family: 'moonhouseregular';
+    src: url('fonts/moonhouse-webfont.eot');
+    src: url('fonts/moonhouse-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/moonhouse-webfont.woff2') format('woff2'),
+         url('fonts/moonhouse-webfont.woff') format('woff'),
+         url('fonts/moonhouse-webfont.ttf') format('truetype'),
+         url('fonts/moonhouse-webfont.svg#moonhouseregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+a.navbar-brand {
+  font-family: 'Fugaz One'
+}

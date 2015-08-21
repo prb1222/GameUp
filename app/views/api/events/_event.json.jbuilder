@@ -1,4 +1,4 @@
-json.extract! event, :id, :group_id, :title, :description, :date, :location, :organizer_id
+json.extract! event, :id, :group_id, :title, :description, :date, :location, :longitude, :latitude, :organizer_id
 attendee = current_user.event_attendees.find_by(event_id: event.id)
 if attendee
   json.attendee_id attendee.id

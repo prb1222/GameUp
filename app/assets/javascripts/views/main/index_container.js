@@ -32,20 +32,14 @@ GameUp.Views.IndexContainer = Backbone.CompositeView.extend({
   addGroupsIndeces: function () {
     var selector = 'div.index-container';
     this.removeSubviews(selector);
-    var myGroups = new GameUp.Collections.Groups();
-    var otherGroups = new GameUp.Collections.Groups();
-    myGroups.fetch({data: {flag: "mine"}});
-    otherGroups.fetch({data: {flag: "other"}});
-    otherGroupsView = new GameUp.Views.GroupsIndex({collection: otherGroups, title: "OTHER GROUPS"});
-    myGroupsView = new GameUp.Views.GroupsIndex({collection: myGroups, title: "MY GROUPS"});
-    this.addSubview(selector, myGroupsView);
-    this.addSubview(selector, otherGroupsView);
+    this.searchBar = this.searchBar || new GameUp.Views.SearchBar();
+    this.addSubview(selector, this.searchBar);
   },
 
   addEventsIndeces: function () {
     var selector = 'div.index-container';
     this.removeSubviews(selector);
-    var eventsIndexView = new GameUp.Views.UserEventsIndex();
-    this.addSubview(selector, eventsIndexView);
+    this.eventsIndexView = this.eventsIndexView || new GameUp.Views.UserEventsIndex();
+    this.addSubview(selector, this.eventsIndexView);
   }
 });

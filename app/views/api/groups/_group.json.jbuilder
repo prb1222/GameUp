@@ -1,4 +1,4 @@
-json.extract! group, :id, :owner_id, :title, :location, :description, :member_name
+json.extract! group, :id, :owner_id, :title, :location, :longitude, :latitude, :description, :member_name
 membership = current_user.group_memberships.find_by(group_id: group.id)
 if membership
   json.membership membership, :id, :user_id

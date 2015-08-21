@@ -22,7 +22,7 @@ class Api::GroupsController < ApplicationController
     if params[:flag] == "mine"
       groups = current_user.groups
     elsif params[:flag] == "other"
-      groups = Group.where.not(id: current_user.groups)
+      groups = Group.near(current_user.location, params[:distance]).where.not(id: current_user.groups)
     else
       groups = Group.all
     end

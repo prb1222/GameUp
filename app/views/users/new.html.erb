@@ -1,3 +1,61 @@
-<h1>Sign Up</h1>
-<%= render 'shared/errors'%>
-<%= render 'shared/user_form', action: users_url, verb: "Up"%>
+<div class="splash-background">Game Up</div>
+<div class="pane-container">
+  <div class="old-user-pane main-form-pane">
+    <div class="switch-pane">
+      New Account? Sign up here.
+    </div>
+
+    <h3>Sign In</h3>
+    <ul class="errors"></ul>
+    <form class="old-user-form form-horizontal" action="<%= session_url %>" method="post">
+      <%= auth_token %>
+      <div class="form-group">
+        <label class="control-label" for="old-username-field">Username</label>
+        <input id="old-username-field" type="text" name="user[username]">
+      </div>
+
+      <div class="form-group">
+        <label class="control-label" for="old-password-field">Password</label>
+        <input id="old-password-field" type="password" name="user[password]">
+      </div>
+
+      <input type="submit" class="btn btn-primary old-user-submit" value="Log In">
+    </form>
+  </div>
+  <div class="new-user-pane main-form-pane">
+      <div class="switch-pane">
+        Already registered? Sign in here
+      </div>
+      <h3>Sign Up</h3>
+      <ul class="errors"></ul>
+      <form class="new-user-form form-horizontal" action="<%= users_url %>" method="post">
+        <%= auth_token %>
+        <div class="form-group">
+          <label class="control-label" for="new-username-field">Username</label>
+          <input id="new-username-field" type="text" name="user[username]">
+        </div>
+
+        <div class="form-group">
+          <label class="control-label" for="new-password-field">Password</label>
+          <input id="new-password-field" type="password" name="user[password]">
+        </div>
+
+        <div class="form-group">
+          <label class="control-label" for="new-location-field">Location</label>
+          <input id="new-location-field" type="text" name="user[location]">
+        </div>
+
+        <input type="submit" class="btn btn-primary new-user-submit" value="Create Account">
+      </form>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('.switch-pane').on('click', function(event) {
+    // var $inactive = $('.inactive');
+    // var $active = $('.main-form-pane:not(.inactive)');
+    // debugger;
+    // $inactive.removeClass('inactive');
+    $('.new-user-pane').slideToggle(400);
+  });
+</script>

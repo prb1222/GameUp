@@ -2,8 +2,7 @@ class SessionsController < ApplicationController
   before_action :require_logged_out!, only: [:new, :create]
 
   def new
-    @user = User.new
-    render :new
+    redirect_to new_user_url
   end
 
   def create
