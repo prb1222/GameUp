@@ -13,14 +13,14 @@ class Image < ActiveRecord::Base
               class_name: :Group)
 
   def self.default_user_url
-    "http://res.cloudinary.com/dj7rafx1m/image/upload/v1440023472/placeholder_gyicx0.png"
+    "https://res.cloudinary.com/dj7rafx1m/image/upload/v1440023472/placeholder_gyicx0.png"
   end
 
   def self.default_group_url
-    "http://res.cloudinary.com/dj7rafx1m/image/upload/v1440006093/gqszmwaqb97woi5r7zvj.png"
+    "https://res.cloudinary.com/dj7rafx1m/image/upload/v1440006093/gqszmwaqb97woi5r7zvj.png"
   end
 
   def self.bowser_url
-    "http://res.cloudinary.com/dj7rafx1m/image/upload/v1440024567/Bowser_-_New_Super_Mario_Bros_2_nppyzk.png"
+    "https://res.cloudinary.com/dj7rafx1m/image/upload/v1440024567/Bowser_-_New_Super_Mario_Bros_2_nppyzk.png"
   end
 end

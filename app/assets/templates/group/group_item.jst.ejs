@@ -1,7 +1,7 @@
 <a href="/#groups/<%=group.escape('id')%>">
   <div class="group-background-image">
     <% if (group.profilePic().isNew()) { %>
-      <img src="http://res.cloudinary.com/dj7rafx1m/image/upload/w_150,h_150/gqszmwaqb97woi5r7zvj.png"/>
+      <img src="https://res.cloudinary.com/dj7rafx1m/image/upload/w_150,h_150/gqszmwaqb97woi5r7zvj.png"/>
     <% } else { %>
       <img src="<%= group.profilePic().imageItem() %>" />
     <% } %>

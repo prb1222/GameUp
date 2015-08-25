@@ -6,23 +6,23 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-GROUP_JUMBO_IMAGES = %w(http://res.cloudinary.com/dj7rafx1m/image/upload/v1440187286/TicketToRide_gossc2.jpg
-                          http://res.cloudinary.com/dj7rafx1m/image/upload/v1440187287/store-board-games_full_ijwqqd.png
-                          http://res.cloudinary.com/dj7rafx1m/image/upload/v1440187285/pic1461051_md_fxt8ne.jpg
-                          http://res.cloudinary.com/dj7rafx1m/image/upload/v1440187289/boardgame_mly5va.jpg
-                          http://res.cloudinary.com/dj7rafx1m/image/upload/v1440187286/2014-08-17_19.10.05_z78wc5.jpg
-                          http://res.cloudinary.com/dj7rafx1m/image/upload/v1440187286/letihxwigvss3svch8sa_tostd2.png
-                          http://res.cloudinary.com/dj7rafx1m/image/upload/v1440187285/18f8lwueguno0jpg_lubnzp.jpg
-                          http://res.cloudinary.com/dj7rafx1m/image/upload/v1440187560/vintage-board-game_wqocvx.jpg)
+GROUP_JUMBO_IMAGES = %w(https://res.cloudinary.com/dj7rafx1m/image/upload/v1440187286/TicketToRide_gossc2.jpg
+                          https://res.cloudinary.com/dj7rafx1m/image/upload/v1440187287/store-board-games_full_ijwqqd.png
+                          https://res.cloudinary.com/dj7rafx1m/image/upload/v1440187285/pic1461051_md_fxt8ne.jpg
+                          https://res.cloudinary.com/dj7rafx1m/image/upload/v1440187289/boardgame_mly5va.jpg
+                          https://res.cloudinary.com/dj7rafx1m/image/upload/v1440187286/2014-08-17_19.10.05_z78wc5.jpg
+                          https://res.cloudinary.com/dj7rafx1m/image/upload/v1440187286/letihxwigvss3svch8sa_tostd2.png
+                          https://res.cloudinary.com/dj7rafx1m/image/upload/v1440187285/18f8lwueguno0jpg_lubnzp.jpg
+                          https://res.cloudinary.com/dj7rafx1m/image/upload/v1440187560/vintage-board-game_wqocvx.jpg)
 
-GROUP_PROFILE_IMAGES = %w(http://res.cloudinary.com/dj7rafx1m/image/upload/v1440188090/weird-board-games-from-the-past-6b_iktlip.jpg
-                        http://res.cloudinary.com/dj7rafx1m/image/upload/v1440188089/adult-board-games_mptou4.jpg
-                        http://res.cloudinary.com/dj7rafx1m/image/upload/v1440188090/600_433579988_lst8vz.jpg
-                        http://res.cloudinary.com/dj7rafx1m/image/upload/v1440188089/BoardGames_jifyyx.jpg
-                        http://res.cloudinary.com/dj7rafx1m/image/upload/v1440188090/51b84e46-e586-4b72-a25c-2bf7703b5b66-620x372_eovwr3.jpg
-                        http://res.cloudinary.com/dj7rafx1m/image/upload/v1440188090/board-games_brzv1w.jpg
-                        http://res.cloudinary.com/dj7rafx1m/image/upload/v1440188089/Big-Foot-Vintage-Toy-Archive_afnh9s.jpg
-                        http://res.cloudinary.com/dj7rafx1m/image/upload/v1440188362/Funny_Pictures_105511_iifddr.jpg)
+GROUP_PROFILE_IMAGES = %w(https://res.cloudinary.com/dj7rafx1m/image/upload/v1440188090/weird-board-games-from-the-past-6b_iktlip.jpg
+                        https://res.cloudinary.com/dj7rafx1m/image/upload/v1440188089/adult-board-games_mptou4.jpg
+                        https://res.cloudinary.com/dj7rafx1m/image/upload/v1440188090/600_433579988_lst8vz.jpg
+                        https://res.cloudinary.com/dj7rafx1m/image/upload/v1440188089/BoardGames_jifyyx.jpg
+                        https://res.cloudinary.com/dj7rafx1m/image/upload/v1440188090/51b84e46-e586-4b72-a25c-2bf7703b5b66-620x372_eovwr3.jpg
+                        https://res.cloudinary.com/dj7rafx1m/image/upload/v1440188090/board-games_brzv1w.jpg
+                        https://res.cloudinary.com/dj7rafx1m/image/upload/v1440188089/Big-Foot-Vintage-Toy-Archive_afnh9s.jpg
+                        https://res.cloudinary.com/dj7rafx1m/image/upload/v1440188362/Funny_Pictures_105511_iifddr.jpg)
 
 BOARD_GAMES = ['Settlers of Catan', 'Chess', 'Candyland', 'Monopoly', 'Cards Against Humanity', 'Twilight Struggle', 'Dominion',
                 'Terra Mystica', 'Warhammer 40k', 'Warhammer Fantasy', 'Magic: The Gathering', 'Carcasonne', 'Dungeons and Dragons',
@@ -147,7 +147,7 @@ bowser_army = bowser.owned_groups.create!(title: "BOWSER'S ARMY",
                      profile_id: 2,
                      jumbo_id: 2)
 
-Image.create!(imageable_type: "Group", imageable_id: 1, image_url: "http://res.cloudinary.com/dj7rafx1m/image/upload/v1440001871/egnuvdh2n0k8aso3bgd0.jpg")
+Image.create!(imageable_type: "Group", imageable_id: 1, image_url: "https://res.cloudinary.com/dj7rafx1m/image/upload/v1440001871/egnuvdh2n0k8aso3bgd0.jpg")
 
 GroupMembership.create!(user_id: 1, group_id: 1)
 
@@ -168,7 +168,7 @@ EventAttendee.create!(user_id: 1, event_id: 1);
                        location: LOCAL_CITIES.sample,
                        bio: Faker::Lorem.paragraph(4, true, 3));
 
-  user.image.update(image_url: "http://placecorgi.com/#{rand(200..500)}/#{rand(200..500)}")
+  user.image.update(image_url: "https://placecorgi.com/#{rand(200..500)}/#{rand(200..500)}")
   if rand(2) > 0
     new_group = user.owned_groups.create!(generate_group_description)
     GroupMembership.create!(user_id: user.id, group_id: new_group.id)
