@@ -1,6 +1,6 @@
 <a href="/#users/<%= user.escape('id') %>">
   <div class="user-item" data-user-id="<%= user.escape('id')%>">
-    <img src="<%= user.image().userThumbnail()%>" alt="" />
+    <img src="<%= user.image().get('image_url')%>" alt="" />
     <div>
       <p class="user-username"><%= user.escape('username')%></p>
       <p class="user-timestamp">Joined: <%= user.createdAt() %></p>

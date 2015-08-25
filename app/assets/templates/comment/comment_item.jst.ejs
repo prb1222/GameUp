@@ -1,7 +1,7 @@
 <div class="comment-item clear-fix">
   <% if (comment.user) { %>
     <div class="comment-user">
-      <img src="<%= comment.image.userThumbnail() %>" alt="" />
+      <img src="<%= comment.image.get('image_url') %>" alt="" />
       <%= comment.user.username %> <br>
     </div>
   <% } %>

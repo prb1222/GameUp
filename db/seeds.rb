@@ -45,7 +45,7 @@ LOCAL_CITIES = ['San Jose', "San Francisco", "Fresno", "Sacramento", "Long Beach
                 "Riverside", "Chula Vista", "Stockton", "San Bernadino", "Modesto", "Oxnard", "Fontana"]
 
 def generate_group_description
-  sleep 2
+  sleep 1
   picker = rand(8)
   attrs = {}
   game = BOARD_GAMES.sample
@@ -92,7 +92,7 @@ def generate_group_description
 end
 
 def generate_event_description(group, user)
-  sleep 2
+  sleep 1
   picker = rand(8)
   attrs = {}
   location = Geocoder.search("#{group.latitude},#{group.longitude}").first
@@ -162,13 +162,13 @@ bowser_army.events.create!(title: "Kidnap Peach",
 EventAttendee.create!(user_id: 1, event_id: 1);
 
 
-100.times do
+10.times do
   user = User.create!(username: Faker::Internet.user_name,
                        password: Faker::Internet.password(6),
                        location: LOCAL_CITIES.sample,
                        bio: Faker::Lorem.paragraph(4, true, 3));
 
-  user.image.update(image_url: "https://placecorgi.com/#{rand(200..500)}/#{rand(200..500)}")
+  user.image.update(image_url: "http://placecorgi.com/#{rand(200..500)}/#{rand(200..500)}")
   if rand(2) > 0
     new_group = user.owned_groups.create!(generate_group_description)
     GroupMembership.create!(user_id: user.id, group_id: new_group.id)
@@ -182,7 +182,7 @@ users = User.all
 groups = Group.all
 
 
-100.times do
+10.times do
   group = groups.sample
   user = users.sample
   while group.members.include?(user)
@@ -191,7 +191,7 @@ groups = Group.all
   GroupMembership.create!(user_id: user.id, group_id: group.id)
 end
 
-200.times do
+20.times do
   group = groups.sample
   user = group.members.sample
   event = group.events.create!(generate_event_description(group, user))
@@ -201,7 +201,7 @@ end
 
 events = Event.all
 
-500.times do
+50.times do
   group = groups.sample
   while group.events.empty?
     group = groups.sample
@@ -217,7 +217,7 @@ events = Event.all
   EventAttendee.create!(user_id: user.id, event_id: event.id)
 end
 
-1000.times do
+100.times do
   event = events.sample
   user = event.attendees.sample
   Comment.create!(user_id: user.id,

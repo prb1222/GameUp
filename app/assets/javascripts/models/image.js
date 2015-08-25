@@ -3,7 +3,7 @@ GameUp.Models.Image = Backbone.Model.extend({
 
   groupThumbnail: function (width) {
     if (!this.get("image_url") || !width) {return "";}
-    var properties_string = "w_" + width +",h_190/";
+    var properties_string = "/w_" + width +",h_190/";
     properties_string += this.get('image_url').slice(61);
     return this.get('image_url').slice(0, 49) + properties_string;
   },
@@ -11,14 +11,14 @@ GameUp.Models.Image = Backbone.Model.extend({
 
   groupJumbo: function (width) {
     if (!this.get("image_url") || !width) {return "";}
-    var properties_string = "w_" + width + ",h_225/";
+    var properties_string = "/w_" + width + ",h_225/";
     properties_string += this.get('image_url').slice(61);
     return this.get('image_url').slice(0, 49) + properties_string;
   },
 
   imageItem: function () {
     if (!this.get("image_url")) {return "";}
-    var properties_string = "w_150,h_150/";
+    var properties_string = "/w_150,h_150/";
     properties_string += this.get('image_url').slice(61);
     return this.get('image_url').slice(0, 49) + properties_string;
   },
@@ -30,14 +30,14 @@ GameUp.Models.Image = Backbone.Model.extend({
 
   userProfile: function () {
     if (!this.get("image_url")) {return "";}
-    var properties_string = "w_150,h_150/";
+    var properties_string = "/w_150,h_150/";
     properties_string += this.get('image_url').slice(61);
     return this.get('image_url').slice(0, 49) + properties_string;
   },
 
   userThumbnail: function () {
     if (!this.get("image_url")) {return "";}
-    var properties_string = "w_50,h_50/";
+    var properties_string = "/w_50,h_50/";
     properties_string += this.get('image_url').slice(61);
     return this.get('image_url').slice(0, 49) + properties_string;
   },
