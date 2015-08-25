@@ -45,7 +45,7 @@ LOCAL_CITIES = ['San Jose', "San Francisco", "Fresno", "Sacramento", "Long Beach
                 "Riverside", "Chula Vista", "Stockton", "San Bernadino", "Modesto", "Oxnard", "Fontana"]
 
 def generate_group_description
-  sleep 1
+  sleep 2
   picker = rand(8)
   attrs = {}
   game = BOARD_GAMES.sample
@@ -92,7 +92,7 @@ def generate_group_description
 end
 
 def generate_event_description(group, user)
-  sleep 1
+  sleep 2
   picker = rand(8)
   attrs = {}
   location = Geocoder.search("#{group.latitude},#{group.longitude}").first
