@@ -3,10 +3,15 @@ GameUp.Views.GroupNew = Backbone.View.extend({
 
   events: {
     "submit form.group-form-fields": "createGroup",
-    "click button.image-upload":"upload"
+    "click button.image-upload":"upload",
+    "click input.next":"next"
   },
 
    className: "group-new-view content-padding",
+
+   initialize: function () {
+     this.counter = 0;
+   },
 
   render: function () {
     var content = this.template();
@@ -24,10 +29,14 @@ GameUp.Views.GroupNew = Backbone.View.extend({
       }.bind(this),
 
       error: function (error, errorText) {
-        errorText.responseJSON.forEach(function(error) {
+        errorText.responseJSON && errorText.responseJSON.forEach(function(error) {
           var $li = $('<li>'+ error +'</li>')
           this.$el.find('.errors').append($li);
         }.bind(this));
+        if (errorText.responseText) {
+          var $li = $('<li>'+ errorText.responseText +'</li>')
+          this.$el.find('.errors').append($li);
+        }
       }.bind(this)
     });
   },
@@ -47,5 +56,30 @@ GameUp.Views.GroupNew = Backbone.View.extend({
     }.bind(this));
     this.image = image;
     this.disabled = false;
+  },
+
+  next: function (event) {
+    if (this.disabled) {return;}
+    event.preventDefault();
+    this.disabled = true;
+    $(event.currentTarget).slideToggle(400, function() {
+      this.disabled = false
+    }.bind(this));
+    this.counter++
+    switch (this.counter) {
+      case 1:
+        this.$el.find('.group-new-location').slideToggle(400);
+        break;
+      case 2:
+        this.$el.find('.group-new-description').slideToggle(400);
+        break;
+      case 3:
+        this.$el.find('.group-new-member-name').slideToggle(400);
+        break;
+      case 4:
+        this.$el.find('.group-new-upload-image').slideToggle(400);
+        this.$el.find('.create-group').slideToggle(400);
+        break;
+    }
   }
 });

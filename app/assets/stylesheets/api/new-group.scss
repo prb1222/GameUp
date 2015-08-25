@@ -1,0 +1,44 @@
+.group-form-fields > div, .group-form-fields > input {
+  display: none;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  width: 100%;
+  background-color: #ddd;
+  font-size: 20px;
+  border-radius: 25px;
+  label {
+    width: 100%;
+    text-align: center;
+  }
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+  input.button {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
+
+.form-container > .group-form-fields {
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  .group-new-title {
+    display: block;
+  }
+}
+
+.group-new-view {
+  margin-top: -15px;
+}
+
+input.create-group {
+  background-color: #93c54b;
+}
+
+ul.errors {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}

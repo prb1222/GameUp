@@ -1,27 +1,41 @@
 <div class="form-container">
   <form class="group-form-fields" action="" method="post">
     <ul class="errors"></ul>
-    <label>Title
-      <input type="text" name="group[title]">
-    </label>
 
-    <label>Location
-      <input type="text" name="group[location]">
-    </label>
+    <div class="group-new-title">
+      <label>What is your group's name?
+        <input type="text" name="group[title]">
+      </label>
+      <input type="button" class="button btn btn-default next" value="Next">
+    </div>
 
-    <label>Description
-      <textarea name="group[description]"></textarea>
-    </label>
+    <div class="group-new-location">
+      <label>Where does your group meet?
+        <input type="text" name="group[location]">
+      </label>
+      <input type="button" class="button btn btn-default next" value="Next">
+    </div>
 
-    <label>Member name
-      <input type="text" name="group[member_name]">
-    </label>
+    <div class="group-new-description">
+      <label>Describe your group: <br>
+        <textarea name="group[description]"></textarea>
+      </label>
+      <input type="button" class="button btn btn-default next" value="Next">
+    </div>
 
-    <label class="image-upload">
-      <button class="image-upload">Upload Image</button>
-    </label>
-    <br>
+    <div class="group-new-member-name">
+      <label>What do your group members call themselves?
+        <input type="text" name="group[member_name]">
+      </label>
+      <input type="button" class="button btn btn-default next" value="Next">
+    </div>
 
-    <input type="submit" value="Create Group" class="create-group">
+    <div class="group-new-upload-image">
+      <label class="image-upload"> Upload a banner image for the group! (optional)
+        <button class="image-upload btn btn-default">Upload Image</button>
+      </label>
+    </div>
+
+    <input type="submit" value="Create Group" class="create-group btn btn-success">
   </form>
 </div>

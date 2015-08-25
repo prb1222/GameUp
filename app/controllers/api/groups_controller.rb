@@ -2,8 +2,13 @@ class Api::GroupsController < ApplicationController
   def create
     group = Group.new(group_params)
     location = Geocoder.search(params[:group][:location]).first
-    group.city = location.city
-    group.state = location.state_code
+    if location
+      group.city = location.city
+      group.state = location.state_code
+    else
+      render json: "Unable to find location", status: 422
+      return;
+    end
     group.owner_id = current_user.id
     if group.save
       GroupMembership.create!(user_id: current_user.id, group_id: group.id)

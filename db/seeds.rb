@@ -181,6 +181,7 @@ end
 users = User.all
 groups = Group.all
 
+
 3.times do
   group = groups.sample
   user = users.sample
@@ -196,6 +197,32 @@ end
   event = group.events.create!(generate_event_description(group, user))
 
   EventAttendee.create!(user_id: user.id, event_id: event.id)
+end
+
+events = Event.all
+
+10.times do
+  group = groups.sample
+  while group.events.empty?
+    group = groups.sample
+  end
+
+  user = group.members.sample
+  event = group.events.sample
+  while event.attendees.include?(user)
+    GroupMembership.create(user_id: users.sample.id, group_id: group.id)
+    user = Group.find(group.id).members.sample
+  end
+
+  EventAttendee.create!(user_id: user.id, event_id: event.id)
+end
+
+50.times do
+  event = events.sample
+  user = event.attendees.sample
+  Comment.create!(user_id: user.id,
+                  event_id: event.id,
+                  body: Faker::Lorem.paragraph(2, true, 1))
 end
 
 Image.create!(imageable_type: "Thing", imageable_id: 1, image_url: Image.default_group_url)
