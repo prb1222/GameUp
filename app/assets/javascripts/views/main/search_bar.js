@@ -11,8 +11,8 @@ GameUp.Views.SearchBar = Backbone.CompositeView.extend({
     var myGroups = new GameUp.Collections.Groups();
     var otherGroups = new GameUp.Collections.Groups();
     myGroups.fetch({data: {flag: "mine"}});
-    otherGroups.fetch({data: {flag: "other", distance: 2}});
-    this.otherGroupsView = new GameUp.Views.GroupsIndex({collection: otherGroups, title: "Other Groups 2 mi From Me"});
+    otherGroups.fetch({data: {flag: "other", distance: 20}});
+    this.otherGroupsView = new GameUp.Views.GroupsIndex({collection: otherGroups, title: "Other Groups within 20 mi"});
     this.myGroupsView = new GameUp.Views.GroupsIndex({collection: myGroups, title: "My Groups"});
     var selector = 'div.groups-indeces';
     this.addSubview(selector, this.myGroupsView);
@@ -35,7 +35,7 @@ GameUp.Views.SearchBar = Backbone.CompositeView.extend({
     this.removeSubview(selector, this.otherGroupsView);
     var searchGroups = new GameUp.Collections.Groups();
     searchGroups.fetch({data: {flag: "other", distance: distance}});
-    this.otherGroupsView = new GameUp.Views.GroupsIndex({collection: searchGroups, title: "Other Groups " + distance + " mi  From Me"});
+    this.otherGroupsView = new GameUp.Views.GroupsIndex({collection: searchGroups, title: "Other Groups within " + distance + " mi"});
     this.addSubview(selector, this.otherGroupsView);
   }
 });

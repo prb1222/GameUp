@@ -19,7 +19,7 @@
         <input id="old-password-field" type="password" name="user[password]">
       </div>
 
-      <input type="submit" class="btn btn-primary old-user-submit" value="Log In">
+      <input type="submit" class="btn btn-default old-user-submit" value="Log In">
     </form>
   </div>
   <div class="new-user-pane main-form-pane">
@@ -42,20 +42,26 @@
 
         <div class="form-group">
           <label class="control-label" for="new-location-field">Location</label>
-          <input id="new-location-field" type="text" name="user[location]">
+          <input id="new-location-field" type="text" name="user[location]" value="<%= @user.location %>">
         </div>
 
-        <input type="submit" class="btn btn-primary new-user-submit" value="Create Account">
+        <input type="submit" class="btn btn-default new-user-submit" value="Create Account">
+        <input type="submit" class="btn btn-default guest-user-submit" value="Guest Login">
       </form>
   </div>
 </div>
 
 <script type="text/javascript">
   $('.switch-pane').on('click', function(event) {
-    // var $inactive = $('.inactive');
-    // var $active = $('.main-form-pane:not(.inactive)');
-    // debugger;
-    // $inactive.removeClass('inactive');
     $('.new-user-pane').slideToggle(400);
   });
+
+  $('.guest-user-submit').on('click', function(event) {
+    event.preventDefault();
+    $.post("/session",
+           {user: {username: "bowser", password: "bowser"}},
+           function () {
+             window.location.replace('/#')
+           });
+  })
 </script>
