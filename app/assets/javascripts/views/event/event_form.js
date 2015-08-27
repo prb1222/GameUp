@@ -35,6 +35,7 @@ GameUp.Views.EventForm = Backbone.View.extend({
 
       error: function (error, errorText) {
         errorText.responseJSON.forEach(function(error) {
+          this.$el.find('.errors').empty();
           var $li = $('<li>'+ error +'</li>')
           this.$el.find('.errors').append($li);
         }.bind(this));

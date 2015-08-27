@@ -2,7 +2,7 @@ GameUp.Views.GroupForm = Backbone.View.extend({
   template: JST['group/group_form'],
 
   events: {
-    "submit form.group-form-fields": "submitGroup",
+    "submit form.edit-group-form-fields": "submitGroup",
     "click .m-background":"remove",
     "click .close":"removeBtn"
   },
@@ -33,6 +33,7 @@ GameUp.Views.GroupForm = Backbone.View.extend({
 
       error: function (error, errorText) {
         errorText.responseJSON.forEach(function(error) {
+          this.$el.find('.errors').empty();
           var $li = $('<li>'+ error +'</li>')
           this.$el.find('.errors').append($li);
         }.bind(this));

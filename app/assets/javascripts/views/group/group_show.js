@@ -43,7 +43,7 @@ GameUp.Views.GroupShow = Backbone.CompositeView.extend({
   addEventForm: function(event) {
     event.preventDefault();
     var event = new GameUp.Models.Event();
-    var formView = new GameUp.Views.EventForm({model: event, collection: this.model.meets()});
+    var formView = new GameUp.Views.EventForm({model: event, collection: this.model.meets(), verb: "Create"});
     $('body').append(formView.render().$el);
   },
 
