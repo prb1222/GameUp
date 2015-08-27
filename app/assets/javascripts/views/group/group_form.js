@@ -14,6 +14,7 @@ GameUp.Views.GroupForm = Backbone.View.extend({
   render: function () {
     var content = this.template({group: this.model, verb: this.verb});
     this.$el.html(content);
+    $("html, body").animate({ scrollTop: 0 }, "slow");
     return this;
   },
 
@@ -32,11 +33,15 @@ GameUp.Views.GroupForm = Backbone.View.extend({
       }.bind(this),
 
       error: function (error, errorText) {
-        errorText.responseJSON.forEach(function(error) {
-          this.$el.find('.errors').empty();
+        this.$el.find('.errors').empty();
+        errorText.responseJSON && errorText.responseJSON.forEach(function(error) {
           var $li = $('<li>'+ error +'</li>')
           this.$el.find('.errors').append($li);
         }.bind(this));
+        if (errorText.responseText) {
+          var $li = $('<li>'+ errorText.responseText +'</li>')
+          this.$el.find('.errors').append($li);
+        }
       }.bind(this)
     });
   }

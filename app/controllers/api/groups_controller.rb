@@ -36,6 +36,14 @@ class Api::GroupsController < ApplicationController
 
   def update
     group = Group.find(params[:id])
+    location = Geocoder.search(params[:group][:location]).first
+    if location
+      group.city = location.city
+      group.state = location.state_code
+    else
+      render json: "Unable to find location", status: 422
+      return;
+    end
     if group.update(group_params)
       render json: group
     else
