@@ -30,13 +30,15 @@ GameUp.Views.SearchBar = Backbone.CompositeView.extend({
     var $input = this.$el.find('.distance-input');
     if (!$input.val()) {return;}
     var distance = $input.val();
+    if (!parseInt(distance)) {return;}
     $input.val("");
     var selector = 'div.groups-indeces';
     this.removeSubview(selector, this.otherGroupsView);
     var searchGroups = new GameUp.Collections.Groups();
     searchGroups.fetch({data: {flag: "other", distance: distance}});
     this.otherGroupsView = new GameUp.Views.GroupsIndex({collection: searchGroups, title: "Other Groups within " + distance + " mi"});
+    this.otherGroupsView.$el.addClass('search-items');
     this.addSubview(selector, this.otherGroupsView);
-    $("html, body").animate({ scrollTop: 0 }, "slow");
+    $('html, body').animate({ scrollTop: $('.search-items').offset().top }, 'slow');
   }
 });
