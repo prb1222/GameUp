@@ -4,14 +4,23 @@ GameUp.Views.GroupNew = Backbone.View.extend({
   events: {
     "submit form.group-form-fields": "createGroup",
     "click button.image-upload":"upload",
-    "click input.next":"next"
+    "click input.next":"next",
   },
 
    className: "group-new-view content-padding",
 
    initialize: function () {
      this.counter = 0;
+     $(document).on('keyup', this.handleKey.bind(this));
    },
+
+   handleKey: function (event) {
+     event.preventDefault();
+    if (event.keyCode === 13) {
+      $nextButton = $('#' + (this.counter + 1));
+      $nextButton.trigger('click');
+    }
+  },
 
   render: function () {
     var content = this.template();
@@ -21,6 +30,7 @@ GameUp.Views.GroupNew = Backbone.View.extend({
 
   createGroup: function (event) {
     event.preventDefault();
+    if (this.counter < 4) {return;}
     var formData = $(event.currentTarget).serializeJSON();
     this.model.save(formData,{
       success: function (model) {
@@ -70,16 +80,24 @@ GameUp.Views.GroupNew = Backbone.View.extend({
     switch (this.counter) {
       case 1:
         this.$el.find('.group-new-location').slideToggle(400);
+        this.$el.find('.new-group-location').focus();
+        $('html, body').animate({ scrollTop: $('.new-group-location').offset().top }, 'slow');
         break;
       case 2:
         this.$el.find('.group-new-description').slideToggle(400);
+        this.$el.find('.new-group-description').focus();
+        $('html, body').animate({ scrollTop: $('.new-group-description').offset().top }, 'slow');
         break;
       case 3:
         this.$el.find('.group-new-member-name').slideToggle(400);
+        this.$el.find('.new-group-member-name').focus();
+        $('html, body').animate({ scrollTop: $('.new-group-member-name').offset().top }, 'slow');
         break;
       case 4:
         this.$el.find('.group-new-upload-image').slideToggle(400);
         this.$el.find('.create-group').slideToggle(400);
+        this.$el.find('.create-group').focus();
+        $('html, body').animate({ scrollTop: $('.group-new-upload-image').offset().top }, 'slow');
         break;
     }
   }

@@ -7,7 +7,15 @@ GameUp.Views.CommentForm = Backbone.View.extend({
 
   initialize: function (options) {
     this.verb = options.verb;
+    $(document).on('keydown', this.handleKey.bind(this));
   },
+
+  handleKey: function (event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+     $('.comment-form').trigger('submit');
+   }
+ },
 
   render: function () {
     var content = this.template({comment: this.model, verb: this.verb});

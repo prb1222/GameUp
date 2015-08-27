@@ -9,7 +9,15 @@ GameUp.Views.EventForm = Backbone.View.extend({
 
   initialize: function (options) {
     this.verb = options.verb;
+    $(document).on('keydown', this.handleKey.bind(this));
   },
+
+  handleKey: function (event) {
+   if (event.keyCode === 27) {
+     event.preventDefault();
+     this.remove();
+   }
+ },
 
   render: function () {
     var content = this.template({event: this.model, verb: this.verb});

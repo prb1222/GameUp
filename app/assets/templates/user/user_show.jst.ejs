@@ -33,6 +33,10 @@
 </div>
 <div class="user-show-sidebar">
   <div class="user-image clear-fix">
-    <img src="<%= user.image().userProfile() %>" />
+    <% if (user.image().get('image_url')) {%>
+      <img src="<%= user.image().userProfile() %>" />
+    <% } else { %>
+      <img src="assets/loading.gif" />
+    <% } %>
   </div>
 </div>

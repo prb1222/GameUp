@@ -12,7 +12,7 @@ class Api::CommentsController < ApplicationController
   def index
     if params[:flag] == "event"
       event = Event.find(params[:eventId])
-      @comments = event.comments
+      @comments = event.comments.order(created_at: :desc)
     else
       @comments = Comment.all
     end
