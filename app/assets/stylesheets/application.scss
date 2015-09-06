@@ -248,7 +248,7 @@ div.groups-index {
   h1 {
     width: 100%;
     text-align: center;
-    border-bottom: 3px solid #bbb;
+    border-bottom: 3px solid rgb(14, 82, 67);
     padding-bottom: 10px;
   }
 }
@@ -300,8 +300,8 @@ div.groups-index {
   }
 
 
-  border-bottom: 3px solid #ccc;
 }
+
 
 .search-bar {
   padding-top: 20px
@@ -311,7 +311,7 @@ div.groups-index {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
-  background-color: #ccc;
+  background-color: rgb(204, 245, 235);;
 }
 
 .no-events {
@@ -400,4 +400,29 @@ a.navbar-brand {
 
 .comment-item {
   padding-bottom: 25px;
+}
+
+.navbar.navbar-default > .container-fluid {
+  background-color: rgb(37,110,93);
+}
+
+#content {
+  background-color: rgb(110, 164, 152);
+  color: rgb(0, 55, 43);
+  h1, h2, h4 {
+    font-family: 'Fugaz One';
+    font-weight: bold;
+  }
+
+
+}
+
+.content-padding  h1, h2, h3, h4, h5, h6 {
+  font-family: 'Fugaz One';
+  font-weight: bold;
+  color: rgb(0, 55, 43);
+}
+
+.jumbo-container > .jumbo-container > .jumbo-front-display > h1 {
+  color: #fff;
 }

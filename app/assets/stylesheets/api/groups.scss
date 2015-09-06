@@ -53,9 +53,9 @@ div.users-index-view {
             padding: 10px;
             padding-top: 15px;
             padding-bottom: 15px;
-            border-bottom: 2px solid #ccc;
-            border-left:  2px solid #ccc;
-            border-right:  2px solid #ccc;
+            border-bottom: 2px solid rgb(14, 82, 67);
+            border-left:  2px solid rgb(14, 82, 67);
+            border-right:  2px solid rgb(14, 82, 67);
             img {
               display: inline-block;
               width: 100px;
@@ -73,7 +73,7 @@ div.users-index-view {
   h1 {
     text-align: center;
     margin: 0px;
-    border-bottom: 2px solid #bbb;
+    border-bottom: 2px solid rgb(14, 82, 67);
     padding-bottom: 10px;
   }
 }
@@ -196,14 +196,18 @@ div.users-index-view {
     color: white;
     text-align: center;
     font-size: 40px;
-    text-shadow: 0px 0px 4px black;
-    padding-top: 20px
+    text-shadow: 0px 5px 1px black;
+    padding-top: 20px;
+    font-weight: bold;
+    font-family: 'Fugaz One';
   }
 
   h4 {
     color: white;
+    font-weight: bold;
+    font-family: 'Fugaz One';
     text-align: center;
-    text-shadow: 0px 0px 4px black;
+    text-shadow: 0px 5px 1px black;
   }
 }
 
@@ -222,11 +226,33 @@ div.users-index-view {
   background: transparent;
   .group-jumbo-link {
     width: 31%;
+    font-family: 'Fugaz One';
+    font-weight: bold;
     position: relative;
     display:inline-block;
     font-size: 20px;
     color: white;
-    text-shadow: 0px 0px 4px black;
+    text-shadow: 0px 5px 1px black;
     background: transparent;
   }
+
+  .group-jumbo-link:hover, .group-jumbo-link:focus {
+    text-shadow: -1px 1px 8px rgb(221, 242, 161), 1px -1px 8px rgb(165, 218, 145);
+  }
+
+  .group-jumbo-link, .group-jumbo-link:hover, .group-jumbo-link:focus {
+  	color: #fff;
+  	-webkit-transition: 500ms linear 0s;
+  	-moz-transition: 500ms linear 0s;
+  	-o-transition: 500ms linear 0s;
+  	transition: 500ms linear 0s;
+  }
+}
+
+.nav.navbar-nav > li.active > a{
+  background-color: rgb(14, 82, 67);
+}
+
+.nav.navbar-nav > li.active > a:hover {
+  background-color: rgb(14, 82, 67);
 }
