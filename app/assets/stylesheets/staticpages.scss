@@ -26,10 +26,10 @@
   padding: 25px;
   padding-top: 0px;
   width: 100%;
-  background-color: #ddd;
+  background-color: rgb(171, 192, 208);
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
-  border: 10px solid black;
+  border: 10px solid rgb(0, 55, 43);
   border-top: 0px;
   h3 {
     width: 50%;
@@ -41,6 +41,7 @@
   }
 
   form {
+    color: rgb(0, 55, 43);
     text-align: center;
   }
 }
@@ -51,7 +52,7 @@
   margin-left: auto;
   margin-right: auto;
   font-size: 10px;
-  color: #999;
+  color: rgb(0, 55, 43);
   top: -10%;
   text-align: center;
 }
@@ -94,9 +95,9 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
-  background-color: #ddd;
+  background-color: rgb(171, 192, 208);
   box-sizing: border-box;
-  border: 10px solid black;
+  border: 10px solid rgb(0, 55, 43);
   border-bottom: 0 px;
 }
 
@@ -125,7 +126,7 @@
   width: auto;
 }
 
-.btn.btn-default:hover {
+.btn.btn-default:hover, .btn.btn-default:focus {
   background-color: rgb(47, 87, 117);
 }
 
@@ -135,7 +136,7 @@
   width: auto;
 }
 
-.btn.btn-info:hover {
+.btn.btn-info:hover, .btn.btn-info:focus {
   background-color: rgb(23, 62, 72);
 }
 
@@ -145,7 +146,7 @@
   width: auto;
 }
 
-.btn.btn-warning:hover {
+.btn.btn-warning:hover, .btn.btn-warning:focus {
   background-color: rgb(14, 83, 68);
 }
 
@@ -155,6 +156,6 @@
   width: auto;
 }
 
-.btn.btn-danger:hover {
+.btn.btn-danger:hover, .btn.btn-danger:focus {
   background-color: rgb(0, 31, 31);
 }
