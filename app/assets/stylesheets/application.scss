@@ -304,14 +304,15 @@ div.groups-index {
 
 
 .search-bar {
-  padding-top: 20px
+  padding-top: 20px;
+  height: 100px;
 }
 
 .content-padding {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
-  background-color: rgb(204, 245, 235);;
+  background-color: rgb(171, 192, 208);;
 }
 
 .no-events {
@@ -337,7 +338,7 @@ nav.nabar.navbar-default {
   width: 60%;
   margin-left: auto;
   margin-right: auto;
-
+  height: 60px;
   .form-group {
     padding-right: 20px;
     width: 65%;
@@ -407,7 +408,7 @@ a.navbar-brand {
 }
 
 #content {
-  background-color: rgb(110, 164, 152);
+  background-color: rgb(217, 228, 235);
   color: rgb(0, 55, 43);
   h1, h2, h4 {
     font-family: 'Fugaz One';
