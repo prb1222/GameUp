@@ -1,17 +1,18 @@
-<a href="/#groups/<%=group.escape('id')%>">
-  <div class="group-background-image">
+<div class="group-background-image">
+  <a href="/#groups/<%=group.escape('id')%>">
     <% if (group.profilePic().isNew()) { %>
       <img src="https://res.cloudinary.com/dj7rafx1m/image/upload/w_150,h_150/gqszmwaqb97woi5r7zvj.png"/>
     <% } else { %>
       <img src="<%= group.profilePic().imageItem() %>" />
     <% } %>
+  </a>
+</div>
+
+<a href="/#groups/<%=group.escape('id')%>">
+  <div class="group-title">
+    <%= group.escape('title')%>
   </div>
-
-
-    <div class="group-title">
-      <%= group.escape('title')%>
-    </div>
-    <div class="group-count">
-      We're <%= group.members().length%> <%= group.escape('member_name')%>!
-    </div>
+  <div class="group-count">
+    We're <%= group.members().length%> <%= group.escape('member_name')%>!
+  </div>
 </a>

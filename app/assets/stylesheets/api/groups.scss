@@ -114,16 +114,22 @@ div.users-index-view {
   text-align: center;
 }
 
-.groups-index {
-  display: block;
+ul.groups-index {
+  display: inline-block;
   clear: both;
   position: relative;
+  margin-left: auto;
+  margin-right: auto;
 
   li {
     position: relative;
-    float: left;
-    width: 33.33%;
+    display: inline-block;
+    width: 300px;
+    height: 180px;
+    margin: 9px;
   }
+
+
 }
 
 .group-item {
@@ -141,19 +147,24 @@ div.users-index-view {
   }
 
   .group-background-image {
-    margin: 15%;
     border: 0px;
   }
+
 
   .group-background-image img {
     border-radius: 10px;
     z-index: -1;
-    width: 100%;
+    width: 300px;
+    height: 180px;
   }
 
   .group-title {
     position: absolute;
-    font-size: 2vmin;
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: 'Fugaz One';
+    width: 80%;
+    text-shadow: 0px 5px 1px black;
     bottom: 50%;
     left: 50%;
     text-align: center;
@@ -161,11 +172,23 @@ div.users-index-view {
 
   }
 
+  .group-title.glowing {
+    text-shadow: -1px 1px 8px rgb(221, 242, 161), 1px -1px 8px rgb(165, 218, 145);
+  }
+
+  .group-title, .group-title.glowing {
+  	-webkit-transition: 500ms linear 0s;
+  	-moz-transition: 500ms linear 0s;
+  	-o-transition: 500ms linear 0s;
+  	transition: 500ms linear 0s;
+  }
+
   .group-count {
-    width: 150px;
+    width: 80%;
     position: absolute;
-    font-size: 2vmin;
-    bottom: 30%;
+    font-weight: bold;
+    font-size: 15px;
+    bottom: 20%;
     left: 50%;
     text-align: center;
     transform: translate(-50%);
@@ -177,6 +200,8 @@ div.users-index-view {
   width: 100%;
   margin-top: 10px;
   margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .spacer {

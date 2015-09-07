@@ -119,8 +119,8 @@ div.user-modal {
 
 .main-pane {
   display: inline-block;
-  border: 1px solid #ddd;
-  background-color: #ddd;
+  border: 1px solid rgb(217, 228, 235);
+  background-color: rgb(217, 228, 235);
   margin: 0px auto;
   margin-right: 20px;
   border-radius: 10px;
@@ -131,7 +131,7 @@ div.user-modal {
   margin-left: 20px;
   position: relative;
   top: 25%;
-  background-color: #ddd;
+  background-color: rgb(217, 228, 235);
   border-radius: 10px;
 }
 
@@ -408,7 +408,7 @@ a.navbar-brand {
 }
 
 #content {
-  background-color: rgb(217, 228, 235);
+  background-color: rgb(120, 151, 171);
   color: rgb(0, 55, 43);
   h1, h2, h4 {
     font-family: 'Fugaz One';

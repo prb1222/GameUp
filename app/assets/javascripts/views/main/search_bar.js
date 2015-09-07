@@ -12,7 +12,7 @@ GameUp.Views.SearchBar = Backbone.CompositeView.extend({
     var otherGroups = new GameUp.Collections.Groups();
     myGroups.fetch({data: {flag: "mine"}});
     otherGroups.fetch({data: {flag: "other", distance: 20}});
-    this.otherGroupsView = new GameUp.Views.GroupsIndex({collection: otherGroups, title: "Other Groups within 20 mi"});
+    this.otherGroupsView = new GameUp.Views.GroupsIndex({collection: otherGroups, title: "Other Groups within 20 miles"});
     this.myGroupsView = new GameUp.Views.GroupsIndex({collection: myGroups, title: "My Groups"});
     var selector = 'div.groups-indeces';
     this.addSubview(selector, this.myGroupsView);
