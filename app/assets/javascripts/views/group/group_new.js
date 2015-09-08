@@ -12,12 +12,15 @@ GameUp.Views.GroupNew = Backbone.View.extend({
    initialize: function () {
      this.counter = 0;
      $(document).on('keyup', this.handleKey.bind(this));
+     $("html, body").animate({ scrollTop: 0 }, "slow");
+     this.loading = true;
    },
 
    handleKey: function (event) {
-     event.preventDefault();
+    event.preventDefault();
     if (event.keyCode === 13) {
       $nextButton = $('#' + (this.counter + 1));
+      $nextButton.focus();
       $nextButton.trigger('click');
     }
   },
@@ -25,6 +28,10 @@ GameUp.Views.GroupNew = Backbone.View.extend({
   render: function () {
     var content = this.template();
     this.$el.html(content);
+    if (this.loading) {
+      $('.new-group-title').focus();
+      this.loading = false;
+    }
     return this;
   },
 
@@ -48,6 +55,7 @@ GameUp.Views.GroupNew = Backbone.View.extend({
           var $li = $('<li>'+ errorText.responseText +'</li>')
           this.$el.find('.errors').append($li);
         }
+        $("html, body").animate({ scrollTop: 0 }, "slow");
       }.bind(this)
     });
   },
@@ -73,8 +81,8 @@ GameUp.Views.GroupNew = Backbone.View.extend({
     if (this.disabled) {return;}
     event.preventDefault();
     this.disabled = true;
-    $(event.currentTarget).slideToggle(400, function() {
-      this.disabled = false
+    $(event.currentTarget).slideToggle(100, function() {
+      this.disabled = false;
     }.bind(this));
     this.counter++
     switch (this.counter) {
@@ -95,7 +103,7 @@ GameUp.Views.GroupNew = Backbone.View.extend({
         break;
       case 4:
         this.$el.find('.group-new-upload-image').slideToggle(400);
-        this.$el.find('.create-group').slideToggle(400);
+        this.$el.find('.submit-button').slideToggle(400);
         this.$el.find('.create-group').focus();
         $('html, body').animate({ scrollTop: $('.group-new-upload-image').offset().top }, 'slow');
         break;

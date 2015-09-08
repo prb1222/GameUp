@@ -411,12 +411,11 @@ a.navbar-brand {
 #content {
   background-color: rgb(120, 151, 171);
   color: rgb(0, 55, 43);
+  min-height: 1000px;
   h1, h2, h4 {
     font-family: 'Fugaz One';
     font-weight: bold;
   }
-
-
 }
 
 .content-padding  h1, h2, h3, h4, h5, h6 {

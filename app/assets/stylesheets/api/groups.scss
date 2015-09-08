@@ -195,7 +195,7 @@ ul.groups-index {
   transition: 300ms linear 0s;
 }
 
-.group-detail-view button {
+.group-detail-view > button.btn {
   display: block;
   width: 100%;
   margin-top: 10px;
