@@ -113,7 +113,7 @@
 }
 
 .btn.btn-default:hover, .btn.btn-primary:hover, .btn.btn-success:hover, .btn.btn-warning:hover, .btn.btn-danger:hover, .btn.btn-info:hover {
-  font-size: 18px;
+  transform: scale(1.05);
   transition: all .2s;
   -o-transition: all .2s;
   -moz-transition: all .2s;
@@ -126,7 +126,7 @@
   width: auto;
 }
 
-.btn.btn-default:hover, .btn.btn-default:focus {
+.btn.btn-default:hover, .btn.btn-default:focus, .btn.btn-default:active{
   background-color: rgb(47, 87, 117);
 }
 
