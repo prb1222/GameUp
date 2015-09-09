@@ -4,7 +4,7 @@ GameUp.Views.GroupJumbo = Backbone.View.extend({
   className: "group-jumbo",
 
   events: {
-    "click :not('.group-jumbo-link')":"upload"
+    "click .image-container":"upload"
   },
 
   prevent: function (event) {
@@ -30,7 +30,7 @@ GameUp.Views.GroupJumbo = Backbone.View.extend({
   },
 
   upload: function (event) {
-    if ($(event.currentTarget).attr('class') === "group-jumbo-link" || $(event.currentTarget).attr('class') === "jumbotron group-nav") {
+    if ($(event.currentTarget).attr('class') === "group-jumbo-link-text" || $(event.currentTarget).attr('class') === "jumbotron group-nav") {
       return;
     } else if (!this.model.owned) {
       return;

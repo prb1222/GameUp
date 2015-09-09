@@ -250,27 +250,33 @@ ul.groups-index {
   width: 100%;
   background: transparent;
   .group-jumbo-link {
-    width: 31%;
-    font-family: 'Fugaz One';
-    font-weight: bold;
     position: relative;
     display:inline-block;
+  }
+
+  .group-jumbo-link-text {
     font-size: 20px;
     color: white;
     text-shadow: 0px 5px 1px black;
     background: transparent;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+    font-family: 'Fugaz One';
+    font-weight: bold;
+    height: 30px;
   }
 
-  .group-jumbo-link:hover, .group-jumbo-link:focus {
-    text-shadow: -1px 1px 8px rgb(221, 242, 161), 1px -1px 8px rgb(165, 218, 145);
+  .group-jumbo-link-text:hover, .group-jumbo-link-text:focus {
+    font-size: 22px;
   }
 
-  .group-jumbo-link, .group-jumbo-link:hover, .group-jumbo-link:focus {
-  	color: #fff;
-  	-webkit-transition: 500ms linear 0s;
-  	-moz-transition: 500ms linear 0s;
-  	-o-transition: 500ms linear 0s;
-  	transition: 500ms linear 0s;
+  .group-jumbo-link-text, .group-jumbo-link-text:hover, .group-jumbo-link-text:focus {
+  	-webkit-transition: 300ms linear 0s;
+  	-moz-transition: 300ms linear 0s;
+  	-o-transition: 300ms linear 0s;
+  	transition: 300ms linear 0s;
   }
 }
 

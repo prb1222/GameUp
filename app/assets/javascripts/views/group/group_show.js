@@ -6,7 +6,7 @@ GameUp.Views.GroupShow = Backbone.CompositeView.extend({
   events: {
     "click button.new-event": "addEventForm",
     "click div.event-item": "showEvents",
-    "click .group-jumbo-link": "switchMainPane",
+    "click .group-jumbo-link-text": "switchMainPane",
     "click button.edit-group": "editGroupForm"
   },
 
