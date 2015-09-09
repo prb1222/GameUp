@@ -18,7 +18,7 @@ GameUp.Models.Image = Backbone.Model.extend({
 
   imageItem: function () {
     if (!this.get("image_url")) {return "";}
-    var properties_string = "/w_150,h_150/";
+    var properties_string = "/w_300,h_180/";
     properties_string += this.get('image_url').slice(61);
     return this.get('image_url').slice(0, 49) + properties_string;
   },

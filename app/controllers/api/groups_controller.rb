@@ -7,7 +7,7 @@ class Api::GroupsController < ApplicationController
       group.state = location.state_code
     else
       render json: "Unable to find location", status: 422
-      return;
+      return
     end
     group.owner_id = current_user.id
     if group.save

@@ -9,10 +9,12 @@
 </div>
 
 <a href="/#groups/<%=group.escape('id')%>">
-  <div class="group-title">
-    <%= group.escape('title')%>
-  </div>
-  <div class="group-count">
-    We're <%= group.members().length%> <%= group.escape('member_name')%>!
+  <div class="text-container">
+    <div class="group-title">
+      <%= group.escape('title') %>
+    </div>
+    <div class="group-count">
+      <%= group.groupItemString() %>
+    </div>
   </div>
 </a>

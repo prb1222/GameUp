@@ -101,4 +101,18 @@ GameUp.Models.Group = Backbone.Model.extend({
 
     return this._jumboPic;
   },
+
+  groupItemString: function () {
+    if (!this.members().length || !this.get('member_name')) {
+      return "Loading...";
+    }
+
+    var str = "We're " + this.members().length + " " + this.get('member_name') + "!";
+
+    if (str.length > 30) {
+      return str.slice(0, 27) + ". . .";
+    } else {
+      return str;
+    }
+  },
 })
