@@ -1,39 +1,67 @@
 <div class="jumbo-back-display"></div>
 <div class="jumbo-front-display">
   <div class="next-event container">
-    <div class="next-event-info col-md-8">
+    <div class="next-event-info col-md-8 col-xs-8">
       <div class="next-event-name col-md-12">
         Your next event
       </div>
-      <div class="calendar-image col-md-3">
+      <div class="calendar-image col-md-3 col-xs-3">
         <div class="top-calendar">
-          OCT
+          <% if (currentUser.next_event) {%>
+            <%= currentUser.next_event.date.format("MMM") %>
+          <% } else { %>
+            <%= "JAN" %>
+          <% } %>
         </div>
         <div class="bottom-calendar">
-          19
+          <% if (currentUser.next_event) {%>
+            <%= currentUser.next_event.date.format("DD") %>
+          <% } else { %>
+            <%= "1" %>
+          <% } %>
         </div>
       </div>
-      <div class="next-event-fields col-md-9">
+      <div class="next-event-fields col-md-9 col-xs-9">
         <div class="next-event-group">
-          Group Name will go here
+          <% if (currentUser.next_event) {%>
+            <%= currentUser.next_event.group %>
+          <% } else { %>
+            <%= "Loading group name . . . " %>
+          <% } %>
         </div>
         <div class="next-event-title">
-          Next event title will go here
+          <% if (currentUser.next_event) {%>
+            <%= currentUser.next_event.title %>
+          <% } else { %>
+            <%= "Loading event name . . . " %>
+          <% } %>
         </div>
         <div class="next-event-more">
-          <div class="next-event-time col-md-6">
-            Monday, Oct 28 at 3:04PM
+          <div class="next-event-time col-md-8 col-xs-8">
+            <% if (currentUser.next_event) {%>
+              <%= currentUser.next_event.date.format("dddd MMMM Do YYYY, [at] hh:mm a") %>
+            <% } else { %>
+              <%= "Loading event date . . . " %>
+            <% } %>
           </div>
-          <div class="next-event-comments col-md-4">
-            13 comments
+          <div class="next-event-comments col-md-4 col-xs-4">
+            <% if (currentUser.next_event) {%>
+              <%= currentUser.next_event.comments_length %> comments
+            <% } else { %>
+              <%= "Loading count . . . " %>
+            <% } %>
           </div>
         </div>
       </div>
     </div>
-    <div class="event-counters col-md-4">
+    <div class="event-counters col-md-4 col-xs-4">
       <div class="my-events-counter">
         <div class="my-events-count">
-          786
+          <% if (currentUser.next_event) {%>
+            <%= currentUser.num_my_events %>
+          <% } else { %>
+            <%= "0" %>
+          <% } %>
         </div>
         <div class="my-events-label">
           Events in my groups
@@ -41,7 +69,11 @@
       </div>
       <div class="nearby-events-counter">
         <div class="nearby-events-count">
-          786
+          <% if (currentUser.next_event) {%>
+            <%= currentUser.num_nearby_events %>
+          <% } else { %>
+            <%= "0" %>
+          <% } %>
         </div>
         <div class="nearby-events-label">
           Events in nearby groups
@@ -51,7 +83,7 @@
   </div>
 </div>
 <div class="search-bar container">
-  <div class="search-field col-md-8">
+  <div class="search-field col-md-8 col-xs-8">
     <form class="group-search-form" action="" method="post">
       <div class="form-group">
         <input type="text" id="group-distance" class="distance-input" name="distance" value="20">
@@ -59,7 +91,7 @@
       </div>
     </form>
   </div>
-  <div class="display-type-buttons col-md-4">
+  <div class="display-type-buttons col-md-4 col-xs-4">
     <button class="button btn btn-default" id="show-groups-index">GROUPS</button>
     <button class="button btn btn-default" id="show-events-index">EVENTS</button>
   </div>

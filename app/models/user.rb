@@ -56,4 +56,16 @@ class User < ActiveRecord::Base
   def groups
     Group.where(id: (member_groups + owned_groups).map(&:id))
   end
+
+  def next_event
+    attending_events.where("date > ?", Time.now).order(:date).first.jumbo_info
+  end
+
+  def num_my_events
+    attending_events.where("date > ?", Time.now).count
+  end
+
+  def num_nearby_events
+    Group.near(location, 20).map(&:events).flatten.count
+  end
 end

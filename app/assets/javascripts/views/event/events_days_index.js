@@ -23,6 +23,7 @@ GameUp.Views.EventsDaysIndex = Backbone.CompositeView.extend({
     this.collection.fetch({
       data: {flag: this.flag, groupId: this.groupId},
       success: function (collection) {
+        self.trigger('render');
         var uniqueDates = self.collection.getUniqueDates();
         uniqueDates.forEach(function(uniqueDate){
           var dateCollection = new GameUp.Collections.Events();

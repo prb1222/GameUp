@@ -4,6 +4,8 @@ GameUp.Views.IndexContainer = Backbone.CompositeView.extend({
   className: "index-container-view content-padding",
 
   initialize: function (options) {
+    this.searchBar = new GameUp.Views.SearchBar();
+    this.eventsIndexView = new GameUp.Views.UserEventsIndex();
     this.addJumbotron();
     if (options.start === "events") {
       this.addEventsIndeces();
@@ -32,14 +34,12 @@ GameUp.Views.IndexContainer = Backbone.CompositeView.extend({
   addGroupsIndeces: function () {
     var selector = 'div.index-container';
     this.removeSubviews(selector);
-    this.searchBar = this.searchBar || new GameUp.Views.SearchBar();
     this.addSubview(selector, this.searchBar);
   },
 
   addEventsIndeces: function () {
     var selector = 'div.index-container';
     this.removeSubviews(selector);
-    this.eventsIndexView = this.eventsIndexView || new GameUp.Views.UserEventsIndex();
     this.addSubview(selector, this.eventsIndexView);
   }
 });

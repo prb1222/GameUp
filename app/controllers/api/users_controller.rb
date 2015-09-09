@@ -14,7 +14,11 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    render :show
+    if params[:flag] == "index-jumbo"
+      render :index_jumbo
+    else
+      render :show
+    end
   end
 
   def update

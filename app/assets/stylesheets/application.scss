@@ -333,8 +333,8 @@ div.groups-index {
           font-weight: normal;
           color: rgb(82, 118, 145);
           text-align: left;
-          padding-bottom: 5px;
-          padding-top: 15px;
+          padding-bottom: 15px;
+          padding-top: 5px;
         }
 
         .calendar-image {
@@ -366,16 +366,16 @@ div.groups-index {
           }
           .next-event-group {
             color: rgb(123, 151, 173);
-            font-size: 15px;
+            font-size: 12px;
           }
 
           .next-event-title {
             color: rgb(82, 118, 145);
-            font-size: 27px;
+            font-size: 30px;
           }
 
           .next-event-more {
-            font-size: 13px;
+            font-size: 12px;
             color: rgb(123, 151, 173);
             .next-event-time {
               padding: 0px;
@@ -391,6 +391,18 @@ div.groups-index {
   }
 
 
+}
+
+.next-event-info:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
+
+.next-event-info, .next-event-info:hover {
+  transition: all .2s;
+  -o-transition: all .2s;
+  -moz-transition: all .2s;
+  -webkit-transition: all .2s;
 }
 
 

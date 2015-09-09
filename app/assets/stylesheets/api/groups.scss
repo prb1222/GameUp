@@ -269,6 +269,10 @@ ul.groups-index {
     display:inline-block;
   }
 
+  .group-jumbo-link:hover {
+    cursor: default;
+  }
+
   .group-jumbo-link-text {
     font-size: 20px;
     color: white;
@@ -283,8 +287,9 @@ ul.groups-index {
     height: 30px;
   }
 
-  .group-jumbo-link-text:hover, .group-jumbo-link-text:focus {
+  .group-jumbo-link-text:hover {
     font-size: 22px;
+    cursor: pointer;
   }
 
   .group-jumbo-link-text, .group-jumbo-link-text:hover, .group-jumbo-link-text:focus {

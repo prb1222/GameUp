@@ -22,6 +22,7 @@ GameUp.Views.SearchBar = Backbone.CompositeView.extend({
   render: function () {
     var content = this.template({distance: this.distance});
     this.$el.html(content);
+    this.trigger("render");
     return this;
   },
 

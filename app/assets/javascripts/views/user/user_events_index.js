@@ -5,6 +5,14 @@ GameUp.Views.UserEventsIndex = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.selector = 'div.events-index-content';
+    this.upcomingEvents = new GameUp.Views.EventsDaysIndex({
+      flag: "myUpcomingEvents",
+      header: "My Upcoming Events"});
+    this.pastEvents = new GameUp.Views.EventsDaysIndex({
+      flag: "upcomingEvents",
+      header: "Upcoming Events"});
+    this.listenTo(this.upcomingEvents, "render", this.tripEvent);
+    this.listenTo(this.pastEvents, "render", this.tripEvent);
     this.showMyUpcoming();
   },
 
@@ -16,26 +24,21 @@ GameUp.Views.UserEventsIndex = Backbone.CompositeView.extend({
   render: function () {
     this.$el.html(this.template());
     this.attachSubviews();
+    this.trigger("render");
     return this;
   },
 
+  tripEvent: function () {
+    this.trigger('render');
+  },
+
   showMyUpcoming: function () {
-    if (!this.upcomingEvents) {
-      this.upcomingEvents = new GameUp.Views.EventsDaysIndex({
-        flag: "myUpcomingEvents",
-        header: "My Upcoming Events"});
-    }
     this.removeSubviews(this.selector);
     this.addSubview(this.selector, this.upcomingEvents);
     this.render();
   },
 
   showUpcoming: function () {
-    if (!this.pastEvents) {
-      this.pastEvents = new GameUp.Views.EventsDaysIndex({
-        flag: "upcomingEvents",
-        header: "Upcoming Events"});
-    }
     this.removeSubviews(this.selector);
     this.addSubview(this.selector, this.pastEvents);
     this.render();

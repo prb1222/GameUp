@@ -21,4 +21,15 @@ class Event < ActiveRecord::Base
   def location
     "#{address}, #{city}, #{state}"
   end
+
+  def jumbo_info
+    result = {}
+    result[:group] = group.title
+    result[:group_id] = group.id
+    result[:event_id] = self.id
+    result[:comments_length] = comments.length
+    result[:date] = date
+    result[:title] = title
+    result
+  end
 end
