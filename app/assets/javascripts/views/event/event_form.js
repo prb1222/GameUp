@@ -16,6 +16,9 @@ GameUp.Views.EventForm = Backbone.View.extend({
    if (event.keyCode === 27) {
      event.preventDefault();
      this.remove();
+   } else if (event.keyCode === 13 ) {
+     event.preventDefault();
+     $('form.event-form-fields').trigger('submit');
    }
  },
 

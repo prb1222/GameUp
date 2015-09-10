@@ -3,7 +3,7 @@ GameUp.Views.ImageItem = Backbone.View.extend({
 
   tagName: "li",
 
-  className: "image-item",
+  className: "image-item container col-md-4 col-xs-4",
 
   events: {
     "click":"handleClick",

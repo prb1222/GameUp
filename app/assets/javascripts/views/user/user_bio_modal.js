@@ -7,10 +7,23 @@ GameUp.Views.UserBioModal = Backbone.View.extend({
     "submit form.user-bio-form":"submitForm",
   },
 
+  initialize: function () {
+    $(document).on('keydown', this.handleKey.bind(this));
+  },
+
   render: function () {
     var content = this.template({user: this.model});
     this.$el.html(content);
     return this;
+  },
+
+  handleKey: function (event) {
+    if (event.keyCode === 27) {
+      this.removeSelf(event);
+    } else if (event.keyCode === 13 ) {
+      event.preventDefault();
+      $('form.user-bio-form').trigger('submit');
+    }
   },
 
   removeSelf: function (event) {

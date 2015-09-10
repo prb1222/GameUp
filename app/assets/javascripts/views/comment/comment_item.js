@@ -36,7 +36,11 @@ GameUp.Views.CommentItem = Backbone.View.extend({
     $form.find('textarea').val(this.model.get('body'));
     $background = $('<div>').addClass('c-background');
     $div.append($form).append($background);
-    $form.find('textarea').focus();
+    var $textarea = $form.find('textarea');
+    var text = $textarea.val();
+    $textarea.val("");
+    $textarea.focus();
+    $textarea.val(text);
   },
 
   submitComment: function (event) {

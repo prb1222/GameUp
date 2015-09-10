@@ -61,15 +61,13 @@ div.group-nav {
 img.image-modal {
   width: 100%;
   height: 100%;
-  max-height: 500px;
-  max-width: 500px;
+  max-height: 1000px;
+  max-width: 1000px;
 }
 
 div.image-modal {
   z-index: 2;
   position: absolute;
-  top: 25%;
-  left: 25%;
   background-color: white;
   padding: 1pc;
   border: 1px solid;
@@ -88,11 +86,17 @@ div.user-modal {
   text-align: center;
 
   .close {
-    color: #ccc;
+    color: #333;
+    opacity: 0.6;
   }
 
   label {
     display: block;
+  }
+
+  button.btn.btn-default {
+    width: 70px;
+    height: 40px;
   }
 }
 
@@ -594,4 +598,10 @@ a.navbar-brand {
 
 .content-wrapper {
   min-width: 910px;
+}
+
+.image-button-row {
+  button.profile-pic {
+    margin-right: 20px;
+  }
 }

@@ -83,7 +83,7 @@ div.users-index-view {
   }
 }
 
-.images-index {
+div.images-index {
   padding: 20px;
   text-align: center;
 
@@ -99,16 +99,34 @@ div.users-index-view {
     margin-bottom: 10px;
   }
 
-  .image-item {
+  li.image-item {
+    width: calc(100% / 3);
     * {
       padding-top: 10px;
       padding-bottom: 10px;
     }
     padding: 10px;
     margin: 0px;
-    float: left;
-    width: 33.33%;
+    img {
+      width: 100%;
+    }
   }
+
+  li.image-item:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+
+  li.image-item, li.image-item:hover {
+    -webkit-transition: 300ms linear 0s;
+    -moz-transition: 300ms linear 0s;
+    -o-transition: 300ms linear 0s;
+    transition: 300ms linear 0s;
+  }
+}
+
+div.images-index > ul.images-index {
+  width: 100%;
 }
 
 .image-modal {

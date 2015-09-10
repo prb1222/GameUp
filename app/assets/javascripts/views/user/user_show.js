@@ -37,6 +37,11 @@ GameUp.Views.UserShow = Backbone.CompositeView.extend({
 
     this.modal = new GameUp.Views.UserBioModal({model: this.model});
     $('body').append(this.modal.render().$el);
+    var $textarea = this.modal.$el.find('textarea');
+    var text = $textarea.val();
+    $textarea.val("");
+    $textarea.focus();
+    $textarea.val(text);
   },
 
 

@@ -25,7 +25,7 @@ GameUp.Models.Image = Backbone.Model.extend({
 
   displayDate: function () {
     var date = this.get('created_at');
-    return moment(date).format("MMMM DD YYYY HH:mm");
+    return moment(date).format("MMMM Do[,] YYYY [at] hh:mm a");
   },
 
   userProfile: function () {
