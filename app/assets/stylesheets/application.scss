@@ -201,6 +201,7 @@ ul.images-index {
   left: 0;
   right: 0;
   z-index: 1;
+  cursor: default;
 }
 
 .m-content {
@@ -536,7 +537,20 @@ a.navbar-brand {
 }
 
 .comment-item {
-  padding-bottom: 25px;
+  padding: 15px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  background-color: #f7f7f7;
+
+  .comment-content-main {
+    padding-left: 20px;
+    .comment-body {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+
+  }
 }
 
 .navbar.navbar-default > .container-fluid {

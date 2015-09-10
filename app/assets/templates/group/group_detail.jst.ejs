@@ -1,5 +1,5 @@
 <%if (group.profilePic().get('id')) { %>
-  <img src="<%= group.profilePic().groupThumbnail($('.sidebar').width()) %>" />
+  <img src="<%= group.profilePic().get("image_url") %>" />
 <% } %>
 <% if (group.owned) { %>
   <button type="button" class="btn btn-default upload-image">Upload Image</button>

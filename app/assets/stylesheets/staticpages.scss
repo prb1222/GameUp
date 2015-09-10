@@ -63,9 +63,10 @@
 
 .new-user-form, .old-user-form {
   width: 250px;
-  .new-user-submit, .old-user-submit, .guest-user-submit{
+  input.new-user-submit.btn.btn-default, input.old-user-submit.btn.btn-default, input.guest-user-submit.btn.btn-default{
     display: block;
-    width: 210px;
+    width: 170px;
+    height: 46px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;

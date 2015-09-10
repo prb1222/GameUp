@@ -24,7 +24,7 @@ GameUp.Views.GroupJumbo = Backbone.View.extend({
     }
     var width = $jumboNav.width();
     if (this.model.jumboPic().get('image_url')) {
-      $jumboNav.css("background-image", 'url(' + this.model.jumboPic().groupJumbo(width) + ')');
+      $jumboNav.css("background-image", 'url(' + this.model.jumboPic().get("image_url") + ')');
     }
     return this;
   },

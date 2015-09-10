@@ -3,10 +3,12 @@
 <script type="text/javascript">
   $(document).ready(function(){
     var username = "<%= current_user.username %>";
-    var user_id = "<%= current_user.id %>"
+    var user_id = "<%= current_user.id %>";
+    var user_location = "<%= current_user.location %>"
     var currentUser = {
       userId: user_id,
-      username: username
+      username: username,
+      location: user_location
     }
     GameUp.initialize({currentUser: currentUser});
   });

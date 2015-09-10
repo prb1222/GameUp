@@ -33,6 +33,7 @@ GameUp.Views.SearchBar = Backbone.CompositeView.extend({
     var distance = $input.val();
     if (!parseInt(distance)) {return;}
     $input.val("");
+    $(event.currentTarget).find('#distance-value').text(distance);
     var selector = 'div.groups-indeces';
     this.removeSubview(selector, this.otherGroupsView);
     var searchGroups = new GameUp.Collections.Groups();

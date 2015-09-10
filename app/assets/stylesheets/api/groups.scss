@@ -53,9 +53,10 @@ div.users-index-view {
             padding: 10px;
             padding-top: 15px;
             padding-bottom: 15px;
-            border-bottom: 2px solid rgb(14, 82, 67);
-            border-left:  2px solid rgb(14, 82, 67);
-            border-right:  2px solid rgb(14, 82, 67);
+            margin-bottom: 15px;
+            font-size: 20px;
+            background-color: #f7f7f7;
+            border-radius: 10px;
             img {
               display: inline-block;
               width: 100px;
@@ -64,8 +65,13 @@ div.users-index-view {
 
             div {
               display: inline-block;
+              padding-left: 15px;
             }
 
+        }
+
+        .user-item:hover {
+          color: rgb(67, 136, 121);
         }
       }
   }
@@ -73,7 +79,6 @@ div.users-index-view {
   h1 {
     text-align: center;
     margin: 0px;
-    border-bottom: 2px solid rgb(14, 82, 67);
     padding-bottom: 10px;
   }
 }
@@ -231,6 +236,8 @@ ul.groups-index {
   height: 225px;
   margin-bottom: 20px;
   background-image: url(http://res.cloudinary.com/dj7rafx1m/image/upload/c_scale,h_225,w_1920/v1440006093/gqszmwaqb97woi5r7zvj.png);
+  background-size: cover;
+  background-position: center;
   h2 {
     margin-top: 0px;
     color: white;

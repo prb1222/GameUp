@@ -1,6 +1,6 @@
 <div class="event-content">
   <h2><%= event.escape('title')%></h2>
-  <div class="event-show-date"><%= event.escape('date')%></div>
+  <div class="event-show-date"><%= event.fullDate() %></div>
   <div class="event-info-group">
     <p>Description: <%= event.escape('description')%></p>
     <p>Location: <%= event.escape('location') %></p>

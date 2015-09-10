@@ -90,6 +90,14 @@ GameUp.Models.Event = Backbone.Model.extend({
     } else {
       return "";
     }
+  },
+
+  fullDate: function () {
+    if (this.get('date')) {
+      return moment(this.get('date'), 'MMMM DD YYYY HH:mm A').format("MMMM Do[,] YYYY [at] hh[:]mm a");
+    } else {
+      return "";
+    }
   }
 
 });
