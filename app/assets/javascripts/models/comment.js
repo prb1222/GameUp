@@ -13,6 +13,6 @@ GameUp.Models.Comment = Backbone.Model.extend({
 
   displayDate: function () {
     var date = this.get('created_at');
-    return moment(date).format("MMMM DD[,] YYYY hh:mm A");
+    return moment(date).format("MMMM Do[,] YYYY hh:mm A");
   }
 });

@@ -213,21 +213,35 @@ ul.images-index {
   padding: 1pc;
   border: 1px solid;
   border-radius: 5px;
+  h4 {
+    padding-bottom: 0px;
+  }
   button.close {
-    color: #bbb;
+    color: #333;
+    opacity: 0.6;
   }
 }
 
 .event-form-fields {
   padding-left: 50px;
   padding-right: 50px;
-  width: 400px;
+  width: 300px;
+  text-align: center;
+  input.btn.btn-default {
+    height: 50px;
+    width: 200px;
+  }
 }
 
 .group-form-fields, .edit-group-form-fields {
-  padding-left: 50px;
-  padding-right: 50px;
-  width: 400px;
+  padding-left: 25px;
+  padding-right: 25px;
+  width: 300px;
+  text-align: center;
+  input.btn.btn-default {
+    height: 50px;
+    width: 200px;
+  }
 }
 
 ul.events-index li {

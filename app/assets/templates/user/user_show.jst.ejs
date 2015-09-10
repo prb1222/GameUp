@@ -1,15 +1,15 @@
-<div class="user-show-content">
+<div class="user-show-content col-md-9 col-xs-9">
   <div class="user-show-username">
     <%= user.escape('username') %>
   </div>
-  <div class="user-show-info">
-    <div class="user-info-location">
+  <div class="user-show-info container">
+    <div class="user-info-location col-md-6 col-xs-6">
       <p class="user-location">Location:</p>
       <div class="user-show-info-display">
         <%= user.escape('location') %>
       </div>
     </div>
-    <div class="user-info-joined">
+    <div class="user-info-joined col-md-6 col-xs-6">
       <p class="user-joined">Joined:</p>
       <div class="user-show-info-display">
         <%= user.createdAt() %>
@@ -29,14 +29,14 @@
       <% } %>
     </div>
   </div>
-  <div class="groups-index"></div>
 </div>
-<div class="user-show-sidebar">
+<div class="user-show-sidebar col-md-3 col-xs-3">
   <div class="user-image clear-fix">
     <% if (user.image().get('image_url')) {%>
-      <img src="<%= user.image().userProfile() %>" />
+      <img src="<%= user.image().get('image_url') %>" />
     <% } else { %>
       <img src="assets/loading.gif" />
     <% } %>
   </div>
 </div>
+<div class="groups-index col-md-12 col-xs-12"></div>

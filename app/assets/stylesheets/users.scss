@@ -1,11 +1,14 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-show {
+  padding-top: 20px;
+}
+
 .user-show-content {
   display: inline-block;
-  padding: 20px;
   min-width: 500px;
-  width: 75%;
   * {
     display: block;
   }
@@ -13,10 +16,7 @@
 
 
 .user-show-sidebar {
-  width: 25%;
   vertical-align: top;
-  float: right;
-  padding: 20px;
 }
 
 // .user-image {
@@ -26,15 +26,19 @@
 //   width: 100%;
 // }
 
-.user-show-info {
-  border-bottom: 3px solid rgb(14, 82, 67);
-  padding-top: 5px;
+.user-show-content > .user-show-info {
+  border-bottom: 1px solid rgb(14, 82, 67);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100%;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
-.user-show-info > div {
-  display:inline-block;
-  width: 49%;
+.user-show-content > .user-show-info > div {
   font-size: 20px;
+  padding-left: 0px;
+  padding-right: 0px;
   margin: 0px;
   div {
     font-size: 25px;
@@ -43,13 +47,19 @@
 
 .user-show-username {
   font-size: 40px;
-  border-bottom: 3px solid rgb(14, 82, 67);
+  border-bottom: 1px solid rgb(14, 82, 67);
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .user-show-bio {
   font-size: 15px;
-  border-bottom: 3px solid rgb(14, 82, 67);
+  p {
+    padding-top: 20px;
+  }
   div {
     font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 }

@@ -1,7 +1,7 @@
 GameUp.Views.UserShow = Backbone.CompositeView.extend({
   template: JST['user/user_show'],
 
-  className: "user-show content-padding",
+  className: "user-show content-padding container",
 
   events: {
     "click div.user-show-bio":"editBio",
