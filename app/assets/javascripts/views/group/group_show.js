@@ -60,7 +60,8 @@ GameUp.Views.GroupShow = Backbone.CompositeView.extend({
       var $div = $(event.currentTarget);
       var eventId = $div.data('event-id');
       Backbone.history.navigate("#groups/" + this.model.id + "/events/" + eventId);
-      $("html, body").animate({ scrollTop: 0 }, "slow");
+      var $target = $('.main-pane');
+      $("html, body").animate({ scrollTop: $target.offset().top }, "slow");
     }
     var selector = 'div.main-pane';
     this.subviews(selector).forEach(function(subview){

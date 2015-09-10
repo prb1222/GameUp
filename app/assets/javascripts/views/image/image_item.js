@@ -25,6 +25,7 @@ GameUp.Views.ImageItem = Backbone.View.extend({
     var $target = $(event.CurrentTarget)
     this.modal = new GameUp.Views.ImageModal({model: this.model, groupModel: this.ownerModel});
     $('body').append(this.modal.render().$el);
+    $("html, body").animate({ scrollTop: 200 }, "slow");
   },
 
   closeModal: function (event) {
