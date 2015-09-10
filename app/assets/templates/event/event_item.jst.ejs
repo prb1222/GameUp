@@ -1,9 +1,15 @@
 <a href="/#groups/<%= event.escape('group_id') %>/events/<%= event.escape('id') %>">
-  <div class="event-item clearfix" data-event-id="<%= event.escape('id')%>">
-    <div class="event-time">
+  <div class="event-item container" data-event-id="<%= event.escape('id')%>">
+    <div class="event-time col-md-3 col-xs-3">
       <%= event.formTime() %>
+      <div class="organizer-pic">
+        <img src="<%= event.organizerPic %>"/>
+      </div>
+      <div class="organizer-name">
+        <%= event.organizername %>
+      </div>
     </div>
-    <div class="event-information">
+    <div class="event-information col-md-9 col-xs-9">
       <div class="event-group-title">
         <%= event.groupName %>
       </div>

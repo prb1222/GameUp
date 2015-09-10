@@ -54,7 +54,7 @@
   text-align: left;
 }
 
-.event-item {
+li > a > .event-item {
   background: #f7f7f7;
   position: relative;
   padding-top: 12px;
@@ -62,6 +62,7 @@
   border: 1px solid #ccc;
   border-radius: 1%;
   text-align: left;
+  width: 100%;
 }
 
 ul.events-day-index {
@@ -70,32 +71,37 @@ ul.events-day-index {
 
 .event-time {
   margin: 0px;
-  display: inline-block;
-  float: left;
   position: relative;
-  left: 10px;
   font-size: 20px;
+  .organizer-pic {
+    width: 100%;
+    height: 100%;
+
+    img {
+      background-size: contain;
+      height: 100px;
+      width: 100px;
+    }
+  }
 }
 
 .event-information {
-  display: inline-block;
   position: relative;
-  float: left;
-  left: 80px;
+  padding-top: 25px;
 }
 
 .event-group-title {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .event-title {
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   font-size: 30px;
 }
 
 .event-attendees {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .event-content {
