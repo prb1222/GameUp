@@ -47,6 +47,7 @@ class Api::EventsController < ApplicationController
 
   def update
     event = Event.find(params[:id])
+    event.date = parse_datetime(params[:event][:date], params[:event][:time])
     if event.update(event_params)
       render json: event
     else

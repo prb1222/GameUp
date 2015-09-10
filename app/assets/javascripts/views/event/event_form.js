@@ -38,14 +38,17 @@ GameUp.Views.EventForm = Backbone.View.extend({
     this.model.save(formData, {
       success: function (model) {
         this.collection.add(model);
+        this.model.organizer = true;
         this.remove();
         Backbone.history.navigate('groups/' + model.get('group_id') + "/events/" + model.get('id'), {trigger: true});
-        $("html, body").animate({ scrollTop: 0 }, "slow");
+        var $target = $('.main-pane');
+        $("html, body").animate({ scrollTop: $target.offset().top }, "slow");
       }.bind(this),
 
       error: function (error, errorText) {
         errorText.responseJSON.forEach(function(error) {
           this.$el.find('.errors').empty();
+          $("html, body").animate({ scrollTop: 0 }, "slow");
           var $li = $('<li>'+ error +'</li>')
           this.$el.find('.errors').append($li);
         }.bind(this));

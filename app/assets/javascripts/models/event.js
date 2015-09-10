@@ -93,9 +93,17 @@ GameUp.Models.Event = Backbone.Model.extend({
     }
   },
 
-  formTime: function() {
+  itemTime: function() {
     if (this.get('date')) {
       return moment(this.get('date'), 'MMMM DD YYYY HH:mm A').format("hh[:]mm a");
+    } else {
+      return "";
+    }
+  },
+
+  formTime: function() {
+    if (this.get('date')) {
+      return moment(this.get('date'), 'MMMM DD YYYY HH:mm A').format("HH[:]mm");
     } else {
       return "";
     }

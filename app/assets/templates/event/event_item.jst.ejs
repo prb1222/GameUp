@@ -1,7 +1,7 @@
 <a href="/#groups/<%= event.escape('group_id') %>/events/<%= event.escape('id') %>">
   <div class="event-item container" data-event-id="<%= event.escape('id')%>">
     <div class="event-time col-md-3 col-xs-3">
-      <%= event.formTime() %>
+      <%= event.itemTime() %>
       <div class="organizer-pic">
         <img src="<%= event.organizerPic %>"/>
       </div>
