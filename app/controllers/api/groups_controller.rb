@@ -40,7 +40,7 @@ class Api::GroupsController < ApplicationController
     if location
       group.city = location.city
       group.state = location.state_code
-    else
+    elsif !location && !group.location
       render json: "Unable to find location", status: 422
       return;
     end

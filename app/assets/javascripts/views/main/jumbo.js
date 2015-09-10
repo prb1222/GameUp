@@ -27,5 +27,7 @@ GameUp.Views.Jumbo = Backbone.View.extend({
     if (!this.currentUser.next_event) {return;}
     var next_event = this.currentUser.next_event;
     Backbone.history.navigate("#groups/" + next_event.group_id + "/events/" + next_event.event_id, {trigger: true});
+    var $target = $('.main-pane');
+    $("html, body").animate({ scrollTop: $target.offset().top }, "slow");
   }
 });

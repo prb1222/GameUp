@@ -3,6 +3,8 @@ GameUp.Views.EventItem = Backbone.View.extend({
 
   tagName: 'li',
 
+  // className: "container",
+
   initialize: function () {
     this.listenTo(this.model, "sync change:title", this.render);
     this.model.fetch();

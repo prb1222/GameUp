@@ -23,13 +23,13 @@ GameUp.Collections.Events = Backbone.Collection.extend({
 
   filterDates: function () {
     return this.pluck("date").map(function(date){
-      return moment(date, "MMMM DD YYYY HH:mm").format("MMMM DD YYYY");
+      return moment(date, "MMMM DD YYYY HH:mm").format("MMMM Do[,] YYYY");
     });
   },
 
   filterByDate: function (date) {
     return this.filter(function(event){
-      return moment(event.get('date'), "MMMM DD YYYY HH:mm").format("MMMM DD YYYY") === date;
+      return moment(event.get('date'), "MMMM DD YYYY HH:mm").format("MMMM Do[,] YYYY") === date;
     })
   }
 

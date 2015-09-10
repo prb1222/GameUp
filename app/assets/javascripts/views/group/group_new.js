@@ -43,6 +43,7 @@ GameUp.Views.GroupNew = Backbone.View.extend({
       success: function (model) {
         this.remove();
         Backbone.history.navigate("#/groups/" + this.model.get('id'), {trigger: true});
+        $("html, body").animate({ scrollTop: 0 }, "slow");
       }.bind(this),
 
       error: function (error, errorText) {
@@ -55,7 +56,6 @@ GameUp.Views.GroupNew = Backbone.View.extend({
           var $li = $('<li>'+ errorText.responseText +'</li>')
           this.$el.find('.errors').append($li);
         }
-        $("html, body").animate({ scrollTop: 0 }, "slow");
       }.bind(this)
     });
   },

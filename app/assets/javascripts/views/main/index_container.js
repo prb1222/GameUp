@@ -16,7 +16,8 @@ GameUp.Views.IndexContainer = Backbone.CompositeView.extend({
 
   events: {
     "click button#show-groups-index": "addGroupsIndeces",
-    "click button#show-events-index": "addEventsIndeces"
+    "click button#show-events-index": "addEventsIndeces",
+    "submit .group-search-form":"submitSearch"
   },
 
   render: function () {
@@ -41,5 +42,9 @@ GameUp.Views.IndexContainer = Backbone.CompositeView.extend({
     var selector = 'div.index-container';
     this.removeSubviews(selector);
     this.addSubview(selector, this.eventsIndexView);
+  },
+
+  submitSearch: function (event) {
+    this.searchBar.submitSearch(event);
   }
 });

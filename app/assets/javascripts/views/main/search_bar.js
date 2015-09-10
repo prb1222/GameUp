@@ -28,7 +28,7 @@ GameUp.Views.SearchBar = Backbone.CompositeView.extend({
 
   submitSearch: function (event) {
     event.preventDefault();
-    var $input = this.$el.find('.distance-input');
+    var $input = $(event.currentTarget).find('.distance-input');
     if (!$input.val()) {return;}
     var distance = $input.val();
     if (!parseInt(distance)) {return;}

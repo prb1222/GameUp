@@ -40,6 +40,7 @@ GameUp.Views.EventForm = Backbone.View.extend({
         this.collection.add(model);
         this.remove();
         Backbone.history.navigate('groups/' + model.get('group_id') + "/events/" + model.get('id'), {trigger: true});
+        $("html, body").animate({ scrollTop: 0 }, "slow");
       }.bind(this),
 
       error: function (error, errorText) {

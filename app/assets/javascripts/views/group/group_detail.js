@@ -61,7 +61,8 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
   deleteGroup: function () {
     this.model.destroy({
       success: function () {
-        Backbone.history.navigate("/#groups", {trigger: true})
+        Backbone.history.navigate("/#groups", {trigger: true});
+        $("html, body").animate({ scrollTop: 0 }, "slow");
       }.bind(this)
     })
   },

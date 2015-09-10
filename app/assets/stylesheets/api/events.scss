@@ -16,19 +16,33 @@
   h2 {
     text-align: center;
     padding-bottom: 10px;
+    border-bottom: 3px solid;
   }
   padding: 0px;
   margin-left: auto;
   margin-right: auto;
-  width: 90%;
+  width: 100%;
   padding-bottom: 20px;
 }
 
 .event-day-index {
   font-size: 20px;
   position: relative;
+  color: rgb(0, 55, 43);
+  width: 100%;
   li {
     list-style-type: none;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  a {
+    color: rgb(0, 55, 43);
+  }
+
+  a:hover {
+    color: rgb(67, 136, 121);
   }
 
   margin-bottom: 20px;
@@ -132,4 +146,9 @@ ul.events-day-index {
 
 .event-info-group {
   padding-bottom: 20px;
+}
+
+.user-events-index > .buttons-row > button.btn.btn-default {
+  width: 200px;
+  margin-right: 20px;
 }

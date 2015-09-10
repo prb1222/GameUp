@@ -60,7 +60,8 @@ GameUp.Views.EventShow = Backbone.CompositeView.extend({
       wait: true,
       success: function () {
         this.remove();
-        Backbone.history.navigate("#groups/" + this.model.group().id, {trigger: true})
+        Backbone.history.navigate("#groups/" + this.model.group().id, {trigger: true});
+        $("html, body").animate({ scrollTop: 0 }, "slow");
       }.bind(this)
     })
   },
