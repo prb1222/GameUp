@@ -1,8 +1,14 @@
 <div class="m-background"></div>
 
 <div class="confirmation-modal">
-    <div class="confirmation-content">
-      <button type="button" class="cancel-button btn btn-default">CANCEL</button>
-      <button type="button" class="delete-button btn btn-default">DELETE</button>
+    <div class="confirmation-content container">
+      <h1 class="confirmation-header">WARNING</h1>
+      <p class="confirmation-message col-md-12 col-xs-12">Performing this action will delete this <%= noun %>.<br>Are you sure?</p>
+      <div class="button-container col-md-6 col-xs-6">
+        <button type="button" class="cancel-button btn btn-default">CANCEL</button>
+      </div>
+      <div class="button-container col-md-6 col-xs-6">
+        <button type="button" class="delete-button btn btn-danger">DELETE</button>
+      </div>
     </div>
 </div>

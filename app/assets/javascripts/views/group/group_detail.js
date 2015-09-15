@@ -5,7 +5,7 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
 
   events: {
     "click button.toggle-membership": "toggleMembership",
-    "click .delete-group": "deleteGroup",
+    "click .delete-group": "promptForDeletion",
     "click .upload-image": "upload"
   },
 
@@ -30,6 +30,10 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
 
   toggleMembership: function (event) {
     if (this.disabled) {return;}
+    if (this.model.owned) {
+      this.promptForDeletion();
+      return;
+    }
     this.disabled = true;
     event.preventDefault();
     if (this.model.membership().has("id")) {
@@ -39,9 +43,6 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
           this.disabled = false;
           this.model.membership().clear();
           this.$('button.toggle-membership').text('Join Group');
-          if (this.model.owned) {
-            this.deleteGroup();
-          }
         }.bind(this)
       });
     } else {
@@ -58,7 +59,25 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
     }
   },
 
+  promptForDeletion: function () {
+    if (this.confirmationModal) {return;}
+    this.confirmationModal = new GameUp.Views.ConfirmationModal({
+      noun: "group",
+      success: this.deleteGroup.bind(this),
+      cancel: this.removeModal.bind(this)
+    })
+    $('body').append(this.confirmationModal.render().$el);
+    $("html, body").animate({ scrollTop: 150 }, "slow");
+  },
+
+  removeModal: function () {
+    this.confirmationModal.remove();
+    this.confirmationModal = null;
+  },
+
   deleteGroup: function () {
+    this.confirmationModal.remove();
+    this.confirmationModal = null;
     this.model.destroy({
       success: function () {
         Backbone.history.navigate("/#groups", {trigger: true});
