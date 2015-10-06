@@ -5,29 +5,12 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     begin
-      @user.location = request.safe_location.data['city']
-    rescue SocketError => e
-      @user.location = "Got here! #{e.to_s}"
-      flash.now[:errors] = [e.to_s]
-    rescue TimeoutError => e
-      @user.location = "Got here! #{e.to_s}"
-      flash.now[:errors] = [e.to_s]
-    rescue Geocoder::OverQueryLimitError => e
-      @user.location = "Got here! #{e.to_s}"
-      flash.now[:errors] = [e.to_s]
-    rescue Geocoder::RequestDenied => e
-      @user.location = "Got here! #{e.to_s}"
-      flash.now[:errors] = [e.to_s]
-    rescue Geocoder::InvalidRequest => e
-      @user.location = "Got here! #{e.to_s}"
-      flash.now[:errors] = [e.to_s]
-    rescue Geocoder::InvalidApiKey => e
-      @user.location = "Got here! #{e.to_s}"
-      flash.now[:errors] = [e.to_s]
-    rescue Geocoder::ServiceUnavailable => e
+      @user.location = request.location.data['city']
+    rescue => e
       @user.location = "Got here! #{e.to_s}"
       flash.now[:errors] = [e.to_s]
     end
+    @user.location ||= "San Francisco, CA"
     render :new
   end
 
