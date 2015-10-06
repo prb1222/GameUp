@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     begin
-      @user.location = request.location.data['city']
+      @user.location = request.safe_location.data['city']
     rescue SocketError => e
       @user.location = "Got here! #{e.to_s}"
       flash.now[:errors] = [e.to_s]
