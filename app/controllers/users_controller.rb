@@ -6,11 +6,10 @@ class UsersController < ApplicationController
     @user = User.new
     begin
       @user.location = request.location.data['city']
-    rescue => e
-      @user.location = "Got here! #{e.to_s}"
-      flash.now[:errors] = [e.to_s]
+    rescue
+      @user.location = "Got here!"
     end
-    @user.location ||= "San Francisco, CA"
+    # @user.location ||= "San Francisco, CA"
     render :new
   end
 
