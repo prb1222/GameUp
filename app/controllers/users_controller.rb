@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       @user.location = "San Francisco, CA"
     end
     @user.location = "San Francisco, CA" if @user.location.blank?
-    render json: request.location
+    render :new
   end
 
   def create
