@@ -5,9 +5,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     begin
-      request_data = request.location
-      p request_data
-      @user.location = "#{request_data.city}, #{request_data.state}"
+      @user.location = user_location_string
     rescue
       @user.location = "San Francisco, CA"
     end
@@ -36,5 +34,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :password, :bio)
+  end
+
+  def user_location_string
+    location_object = request.location
+    [location_object.city, location_object.state_code].compact.join(", ")
   end
 end
