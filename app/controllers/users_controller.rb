@@ -8,7 +8,8 @@ class UsersController < ApplicationController
       @user.location = request.location.data['city']
     rescue => e
       puts e
-      @user.location = "Got here!"
+      @user.location = e.to_s
+      flash.now[:errors] = e.to_s
     ensure
       # @user.location ||= "San Francisco, CA"
     end
