@@ -5,11 +5,12 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     begin
-      @user.location = request.location.data['city']
+      request_data = request.location
+      @user.location = "#{request_data.city}, #{request_data.state}"
     rescue
-      @user.location = "Got here!"
+      @user.location = "San Francisco, CA"
     end
-    # @user.location ||= "San Francisco, CA"
+    @user.location ||= "San Francisco, CA"
     render :new
   end
 
