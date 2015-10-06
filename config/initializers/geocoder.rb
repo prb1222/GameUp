@@ -1,2 +1,3 @@
 # Geocoder.configure(:lookup => :google_premier, :api_key => "AIzaSyC7qxk1lv03jlFc-XwItY5f5bSGmw7zHl8")
 Geocoder::Configuration.timeout = 10
+Geocoder.configure(:always_raise => :all)

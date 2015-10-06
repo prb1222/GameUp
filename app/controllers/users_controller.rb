@@ -4,9 +4,13 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    puts request.location
-    # @user.location = request.location.data['city']
-    @user.location = "San Fran"
+    begin
+      @user.location = request.location.data['city']
+    rescue => e
+      puts e
+    ensure
+      @user.location ||= "San Francisco, CA"
+    end
     render :new
   end
 
