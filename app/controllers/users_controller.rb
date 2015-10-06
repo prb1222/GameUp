@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @user = User.new
     puts request.location
     # @user.location = request.location.data['city']
+    @user.location = "San Fran"
     render :new
   end
 
