@@ -8,8 +8,9 @@ class UsersController < ApplicationController
       @user.location = request.location.data['city']
     rescue => e
       puts e
+      @user.location = "Got here!"
     ensure
-      @user.location ||= "San Francisco, CA"
+      # @user.location ||= "San Francisco, CA"
     end
     render :new
   end
