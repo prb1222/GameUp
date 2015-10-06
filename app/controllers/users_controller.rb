@@ -4,8 +4,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    # @user.location = request.location.data['city']
-    @user.location = "San Fran"
+    @user.location = request.location.data['city']
     render :new
   end
 
