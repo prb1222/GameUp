@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @user = User.new
     begin
       request_data = request.location
+      p request_data
       @user.location = "#{request_data.city}, #{request_data.state}"
     rescue
       @user.location = "San Francisco, CA"
