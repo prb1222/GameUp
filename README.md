@@ -3,22 +3,23 @@
 
 [heroku]: https://enigmatic-sierra-3429.herokuapp.com
 ## Minimum Viable Product
-GameUp is a clone of Meetup built on Rails and Backbone. Users can:
+GameUp is a board game meet up sign in the vein of MeetUp. My main inspiration for this was highly personal. I have often found myself wanting to play a board game with other people, but finding the people can be the most difficult part. This website allows you to search for users in a certain area around the user's location. Filtering by type of board game is also supported. Additionally, users can:
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
 - [X] Create accounts
 - [X] Create sessions (log in)
 - [X] Create groups
-- [ ] Create events
+- [X] Create events
 - [X] View groups and events
-- [ ] Subscribe to groups
-- [ ] RSVP to events
-- [ ] View subscribed Groups
-- [ ] Edit Events
-- [ ] Edit Groups
-- [ ] Comment on Event
-- [ ] Add calendar view
+- [X] Subscribe to groups
+- [X] RSVP to events
+- [X] View subscribed Groups
+- [X] Edit Events
+- [X] Edit Groups
+- [X] Comment on Event
+- [X] Add calendar view
+- [X] Search for groups
 
 ## Design Docs
 * [View Wireframes][views]
@@ -50,8 +51,8 @@ I'll add a Comment model which will allow users to comment on events and I will 
 
 [Details][phase-four]
 
-### Phase 5: Calendar Views (~2 days)
-I'll add a calendar view tab to the group show page which has a calendar display with each of the upcoming and past events on the calendar pane.
+### Phase 5: Searching (~2 days)
+Adds views to the main page which allow for querying groups based on their geographic location, and displays groups without a page reload.
 
 [Details][phase-five]
 
