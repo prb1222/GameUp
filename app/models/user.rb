@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :commented_events, through: :comments, source: :event
   has_one :image, as: :imageable, dependent: :destroy
+  has_many :genre_taggings, as: :taggable
+  has_many :genres, through: :genre_taggings, source: :genre
 
   def ensure_image
     self.image ||= Image.new(image_url: Image.default_user_url)

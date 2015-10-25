@@ -28,6 +28,8 @@ class Group < ActiveRecord::Base
   has_many :group_memberships, primary_key: :id, foreign_key: :group_id, class_name: :GroupMembership , dependent: :destroy
   has_many :members, through: :group_memberships, source: :user
   has_many :images, as: :imageable, dependent: :destroy
+  has_many :genre_taggings, as: :taggable
+  has_many :genres, through: :genre_taggings, source: :genre
 
   def location
     "#{city}, #{state}"

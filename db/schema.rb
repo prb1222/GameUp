@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150825135828) do
+ActiveRecord::Schema.define(version: 20151025020631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,23 @@ ActiveRecord::Schema.define(version: 20150825135828) do
   end
 
   add_index "events", ["group_id"], name: "index_events_on_group_id", using: :btree
+
+  create_table "genre_taggings", force: :cascade do |t|
+    t.integer  "genre_id",      null: false
+    t.integer  "taggable_id",   null: false
+    t.string   "taggable_type", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "genre_taggings", ["genre_id"], name: "index_genre_taggings_on_genre_id", using: :btree
+  add_index "genre_taggings", ["taggable_type", "taggable_id"], name: "index_genre_taggings_on_taggable_type_and_taggable_id", using: :btree
+
+  create_table "genres", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "group_memberships", force: :cascade do |t|
     t.integer  "group_id",   null: false
