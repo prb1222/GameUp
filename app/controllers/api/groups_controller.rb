@@ -38,7 +38,7 @@ class Api::GroupsController < ApplicationController
     else
       @groups = Group.all
     end
-    render json: @groups
+    render :sorted_index
   end
 
   def update
