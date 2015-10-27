@@ -5,6 +5,7 @@ class Group < ActiveRecord::Base
             :description,
             :member_name,
             presence: true)
+  attr_accessor :rank
 
   geocoded_by :location
   after_validation :geocode

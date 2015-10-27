@@ -25,13 +25,20 @@ class Api::GroupsController < ApplicationController
 
   def index
     if params[:flag] == "mine"
-      groups = current_user.groups
+      @groups = current_user.groups
     elsif params[:flag] == "other"
-      groups = Group.near(current_user.location, params[:distance]).where.not(id: current_user.groups)
+      u_set = Set.new(current_user.genres)
+      @groups = Group.near(current_user.location, params[:distance]).where.not(id: current_user.groups).includes(:genres)
+      # the main search feature here uses #includes in the previous line in order to fetch genre data with the groups
+      # this allows iteration over the ActiveRecord Relation without querying the database
+      @groups.each do |group|
+        g_set = Set.new(group.genres)
+        group.rank = (u_set & g_set).length
+      end
     else
-      groups = Group.all
+      @groups = Group.all
     end
-    render json: groups
+    render json: @groups
   end
 
   def update
