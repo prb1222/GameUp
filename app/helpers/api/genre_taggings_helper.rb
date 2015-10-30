@@ -1,0 +1,2 @@
+module Api::GenreTaggingsHelper
+end
