@@ -4,7 +4,8 @@ GameUp.Views.Jumbo = Backbone.View.extend({
   className: "jumbo-container",
 
   events: {
-    "click .next-event-info": "goToEvent"
+    "click .next-event-info": "goToEvent",
+    "click #recommended-tag": "showRecommendation"
   },
 
   initialize: function () {
@@ -29,5 +30,11 @@ GameUp.Views.Jumbo = Backbone.View.extend({
     Backbone.history.navigate("#groups/" + next_event.group_id + "/events/" + next_event.event_id, {trigger: true});
     var $target = $('.main-pane');
     $("html, body").animate({ scrollTop: $target.offset().top }, "slow");
-  }
+  },
+
+  showRecommendation: function(event) {
+    event.preventDefault();
+    var recommndedView = new GameUp.Views.RecommndedView();
+    $('body').append(recommendedView.render().$el);
+  },
 });
