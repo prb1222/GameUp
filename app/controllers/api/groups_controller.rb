@@ -12,6 +12,11 @@ class Api::GroupsController < ApplicationController
     group.owner_id = current_user.id
     if group.save
       GroupMembership.create!(user_id: current_user.id, group_id: group.id)
+      group_params[:genres].each do |genre_id|
+        GenreTagging.create!(taggable_id: group.id,
+                            taggable_type: "Group",
+                            genre_id: genre_id)
+      end
       render json: group
     else
       render json: group.errors.full_messages, status: 422
@@ -69,6 +74,6 @@ class Api::GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:title, :description, :member_name, :profile_id, :jumbo_id)
+    params.require(:group).permit(:title, :description, :member_name, :profile_id, :jumbo_id, :genres)
   end
 end
