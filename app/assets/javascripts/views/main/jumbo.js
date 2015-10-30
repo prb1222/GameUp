@@ -34,7 +34,7 @@ GameUp.Views.Jumbo = Backbone.View.extend({
 
   showRecommendation: function(event) {
     event.preventDefault();
-    var recommndedView = new GameUp.Views.RecommndedView();
+    var recommndedView = new GameUp.Views.RecommendedView();
     $('body').append(recommendedView.render().$el);
   },
 });
