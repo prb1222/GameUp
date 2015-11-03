@@ -44,6 +44,9 @@ CITIES = ['San Francisco', "New York City", "Philadelphia", "San Diego", "San Jo
 LOCAL_CITIES = ['San Jose', "San Francisco", "Fresno", "Sacramento", "Long Beach", "Oakland", "Fresno", "Fremont", "Bakersfield", "Santa Ana",
                 "Riverside", "Chula Vista", "Stockton", "San Bernadino", "Modesto", "Oxnard", "Fontana"]
 
+GENRE_LIST = ["Strategy", "Fantasy", "City-building", "Cooperative", "Card", "Science-Fiction", "Fighting", "Horror", "Competitive", "Dice",
+              "Real-time", "Find the traitor", "Sports", "Racing", "Post-apocalyptic", "Puzzle", "Competitive", "Politics", "Mercantile"]
+
 def generate_group_description
   sleep 2
   picker = rand(8)
@@ -226,3 +229,25 @@ end
 end
 
 Image.create!(imageable_type: "Thing", imageable_id: 1, image_url: Image.default_group_url)
+
+GENRE_LIST.each do |genre_name|
+  Genre.create(name: genre_name)
+end
+
+genres = Genre.all
+
+groups.each do |group|
+  counter = (rand(5) + 1)
+  counter.times do
+    genre = genres.sample
+    GenreTagging.create(genre_id: genre.id, taggable_id: group.id, taggable_type: "Group")
+  end
+end
+
+users.each do |user|
+  counter = (rand(3) + 1)
+  counter.times do
+    genre = genres.sample
+    GenreTagging.create(genre_id: genre.id, taggable_id: user.id, taggable_type: "User")
+  end
+end
