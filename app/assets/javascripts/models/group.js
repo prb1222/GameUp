@@ -47,6 +47,11 @@ GameUp.Models.Group = Backbone.Model.extend({
       delete response.profile_id;
     }
 
+    if (response.rank) {
+      this.rank = response.rank;
+      delete response.rank;
+    }
+
     return response;
   },
 

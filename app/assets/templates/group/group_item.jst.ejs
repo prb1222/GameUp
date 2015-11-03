@@ -3,7 +3,7 @@
     <% if (group.profilePic().isNew()) { %>
       <img src="https://res.cloudinary.com/dj7rafx1m/image/upload/w_150,h_150/gqszmwaqb97woi5r7zvj.png"/>
     <% } else { %>
-      <img src="<%= group.profilePic().imageItem() %>" />
+      <img src="<%= group.profilePic().imageItem() %>" style="border: <%= Math.floor(group.rank / 7* 6) + 4 %>px solid rgba(37, 110, 93, <%= group.rank / 14 + 0.5 %>); border-radius: 10px;"/>
     <% } %>
   </a>
 </div>
