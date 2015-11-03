@@ -44,8 +44,8 @@ CITIES = ['San Francisco', "New York City", "Philadelphia", "San Diego", "San Jo
 LOCAL_CITIES = ['San Jose', "San Francisco", "Fresno", "Sacramento", "Long Beach", "Oakland", "Fresno", "Fremont", "Bakersfield", "Santa Ana",
                 "Riverside", "Chula Vista", "Stockton", "San Bernadino", "Modesto", "Oxnard", "Fontana"]
 
-GENRE_LIST = ["Strategy", "Fantasy", "City-building", "Cooperative", "Card", "Science-Fiction", "Fighting", "Horror", "Competitive", "Dice",
-              "Real-time", "Find the traitor", "Sports", "Racing", "Post-apocalyptic", "Puzzle", "Competitive", "Politics", "Mercantile"]
+GENRE_LIST = ["Strategy", "City-building", "Cooperative", "Card", "Fighting", "Survival", "Competitive", "Dice",
+              "Real-time", "Find the traitor", "Sports", "Racing", "Post-apocalyptic", "Puzzle"]
 
 def generate_group_description
   sleep 2
@@ -245,7 +245,7 @@ groups.each do |group|
 end
 
 users.each do |user|
-  counter = (rand(3) + 1)
+  counter = (rand(5) + 1)
   counter.times do
     genre = genres.sample
     GenreTagging.create(genre_id: genre.id, taggable_id: user.id, taggable_type: "User")

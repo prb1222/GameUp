@@ -33,7 +33,7 @@ class Api::GroupsController < ApplicationController
       @groups = current_user.groups
     elsif params[:flag] == "other"
       u_set = Set.new(current_user.genres)
-      @groups = Group.near(current_user.location, params[:distance]).where.not(id: current_user.groups).includes(:genres)
+      @groups = Group.near(current_user.location, 20).where.not(id: current_user.groups).includes(:genres)
       # the main search feature here uses #includes in the previous line in order to fetch genre data with the groups
       # this allows iteration over the ActiveRecord Relation without querying the database
       @groups.each do |group|
