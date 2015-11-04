@@ -1,4 +1,4 @@
-GameUp.Views.GroupNew = Backbone.View.extend({
+GameUp.Views.GroupNew = Backbone.CompositeView.extend({
   template: JST['group/group_new'],
 
   events: {
@@ -14,6 +14,8 @@ GameUp.Views.GroupNew = Backbone.View.extend({
      $(document).on('keyup', this.handleKey.bind(this));
      $("html, body").animate({ scrollTop: 0 }, "slow");
      this.loading = true;
+     var genreIndex = new GameUp.Views.GenreIndex();
+     this.addSubview('div.genre-index-container', genreIndex);
    },
 
    handleKey: function (event) {
@@ -32,6 +34,7 @@ GameUp.Views.GroupNew = Backbone.View.extend({
       $('.new-group-title').focus();
       this.loading = false;
     }
+    this.attachSubviews();
     return this;
   },
 
@@ -104,6 +107,7 @@ GameUp.Views.GroupNew = Backbone.View.extend({
         break;
       case 4:
         this.$el.find('.group-new-upload-image').slideToggle(400);
+        this.$el.find('.group-new-genre-tagging').slideToggle(400);
         this.$el.find('.submit-button').slideToggle(400);
         this.$el.find('.create-group').focus();
         $('html, body').animate({ scrollTop: $('.group-new-upload-image').offset().top }, 'slow');
