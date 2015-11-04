@@ -34,6 +34,9 @@ gem 'bootstrap-sass', '~> 3.3.5'
 # gem 'capistrano-rails', group: :development
 gem 'faker'
 
+# add font-awesome
+gem "font-awesome-rails"
+
 # production logging
 gem 'rails_12factor', group: :production
 

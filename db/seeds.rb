@@ -44,8 +44,8 @@ CITIES = ['San Francisco', "New York City", "Philadelphia", "San Diego", "San Jo
 LOCAL_CITIES = ['San Jose', "San Francisco", "Fresno", "Sacramento", "Long Beach", "Oakland", "Fresno", "Fremont", "Bakersfield", "Santa Ana",
                 "Riverside", "Chula Vista", "Stockton", "San Bernadino", "Modesto", "Oxnard", "Fontana"]
 
-GENRE_LIST = ["Strategy", "City-building", "Cooperative", "Card", "Fighting", "Survival", "Competitive", "Dice",
-              "Real-time", "Find the traitor", "Sports", "Racing", "Post-apocalyptic", "Puzzle"]
+GENRE_LIST = ["Strategy", "City-building", "Cooperative", "Card", "Survival", "Competitive", "Dice",
+              "Real-time", "Find the traitor", "Sports", "Post-apocalyptic", "Puzzle"]
 
 def generate_group_description
   sleep 2
@@ -133,6 +133,51 @@ def generate_event_description(group, user)
     attrs[:description] = "Avast, ye scurvy dogs! Y'all be invited to our pirate coven for a night of ale, wenches, and skullduggery. The wine and mutton will be flowing freely. Twenty dubloons to whoever snags the tavern keeps daughter!"
   end
 
+  attrs
+end
+
+["Strategy", "City-building", "Cooperative", "Card", "Survival", "Competitive", "Dice",
+              "Real-time", "Find-the-traitor", "Sports", "Post-apocalyptic", "Puzzle"]
+
+def generate_genre_description(genre_name)
+  attrs = {name: genre_name}
+
+  # case genre_name
+  # when "Strategy"
+  #   attrs[:title] = "Fun night out!"
+  #   attrs[:description] = "We are taking a night out on the town with other members of the group. No board games, just booze and good times! Join us on #{time_string} for some good times at the local pub/alcohol dispensing location."
+  # when "City-building"
+  #   attrs[:title] = "Game night!"
+  #   attrs[:description] = "Come in for a nice chill gaming session with other local #{group.member_name}. We are bringing the food and other goodies, so just bring yourself. Feel free to invite other friends or bring other board games!"
+  # when "Cooperative"
+  #   attrs[:title] = "Strategy discussion"
+  #   attrs[:description] = "We are having a formal sit down event where we will be discussing upcoming strategies to tackle the upcoming SUPER AWESOME LOCAL TOURNEY. All group members are welcome to come, even if you will not be competing. Food and drink will be provided."
+  # when "Card"
+  #   attrs[:title] = "Theory-crafting Session"
+  #   attrs[:description] = "We will be busting out the spreadsheets in order to come up with some new stats and strategies for our group. Join us on #{time_string} to get in on all of the actuarial fun!"
+  # when "Survival"
+  #   attrs[:title] = "Newbie Intro Session"
+  #   attrs[:description] = "New session for intro to intermediate players. Play will go slowly and all questions are welcome to explain the rules. Invite as many people who are interested as possible! We will be going over the rules in addition to some basic strategies."
+  # when "Competitive"
+  #   attrs[:title] = "Local Tournament"
+  #   attrs[:description] = "We will be featuring a local group tournament. All members of the group are welcome to apply. Simply sign up to the event and comment with your intention to compete or spectate."
+  # when "Dice"
+  #   attrs[:title] = "New Game Night!"
+  #   attrs[:description] = "One of our members just acquired a new game, and we are looking for a group of 6-7 people to join us for a night of testing and exploring. Food and drinks will be provided."
+  # when "Real-time"
+  #   attrs[:title] = "Roleplaying Night"
+  #   attrs[:description] = "Avast, ye scurvy dogs! Y'all be invited to our pirate coven for a night of ale, wenches, and skullduggery. The wine and mutton will be flowing freely. Twenty dubloons to whoever snags the tavern keeps daughter!"
+  # when "Find-the-traitor"
+  #   # dfdf
+  # when "Sports"
+  #   # efdf
+  # when "Post-apocalyptic"
+  #   # defds
+  # when "Puzzle"
+  #   # dfd
+  # end
+  attrs[:color] = "red"
+  attrs[:fa_icon] = "camera-retro"
   attrs
 end
 
@@ -231,7 +276,7 @@ end
 Image.create!(imageable_type: "Thing", imageable_id: 1, image_url: Image.default_group_url)
 
 GENRE_LIST.each do |genre_name|
-  Genre.create(name: genre_name)
+  Genre.create(generate_genre_description(genre_name))
 end
 
 genres = Genre.all
