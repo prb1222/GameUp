@@ -14,7 +14,8 @@ GameUp.Views.GroupNew = Backbone.CompositeView.extend({
      $(document).on('keyup', this.handleKey.bind(this));
      $("html, body").animate({ scrollTop: 0 }, "slow");
      this.loading = true;
-     var genreIndex = new GameUp.Views.GenreIndex();
+     var genreCollection = new GameUp.Collections.Genres();
+     var genreIndex = new GameUp.Views.GenreIndex(collection);
      this.addSubview('div.genre-index-container', genreIndex);
    },
 

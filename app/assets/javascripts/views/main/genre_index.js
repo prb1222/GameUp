@@ -5,7 +5,7 @@ GameUp.Views.GenreIndex = Backbone.CompostieView.extend({
 
   initialize: function () {
     this.listenTo(this.collection, "sync", this.render);
-    this.listenTo(this.collection, "add", this.addGroupSubview);
+    this.listenTo(this.collection, "add", this.addGenreSubview);
     this.collection.each(function(group){
       this.addGenreSubview(group);
     }.bind(this));

@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :update, :destroy, :index]
     resources :images, only: [:create, :update, :destroy, :index, :show]
     resources :genre_taggings, only: [:create, :destroy]
+    resources :genres, only: [:index, :show]
   end
 end
