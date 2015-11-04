@@ -1,4 +1,4 @@
-GameUp.Views.GenreIndex = Backbone.CompostieView.extend({
+GameUp.Views.GenreIndex = Backbone.CompositeView.extend({
   template: JST['main/genre_index'],
 
   className: "genre-index-view",
@@ -6,14 +6,15 @@ GameUp.Views.GenreIndex = Backbone.CompostieView.extend({
   initialize: function () {
     this.listenTo(this.collection, "sync", this.render);
     this.listenTo(this.collection, "add", this.addGenreSubview);
-    this.collection.each(function(group){
-      this.addGenreSubview(group);
+    this.collection.each(function(genre){
+      this.addGenreSubview(genre);
     }.bind(this));
   },
 
   render: function () {
     var content = this.template({genres: this.collection});
     this.$el.html(content);
+    this.attachSubviews();
     return this;
   },
 
