@@ -25,6 +25,7 @@ li.genre-item {
   .genre-name {
     font-family: 'Fugaz One';
     transform: translateY(25%);
+    color: #eee;
     width: 190px;
   }
 
@@ -33,10 +34,10 @@ li.genre-item {
     height: 50px;
     background-color: #eee;
     text-align: center;
-    border: 1px solid green;
     border-radius: 25px;
     i {
       transform: translateY(40%);
+      color: rgb(217, 228, 235);
     }
   }
 }
