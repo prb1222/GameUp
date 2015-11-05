@@ -40,3 +40,15 @@ li.genre-item {
     }
   }
 }
+
+.selectable:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.selectable, .selectable:hover {
+  -webkit-transition: 300ms linear 0s;
+  -moz-transition: 300ms linear 0s;
+  -o-transition: 300ms linear 0s;
+  transition: 300ms linear 0s;
+}
