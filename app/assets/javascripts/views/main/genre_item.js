@@ -3,19 +3,33 @@ GameUp.Views.GenreItem = Backbone.View.extend({
 
   tagName: 'li',
 
-  className: 'genre-item',
+  className: 'genre-item-view',
+
+  events: {
+    'click .genre-item':'toggleSelected'
+  },
 
   initialize: function (options) {
     this.listenTo(this.model, "sync", this.render);
     this.selectable = options.selectable;
+    if (this.selectable) {
+      this.selected = options.selected;
+    }
   },
 
   render: function () {
     this.$el.html(this.template({genre: this.model}));
-    this.$el.css('background-color', "rgb(" + this.model.get('color') + ")" );
+    this.$genreItem = this.$el.find('.genre-item');
+    this.$genreItem.css('background-color', "rgb(" + this.model.get('color') + ")" );
     if (this.selectable) {
-      this.$el.addClass('selectable');
+      this.$genreItem.addClass('selectable');
     }
     return this;
+  },
+
+  toggleSelected: function (event) {
+    event.preventDefault();
+    this.$genreItem.toggleClass('selected');
+    this.selected = !this.selected;
   }
 });

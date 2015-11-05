@@ -11,15 +11,18 @@ ul.genres-index {
   }
 }
 
-li.genre-item {
+div.genre-item {
   width: 280px;
   background-color: rgb(217, 228, 235);
   border-radius: 10px;
+  border: 10px solid rgb(217, 228, 235);
   padding: 3px;
   margin: 6px;
+
   div {
     display: inline-block;
   }
+
 
   .genre-name {
     font-family: 'Fugaz One';
@@ -46,9 +49,20 @@ li.genre-item {
   transform: scale(1.05);
 }
 
+.selected {
+  border: 10px solid red !important;
+}
+
 .selectable, .selectable:hover {
-  -webkit-transition: 300ms linear 0s;
-  -moz-transition: 300ms linear 0s;
-  -o-transition: 300ms linear 0s;
-  transition: 300ms linear 0s;
+  -webkit-transition: all 300ms linear 0s;
+  -moz-transition: all 300ms linear 0s;
+  -o-transition: all 300ms linear 0s;
+  transition: all 300ms linear 0s;
+}
+
+.selected, .genre-item {
+  -webkit-transition: border 300ms linear 0s;
+  -moz-transition: border 300ms linear 0s;
+  -o-transition: border 300ms linear 0s;
+  transition: border 300ms linear 0s;
 }
