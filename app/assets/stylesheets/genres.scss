@@ -1,0 +1,42 @@
+.genre-index-view h3 {
+  padding: 0px;
+}
+
+ul.genres-index {
+  list-style: none;
+  background-color: rgb(217, 228, 235);
+  padding: 0px;
+  li {
+    display: inline-block;
+  }
+}
+
+li.genre-item {
+  width: 280px;
+  background-color: rgb(217, 228, 235);
+  border-radius: 10px;
+  border: 1px solid red;
+  padding: 3px;
+  margin: 6px;
+  div {
+    display: inline-block;
+  }
+
+  .genre-name {
+    font-family: 'Fugaz One';
+    transform: translateY(25%);
+    width: 190px;
+  }
+
+  .genre-fa-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #eee;
+    text-align: center;
+    border: 1px solid green;
+    border-radius: 25px;
+    i {
+      transform: translateY(40%);
+    }
+  }
+}
