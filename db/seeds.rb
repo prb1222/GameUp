@@ -45,7 +45,7 @@ LOCAL_CITIES = ['San Jose', "San Francisco", "Fresno", "Sacramento", "Long Beach
                 "Riverside", "Chula Vista", "Stockton", "San Bernadino", "Modesto", "Oxnard", "Fontana"]
 
 GENRE_LIST = ["Strategy", "City-building", "Cooperative", "Card", "Survival", "Competitive", "Dice",
-              "Real-time", "Find the traitor", "Sports", "Post-apocalyptic", "Puzzle"]
+              "Real-time", "Find-the-traitor", "Sports", "Post-apocalyptic", "Puzzle"]
 
 def generate_group_description
   sleep 3
@@ -136,8 +136,6 @@ def generate_event_description(group, user)
   attrs
 end
 
-["Strategy", "City-building", "Cooperative", "Card", "Survival", "Competitive", "Dice",
-              "Real-time", "Find-the-traitor", "Sports", "Post-apocalyptic", "Puzzle"]
 
 def generate_genre_description(genre_name)
   attrs = {name: genre_name}
@@ -184,7 +182,9 @@ def generate_genre_description(genre_name)
   attrs
 end
 
-
+GENRE_LIST.each do |genre_name|
+  Genre.create(generate_genre_description(genre_name))
+end
 
 bowser = User.create!(username: "bowser", password: "bowser", location: "San Francisco", bio: "I'm the biggest baddest koopa around! Likes: shells, lava, castles, princesses. Dislikes: plumbers, head injuries, mushrooms.")
 
@@ -277,10 +277,6 @@ end
 end
 
 Image.create!(imageable_type: "Thing", imageable_id: 1, image_url: Image.default_group_url)
-
-GENRE_LIST.each do |genre_name|
-  Genre.create(generate_genre_description(genre_name))
-end
 
 genres = Genre.all
 

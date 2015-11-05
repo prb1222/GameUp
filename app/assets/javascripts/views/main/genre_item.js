@@ -11,7 +11,7 @@ GameUp.Views.GenreItem = Backbone.View.extend({
 
   render: function () {
     this.$el.html(this.template({genre: this.model}));
-    this.$el.css('background-color', rgb(this.model.get('color')))
+    this.$el.css('background-color', "rgb(" + this.model.get('color') + ")" );
     return this;
   }
 });
