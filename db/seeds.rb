@@ -48,7 +48,7 @@ GENRE_LIST = ["Strategy", "City-building", "Cooperative", "Card", "Survival", "C
               "Real-time", "Find the traitor", "Sports", "Post-apocalyptic", "Puzzle"]
 
 def generate_group_description
-  sleep 2
+  sleep 3
   picker = rand(8)
   attrs = {}
   game = BOARD_GAMES.sample
@@ -95,7 +95,7 @@ def generate_group_description
 end
 
 def generate_event_description(group, user)
-  sleep 2
+  sleep 3
   picker = rand(8)
   attrs = {}
   location = Geocoder.search("#{group.latitude},#{group.longitude}").first
@@ -142,42 +142,45 @@ end
 def generate_genre_description(genre_name)
   attrs = {name: genre_name}
 
-  # case genre_name
-  # when "Strategy"
-  #   attrs[:title] = "Fun night out!"
-  #   attrs[:description] = "We are taking a night out on the town with other members of the group. No board games, just booze and good times! Join us on #{time_string} for some good times at the local pub/alcohol dispensing location."
-  # when "City-building"
-  #   attrs[:title] = "Game night!"
-  #   attrs[:description] = "Come in for a nice chill gaming session with other local #{group.member_name}. We are bringing the food and other goodies, so just bring yourself. Feel free to invite other friends or bring other board games!"
-  # when "Cooperative"
-  #   attrs[:title] = "Strategy discussion"
-  #   attrs[:description] = "We are having a formal sit down event where we will be discussing upcoming strategies to tackle the upcoming SUPER AWESOME LOCAL TOURNEY. All group members are welcome to come, even if you will not be competing. Food and drink will be provided."
-  # when "Card"
-  #   attrs[:title] = "Theory-crafting Session"
-  #   attrs[:description] = "We will be busting out the spreadsheets in order to come up with some new stats and strategies for our group. Join us on #{time_string} to get in on all of the actuarial fun!"
-  # when "Survival"
-  #   attrs[:title] = "Newbie Intro Session"
-  #   attrs[:description] = "New session for intro to intermediate players. Play will go slowly and all questions are welcome to explain the rules. Invite as many people who are interested as possible! We will be going over the rules in addition to some basic strategies."
-  # when "Competitive"
-  #   attrs[:title] = "Local Tournament"
-  #   attrs[:description] = "We will be featuring a local group tournament. All members of the group are welcome to apply. Simply sign up to the event and comment with your intention to compete or spectate."
-  # when "Dice"
-  #   attrs[:title] = "New Game Night!"
-  #   attrs[:description] = "One of our members just acquired a new game, and we are looking for a group of 6-7 people to join us for a night of testing and exploring. Food and drinks will be provided."
-  # when "Real-time"
-  #   attrs[:title] = "Roleplaying Night"
-  #   attrs[:description] = "Avast, ye scurvy dogs! Y'all be invited to our pirate coven for a night of ale, wenches, and skullduggery. The wine and mutton will be flowing freely. Twenty dubloons to whoever snags the tavern keeps daughter!"
-  # when "Find-the-traitor"
-  #   # dfdf
-  # when "Sports"
-  #   # efdf
-  # when "Post-apocalyptic"
-  #   # defds
-  # when "Puzzle"
-  #   # dfd
-  # end
-  attrs[:color] = "red"
-  attrs[:fa_icon] = "camera-retro"
+  case genre_name
+  when "Strategy"
+    attrs[:color] = "255, 0, 71"
+    attrs[:fa_icon] = "map-o"
+  when "City-building"
+    attrs[:color] = "255, 131, 0"
+    attrs[:fa_icon] = "bank"
+  when "Cooperative"
+    attrs[:color] = "255, 255, 102"
+    attrs[:fa_icon] = "users"
+  when "Card"
+    attrs[:color] = "173, 255, 47"
+    attrs[:fa_icon] = "square-o"
+  when "Survival"
+    attrs[:color] = "34, 139, 34"
+    attrs[:fa_icon] = "tree"
+  when "Competitive"
+    attrs[:color] = "127, 255, 212"
+    attrs[:fa_icon] = "fighter-jet"
+  when "Dice"
+    attrs[:color] = "32, 178, 170"
+    attrs[:fa_icon] = "cube"
+  when "Real-time"
+    attrs[:color] = "65, 105, 225"
+    attrs[:fa_icon] = "clock-o"
+  when "Find-the-traitor"
+    attrs[:color] = "106, 90, 205"
+    attrs[:fa_icon] = "user-secret"
+  when "Sports"
+    attrs[:color] = "147, 112, 219"
+    attrs[:fa_icon] = "soccer-o"
+  when "Post-apocalyptic"
+    attrs[:color] = "208, 32, 144"
+    attrs[:fa_icon] = "rocket"
+  when "Puzzle"
+    attrs[:color] = "255, 20, 147"
+    attrs[:fa_icon] = "puzzle-piece"
+  end
+
   attrs
 end
 
