@@ -12,10 +12,11 @@ class Api::GroupsController < ApplicationController
     group.owner_id = current_user.id
     if group.save
       GroupMembership.create!(user_id: current_user.id, group_id: group.id)
-      group_params[:genres].each do |genre_id|
+      find_genres.each do |genre|
+        byebug
         GenreTagging.create!(taggable_id: group.id,
                             taggable_type: "Group",
-                            genre_id: genre_id)
+                            genre_id: genre.id)
       end
       render json: group
     else
@@ -74,6 +75,11 @@ class Api::GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:title, :description, :member_name, :profile_id, :jumbo_id, :genres)
+    params.require(:group).permit(:title, :description, :member_name, :profile_id, :jumbo_id)
+  end
+
+  def find_genres
+    regex = /[[:graph:]]+/
+    Genre.where(name: params[:group][:genres].scan(regex))
   end
 end
