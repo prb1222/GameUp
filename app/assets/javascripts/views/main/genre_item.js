@@ -29,6 +29,7 @@ GameUp.Views.GenreItem = Backbone.View.extend({
 
   toggleSelected: function (event) {
     event.preventDefault();
+    if (!this.selectable) {return;}
     this.$genreItem.toggleClass('selected');
     this.selected = !this.selected;
   }

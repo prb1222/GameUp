@@ -1,4 +1,4 @@
-GameUp.Views.GroupDetail = Backbone.View.extend({
+GameUp.Views.GroupDetail = Backbone.CompositeView.extend({
   template: JST['group/group_detail'],
 
   className: "group-detail-view",
@@ -18,13 +18,17 @@ GameUp.Views.GroupDetail = Backbone.View.extend({
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model.members(), "add remove", this.render);
+    this.listenTo(this.model.genres(), "add remove", this.render);
     this.listenTo(this.model.membership(), "change:id", this.render);
+    var genresIndexView = new GameUp.Views.GenreIndex({selectable: false, selected: false, collection: this.model.genres()});
+    this.addSubview('div.genres-index-container', genresIndexView);
   },
 
   render: function () {
     var buttonText = this.model.is_member() ? "Leave group" : "Join group";
     var content = this.template({group: this.model, buttonText: buttonText});
     this.$el.html(content);
+    this.attachSubviews();
     return this;
   },
 

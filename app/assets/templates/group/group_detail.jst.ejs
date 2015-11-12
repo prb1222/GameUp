@@ -8,6 +8,7 @@
 <p>About us: <br><%= group.escape('description') %></p>
 <p>Organizer: <%= group.owner %></p>
 <p>We're <%= group.members().models.length %> <%= group.escape('member_name')%></p>
+<div class="genres-index-container"></div>
 <button type="button" class="toggle-membership btn btn-warning"><%= buttonText %></button>
 <% if (group.owned) {%>
   <button type="button" class="edit-group btn btn-warning">Edit Group</button>

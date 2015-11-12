@@ -7,6 +7,11 @@ end
 json.members do
   json.partial! 'api/users/user', collection: @group.members, as: :user
 end
+
+json.genres do
+  json.partial! 'api/genres/genre', collection: @group.genres, as: :genre
+end
+
 unless @group.images.empty?
   json.images do
     json.partial! 'api/images/image', collection: @group.images, as: :image

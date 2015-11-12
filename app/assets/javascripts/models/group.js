@@ -22,6 +22,11 @@ GameUp.Models.Group = Backbone.Model.extend({
       delete response.members;
     }
 
+    if (response.genres) {
+      this.genres().set(response.genres, {parse: true});
+      delete response.members;
+    }
+
     if (response.owner) {
       this.owner = response.owner;
       delete response.owner;
@@ -81,6 +86,14 @@ GameUp.Models.Group = Backbone.Model.extend({
     }
 
     return this._members;
+  },
+
+  genres: function () {
+    if (!this._genres) {
+      this._genres = new GameUp.Collections.Genres();
+    }
+
+    return this._genres;
   },
 
   images: function () {
