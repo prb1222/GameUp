@@ -24,7 +24,7 @@ GameUp.Models.Group = Backbone.Model.extend({
 
     if (response.genres) {
       this.genres().set(response.genres, {parse: true});
-      delete response.members;
+      delete response.genres;
     }
 
     if (response.owner) {

@@ -11,9 +11,12 @@ GameUp.Views.UserShow = Backbone.CompositeView.extend({
   initialize: function () {
     this.listenTo(this.model, "sync", this.render)
     this.listenTo(this.model.groups(), "sync", this.render);
+    this.listenTo(this.model.genres(), "sync add remove", this.render);
     this.listenTo(this.model.image(), "change sync", this.render);
     var groupsView = new GameUp.Views.GroupsIndex({collection: this.model.groups(), title: "MY GROUPS"});
     this.addSubview('div.groups-index', groupsView);
+    var genresView = new GameUp.Views.GenreIndex({selected: false, selectable: false, collection: this.model.genres()});
+    this.addSubview('div.genres-index-container', genresView);
   },
 
   render: function () {

@@ -38,6 +38,11 @@ GameUp.Models.User = Backbone.Model.extend({
       delete response.num_nearby_events;
     }
 
+    if (response.genres) {
+      this.genres().set(response.genres, {parse: true});
+      delete response.genres;
+    }
+
     return response;
   },
 
@@ -59,5 +64,13 @@ GameUp.Models.User = Backbone.Model.extend({
     }
 
     return this._image;
+  },
+
+  genres: function () {
+    if (!this._genres) {
+      this._genres = new GameUp.Collections.Genres();
+    }
+
+    return this._genres;
   }
 });
