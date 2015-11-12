@@ -44,6 +44,7 @@ GameUp.Views.GroupNew = Backbone.CompositeView.extend({
     event.preventDefault();
     if (this.counter < 4) {return;}
     var formData = $(event.currentTarget).serializeJSON();
+    formData.group.genres = $('ul.genres-index li .selected .genre-name').text();
     this.model.save(formData,{
       success: function (model) {
         this.remove();
