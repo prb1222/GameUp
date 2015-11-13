@@ -3,10 +3,15 @@
   text-align: center;
 }
 
+.genre-index-view {
+  min-width: 300px;
+}
+
 ul.genres-index {
   list-style: none;
   background-color: rgb(217, 228, 235);
   padding: 0px;
+  border-radius: 10px;
   li {
     display: inline-block;
   }

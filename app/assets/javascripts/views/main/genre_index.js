@@ -16,6 +16,9 @@ GameUp.Views.GenreIndex = Backbone.CompositeView.extend({
     var content = this.template({genres: this.collection});
     this.$el.html(content);
     this.attachSubviews();
+    // translateX(calc((xW - 280px) / 2 - 6px))
+    // Use the above CSS to move the genre items into place on render
+    // xW = $('ul.genres-index').width()
     return this;
   },
 
