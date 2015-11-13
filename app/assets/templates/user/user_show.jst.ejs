@@ -1,4 +1,4 @@
-<div class="user-show-content col-md-9 col-xs-9">
+<div class="user-show-content col-md-8 col-xs-8">
   <div class="user-show-username">
     <%= user.escape('username') %>
   </div>
@@ -30,7 +30,7 @@
     </div>
   </div>
 </div>
-<div class="user-show-sidebar col-md-3 col-xs-3">
+<div class="user-show-sidebar col-md-4 col-xs-4">
   <div class="user-image clear-fix">
     <% if (user.image().get('image_url')) {%>
       <img src="<%= user.image().get('image_url') %>" />
