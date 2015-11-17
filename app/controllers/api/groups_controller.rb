@@ -13,7 +13,6 @@ class Api::GroupsController < ApplicationController
     if group.save
       GroupMembership.create!(user_id: current_user.id, group_id: group.id)
       find_genres.each do |genre|
-        byebug
         GenreTagging.create!(taggable_id: group.id,
                             taggable_type: "Group",
                             genre_id: genre.id)
