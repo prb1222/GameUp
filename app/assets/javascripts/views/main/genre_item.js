@@ -31,6 +31,7 @@ GameUp.Views.GenreItem = Backbone.View.extend({
     event.preventDefault();
     if (!this.selectable) {return;}
     this.$genreItem.toggleClass('selected');
+    this.$el.toggleClass('no-border')
     this.selected = !this.selected;
   }
 });

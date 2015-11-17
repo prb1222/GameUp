@@ -14,6 +14,12 @@ ul.genres-index {
   border-radius: 10px;
   li {
     display: inline-block;
+    border-radius: 10px;
+    border: 10px solid rgb(217, 228, 235);
+    -webkit-transition: border 300ms linear 0s;
+    -moz-transition: border 300ms linear 0s;
+    -o-transition: border 300ms linear 0s;
+    transition: border 300ms linear 0s;
   }
 }
 
@@ -21,7 +27,7 @@ div.genre-item {
   width: 280px;
   background-color: rgb(217, 228, 235);
   border-radius: 10px;
-  border: 10px solid rgb(217, 228, 235);
+  border: 0px solid rgb(217, 228, 235);
   padding: 3px;
   margin: 6px;
   font-size: 20px;
@@ -73,4 +79,13 @@ div.genre-item {
   -moz-transition: border 300ms linear 0s;
   -o-transition: border 300ms linear 0s;
   transition: border 300ms linear 0s;
+}
+
+.no-border {
+  border-top: 0px solid rgb(217, 228, 235) !important;
+  border-bottom: 0px solid rgb(217, 228, 235) !important;
+  -webkit-transition: all 300ms linear 0s;
+  -moz-transition: all 300ms linear 0s;
+  -o-transition: all 300ms linear 0s;
+  transition: all 300ms linear 0s;
 }
