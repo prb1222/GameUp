@@ -119,13 +119,8 @@ div.genre-modal {
   border: 1px solid;
   border-radius: 5px;
   text-align: center;
-  max-width: 332px;
   .genre-modal-content {
-    max-width: 300px;
-
-    p {
-      padding-bottom: 30px;
-      font-size: 13px;
+    h2 {
       font-weight: bold;
     }
   }

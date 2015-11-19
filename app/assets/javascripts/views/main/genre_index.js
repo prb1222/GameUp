@@ -6,10 +6,11 @@ GameUp.Views.GenreIndex = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.listenTo(this.collection, "sync", this.render);
     this.listenTo(this.collection, "add", this.addGenreSubview);
+    this.selectedGenres = options.selected || [];
+    this.selectable = options.selectable;
     this.collection.each(function(genre){
       this.addGenreSubview(genre);
     }.bind(this));
-    this.selectable = options.selectable;
     this.clickable = options.clickable;
     this.singleColumn = options.singleColumn;
   },
@@ -29,7 +30,8 @@ GameUp.Views.GenreIndex = Backbone.CompositeView.extend({
   },
 
   addGenreSubview: function (genre) {
-    var genreItemView = new GameUp.Views.GenreItem({model: genre, selectable: this.selectable});
+    var selected = _.contains(this.selectedGenres, genre.get('name'));
+    var genreItemView = new GameUp.Views.GenreItem({model: genre, selectable: this.selectable, selected: selected});
     this.addSubview('ul.genres-index', genreItemView);
     this.render();
   }

@@ -24,6 +24,9 @@ GameUp.Views.GenreItem = Backbone.View.extend({
     if (this.selectable) {
       this.$genreItem.addClass('selectable');
     }
+    if (this.selected) {
+      this.setSelected();
+    }
     return this;
   },
 
@@ -33,5 +36,11 @@ GameUp.Views.GenreItem = Backbone.View.extend({
     this.$genreItem.toggleClass('selected');
     this.$el.toggleClass('no-border')
     this.selected = !this.selected;
+  },
+
+  setSelected: function () {
+    if (!this.selectable) {return;}
+    this.$genreItem.addClass('selected');
+    this.$el.addClass('no-border');
   }
 });

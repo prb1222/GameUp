@@ -18,7 +18,7 @@ GameUp.Views.ConfirmationModal = Backbone.View.extend({
   handleKey: function (event) {
    if (event.keyCode === 27) {
      event.preventDefault();
-     this.remove();
+     this.cancelCallback();
    } else if (event.keyCode === 13 ) {
      event.preventDefault();
      this.$el.find('.delete-button').trigger('click');
