@@ -6,7 +6,8 @@ GameUp.Views.GenreModal = Backbone.CompositeView.extend({
     "click .m-background": "cancelCallback",
     "click .delete-button": "successCallback"
   },
-
+  //LAST THINGS TO DO: ADD THIS TO USER SHOW
+  //LAST THINGS TO DO: HANDLE SUBMIT BY PASSING SUCCESS CALLBACK AND HANDLING IN GROUP DETAIL
   initialize: function (options) {
     this.cancel = options.cancel;
     var allGenres = new GameUp.Collections.Genres();
