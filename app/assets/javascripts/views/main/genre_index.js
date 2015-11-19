@@ -10,19 +10,21 @@ GameUp.Views.GenreIndex = Backbone.CompositeView.extend({
       this.addGenreSubview(genre);
     }.bind(this));
     this.selectable = options.selectable;
+    this.clickable = options.clickable;
     this.singleColumn = options.singleColumn;
   },
 
   render: function () {
     var content = this.template({genres: this.collection});
     this.$el.html(content);
+    if (this.clickable) {
+      this.$el.addClass('clickable');
+    }
     this.attachSubviews();
     if (this.singleColumn) {
       var xW = $('ul.genres-index').width();
       $('div.genre-item').css('transform', 'translateX(calc((' +  xW + 'px - 280px) / 2 - 6px))');
     }
-    // translateX(calc((xW - 280px) / 2 - 6px))
-    // Use the above CSS to move the genre items into place on render
     return this;
   },
 

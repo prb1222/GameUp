@@ -6,7 +6,8 @@ GameUp.Views.GroupDetail = Backbone.CompositeView.extend({
   events: {
     "click button.toggle-membership": "toggleMembership",
     "click .delete-group": "promptForDeletion",
-    "click .upload-image": "upload"
+    "click .upload-image": "upload",
+    "click .genre-index-view": "showGenreModal"
   },
 
   attributes: function () {
@@ -20,7 +21,7 @@ GameUp.Views.GroupDetail = Backbone.CompositeView.extend({
     this.listenTo(this.model.members(), "add remove", this.render);
     this.listenTo(this.model.genres(), "add remove", this.render);
     this.listenTo(this.model.membership(), "change:id", this.render);
-    var genresIndexView = new GameUp.Views.GenreIndex({selectable: false, selected: false, collection: this.model.genres()});
+    var genresIndexView = new GameUp.Views.GenreIndex({selectable: false, clickable: this.model.owned, collection: this.model.genres()});
     this.addSubview('div.genres-index-container', genresIndexView);
   },
 
@@ -114,5 +115,20 @@ GameUp.Views.GroupDetail = Backbone.CompositeView.extend({
     }.bind(this));
     this.image = image;
     this.disabled = false;
+  },
+
+  showGenreModal: function (event) {
+    if (this.genreModal) {return;}
+    this.genreModal = new GameUp.Views.GenreModal({
+      collection: this.model.genres(),
+      cancel: this.removeGenreModal.bind(this)
+    })
+    $('body').append(this.genreModal.render().$el);
+    $("html, body").animate({ scrollTop: 150 }, "slow");
+  },
+
+  removeGenreModal: function () {
+    this.genreModal.remove();
+    this.genreModal = null;
   }
 })

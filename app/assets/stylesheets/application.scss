@@ -69,7 +69,7 @@ img.image-modal {
 
 div.image-modal {
   top: 200px;
-  z-index: 2;
+  z-index: 50;
   left: 50%;
   transform: translateX(-50%);
   position: absolute;
@@ -83,7 +83,7 @@ div.confirmation-modal {
   top: 200px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2;
+  z-index: 50;
   position: absolute;
   background-color: #eee;
   padding: 1pc;
@@ -108,8 +108,32 @@ div.confirmation-modal {
   }
 }
 
+div.genre-modal {
+  top: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  position: absolute;
+  background-color: #eee;
+  padding: 1pc;
+  border: 1px solid;
+  border-radius: 5px;
+  text-align: center;
+  max-width: 332px;
+  .genre-modal-content {
+    max-width: 300px;
+
+    p {
+      padding-bottom: 30px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+  }
+}
+
+
 div.user-modal {
-  z-index: 2;
+  z-index: 50;
   position: absolute;
   top: 25%;
   left: 25%;
