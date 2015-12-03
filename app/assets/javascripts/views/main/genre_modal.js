@@ -4,12 +4,13 @@ GameUp.Views.GenreModal = Backbone.CompositeView.extend({
   events: {
     "click .cancel-button": "cancelCallback",
     "click .m-background": "cancelCallback",
-    "click .delete-button": "successCallback"
+    "click .submit-button": "submitCallback"
   },
   //LAST THINGS TO DO: ADD THIS TO USER SHOW
   //LAST THINGS TO DO: HANDLE SUBMIT BY PASSING SUCCESS CALLBACK AND HANDLING IN GROUP DETAIL
   initialize: function (options) {
     this.cancel = options.cancel;
+    this.submit = options.submit;
     var allGenres = new GameUp.Collections.Genres();
     allGenres.fetch();
     var selectedGenres = this.collection.map( function (genre) {return genre.get('name')});
@@ -37,5 +38,10 @@ GameUp.Views.GenreModal = Backbone.CompositeView.extend({
 
   cancelCallback: function () {
     this.cancel.call();
+  },
+
+  submitCallback: function () {
+    var genres = _.select(this.$el.find('.selected .genre-name').text().replace(/(\r\n|\n|\r)/gm,"").split(" "));
+    this.submit.call(this, genres);
   }
 });

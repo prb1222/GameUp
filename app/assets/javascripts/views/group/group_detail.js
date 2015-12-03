@@ -118,10 +118,11 @@ GameUp.Views.GroupDetail = Backbone.CompositeView.extend({
   },
 
   showGenreModal: function (event) {
-    if (this.genreModal) {return;}
+    if (this.genreModal || !this.model.owned) {return;}
     this.genreModal = new GameUp.Views.GenreModal({
       collection: this.model.genres(),
-      cancel: this.removeGenreModal.bind(this)
+      cancel: this.removeGenreModal.bind(this),
+      submit: this.changeGenreGroups.bind(this)
     })
     $('body').append(this.genreModal.render().$el);
     $("html, body").animate({ scrollTop: 150 }, "slow");
@@ -130,5 +131,9 @@ GameUp.Views.GroupDetail = Backbone.CompositeView.extend({
   removeGenreModal: function () {
     this.genreModal.remove();
     this.genreModal = null;
+  },
+
+  changeGenreGroups: function (genres) {
+    debugger;
   }
 })
