@@ -3,7 +3,7 @@
 
 GameUp is a board game meet up sign in the vein of MeetUp. My main inspiration for this was highly personal. I have often found myself wanting to play a board game with other people, but finding the people can be the most difficult part. This website allows you to search for users in a certain area around the user's location. Filtering by type of board game is also supported.
 
-[heroku]: https://enigmatic-sierra-3429.herokuapp.com
+[heroku]: http://game-up.xyz
 ## Minimum Viable Product
 In order for users to make use of the site's main purpose the following user activities were necessary:
 
