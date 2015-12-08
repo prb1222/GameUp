@@ -8,4 +8,11 @@ class Api::GenresController < ApplicationController
     @genre = Genre.find(params[:id])
     render json: @genre
   end
+
+  def create
+    fail
+  end
+
+  def destroy
+  end
 end
