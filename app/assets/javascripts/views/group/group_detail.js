@@ -142,7 +142,10 @@ GameUp.Views.GroupDetail = Backbone.CompositeView.extend({
     }
 
     collection.sync("create", collection, {
-      data: jQuery.param(options, true)
+      data: jQuery.param(options, true),
+      success: function (collection, response, options) {
+        debugger;
+      }
     });
   }
 })
