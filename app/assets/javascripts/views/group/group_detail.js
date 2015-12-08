@@ -134,6 +134,15 @@ GameUp.Views.GroupDetail = Backbone.CompositeView.extend({
   },
 
   changeGenreGroups: function (genres) {
-    debugger;
+    var collection = this.model.genres();
+    var options = {
+      genreArray: genres.join(", "),
+      modelId: this.model.get('id'),
+      modelType: "Group"
+    }
+
+    collection.sync("create", collection, {
+      data: jQuery.param(options, true)
+    });
   }
 })
