@@ -21,7 +21,7 @@ class Api::GenresController < ApplicationController
       model.genre_taggings.create!(genre_id: genre.id)
     end
 
-    fail
+    render json: genres
   end
 
   def destroy

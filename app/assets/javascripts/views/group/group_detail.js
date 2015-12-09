@@ -21,8 +21,8 @@ GameUp.Views.GroupDetail = Backbone.CompositeView.extend({
     this.listenTo(this.model.members(), "add remove", this.render);
     this.listenTo(this.model.genres(), "add remove", this.render);
     this.listenTo(this.model.membership(), "change:id", this.render);
-    var genresIndexView = new GameUp.Views.GenreIndex({selectable: false, clickable: this.model.owned, collection: this.model.genres()});
-    this.addSubview('div.genres-index-container', genresIndexView);
+    this.genresIndexView = new GameUp.Views.GenreIndex({selectable: false, clickable: this.model.owned, collection: this.model.genres()});
+    this.addSubview('div.genres-index-container', this.genresIndexView);
   },
 
   render: function () {
@@ -134,18 +134,24 @@ GameUp.Views.GroupDetail = Backbone.CompositeView.extend({
   },
 
   changeGenreGroups: function (genres) {
-    var collection = this.model.genres();
+    var currentCollection = this.model.genres();
+    var self = this;
     var options = {
       genreArray: genres.join(", "),
       modelId: this.model.get('id'),
       modelType: "Group"
     }
 
-    collection.sync("create", collection, {
+    currentCollection.sync("create", currentCollection, {
       data: jQuery.param(options, true),
       success: function (collection, response, options) {
-        debugger;
-      }
+        this.reset(collection);
+      }.bind(currentCollection),
+
+      complete: function (jqXHR, statusString) {
+        this.removeGenreModal();
+        this.render();
+      }.bind(self)
     });
   }
 })
