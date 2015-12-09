@@ -150,7 +150,6 @@ GameUp.Views.GroupDetail = Backbone.CompositeView.extend({
 
       complete: function (jqXHR, statusString) {
         this.removeGenreModal();
-        this.render();
       }.bind(self)
     });
   }
