@@ -55,7 +55,7 @@
 
         <div class="form-group">
           <label class="control-label" for="new-location-field">Location</label>
-          <input id="new-location-field" type="text" name="user[location]" value="<%= @user.location %>">
+          <input id="new-location-field" type="text" name="user[location]" value="<%= @user.location || 'San Francisco, CA'%>">
         </div>
 
         <input type="submit" class="btn btn-default new-user-submit" value="Create Account">
