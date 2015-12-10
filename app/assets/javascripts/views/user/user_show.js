@@ -5,7 +5,8 @@ GameUp.Views.UserShow = Backbone.CompositeView.extend({
 
   events: {
     "click div.user-show-bio":"editBio",
-    "click div.user-image":"editImage"
+    "click div.user-image":"editImage",
+    "click .genre-index-view":"showGenreModal"
   },
 
   initialize: function () {
@@ -26,6 +27,7 @@ GameUp.Views.UserShow = Backbone.CompositeView.extend({
       this.$el.find('.user-image').addClass('hover-fix');
       this.$el.find('.user-bio').addClass('hover-fix');
       this.$el.find('.user-show-bio-display').addClass('hover-fix');
+      this.$el.find('.genre-index-view').addClass('hover-fix');
     }
     this.attachSubviews();
     return this;
@@ -71,5 +73,42 @@ GameUp.Views.UserShow = Backbone.CompositeView.extend({
     }.bind(this));
     this.image = image;
     this.disabled = false;
+  },
+
+  showGenreModal: function (event) {
+    if (this.genreModal || !this.model.isUser) {return;}
+    this.genreModal = new GameUp.Views.GenreModal({
+      collection: this.model.genres(),
+      cancel: this.removeGenreModal.bind(this),
+      submit: this.changeGenreGroups.bind(this)
+    })
+    $('body').append(this.genreModal.render().$el);
+    $("html, body").animate({ scrollTop: 150 }, "slow");
+  },
+
+  removeGenreModal: function () {
+    this.genreModal.remove();
+    this.genreModal = null;
+  },
+
+  changeGenreGroups: function (genres) {
+    var currentCollection = this.model.genres();
+    var self = this;
+    var options = {
+      genreArray: genres.join(", "),
+      modelId: this.model.get('id'),
+      modelType: "User"
+    }
+
+    currentCollection.sync("create", currentCollection, {
+      data: jQuery.param(options, true),
+      success: function (collection, response, options) {
+        this.reset(collection);
+      }.bind(currentCollection),
+
+      complete: function (jqXHR, statusString) {
+        this.removeGenreModal();
+      }.bind(self)
+    });
   }
 });
