@@ -1,7 +1,31 @@
 <div class="m-background"></div>
 <div class="m-content">
   <button class="close">&times;</button>
+  <h4>Recommendations</h4>
+  <img src="images/genres.png" alt="" />
+  <br>
+  <br>
   <p>
-      Hello there!
+      GameUp uses a recommendation engine based on the genres of games you play. The genres for a given group
+      can be seen in the left sidebar of a group's page. To view the genres you like, simply navigate to your profile page (top right corner)
+      and the genres are visible in the right sidebar. To edit these genres, simply click on the genres, and select which
+      ones you'd like.
+  </p>
+  <br>
+  <img src="images/group_recs.png" alt="" />
+  <br>
+  <p>
+      When searching for new groups, the nearby groups will have a green border around them. The darker green the border,
+      the more of a match that group is!
+  </p>
+  <br>
+  <img src="images/AR_query.png" alt="" />
+  <br>
+  <p>
+    To accomplish the recommendation, GameUp uses a simple recommendation ranking based on the number of
+    overlapping groups between the user and the group. The main ActiveRecord query above does three main things:
+    it first finds groups a certain distance away, then removes groups the user is already a part of, and finally includes
+    the genres for each group. By including the genres in this way, ActiveRecord lazily readies the groups + genres data
+    which is then executed as a single query when iterating to determine the overlap of genres.
   </p>
 </div>

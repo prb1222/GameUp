@@ -271,7 +271,7 @@ ul.images-index {
 .m-content {
   z-index: 50;
   position: absolute;
-  top: 50%;
+  top: 25%;
   left: 50%;
   background-color: white;
   padding: 1pc;
@@ -674,4 +674,9 @@ a.navbar-brand {
 #recommended-tag {
   -moz-text-decoration-style: wavy; /* Code for Firefox */
   text-decoration: underline;
+  color: #38a78d;
+}
+
+.recommended-modal {
+  text-align: center;
 }
