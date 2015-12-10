@@ -10,6 +10,6 @@ Rails.application.routes.draw do
     resources :event_attendees, only: [:create, :destroy]
     resources :comments, only: [:create, :update, :destroy, :index]
     resources :images, only: [:create, :update, :destroy, :index, :show]
-    resources :genres, only: [:index, :show, :create, :destroy]
+    resources :genres, only: [:index, :show, :create]
   end
 end

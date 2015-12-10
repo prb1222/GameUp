@@ -23,7 +23,4 @@ class Api::GenresController < ApplicationController
 
     render json: genres
   end
-
-  def destroy
-  end
 end
