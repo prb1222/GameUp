@@ -12,8 +12,8 @@ class SessionsController < ApplicationController
       login_user!(@user)
       redirect_to root_url
     else
-      flash.now[:errors] = ["Invalid login info!"]
-      render :new
+      flash[:errors] = ["Invalid login info!"]
+      redirect_to root_url
     end
   end
 
