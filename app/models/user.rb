@@ -60,7 +60,8 @@ class User < ActiveRecord::Base
   end
 
   def next_event
-    attending_events.where("date > ?", Time.now).order(:date).first.jumbo_info
+    next_event = attending_events.where("date > ?", Time.now).order(:date).first
+    next_event ? next_event.jumbo_info : {}
   end
 
   def num_my_events

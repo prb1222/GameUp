@@ -477,12 +477,12 @@ div.groups-index {
 
 }
 
-.next-event-info:hover {
+.next-event-hover:hover {
   cursor: pointer;
   transform: scale(1.02);
 }
 
-.next-event-info, .next-event-info:hover {
+.next-event-hover, .next-event-hover:hover {
   transition: all .2s;
   -o-transition: all .2s;
   -moz-transition: all .2s;

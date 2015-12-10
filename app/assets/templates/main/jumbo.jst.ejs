@@ -1,7 +1,7 @@
 <div class="jumbo-back-display"></div>
 <div class="jumbo-front-display">
   <div class="next-event container">
-    <div class="next-event-info col-md-8 col-xs-8">
+    <div class="next-event-info next-event-hover col-md-8 col-xs-8">
       <div class="next-event-name col-md-12">
         Your next event
       </div>
@@ -57,7 +57,7 @@
     <div class="event-counters col-md-4 col-xs-4">
       <div class="my-events-counter">
         <div class="my-events-count">
-          <% if (currentUser.next_event) {%>
+          <% if (currentUser.num_my_events) {%>
             <%= currentUser.num_my_events %>
           <% } else { %>
             <%= "0" %>
