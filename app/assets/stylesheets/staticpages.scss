@@ -33,11 +33,15 @@
   border-top: 0px;
   h3 {
     width: 50%;
+    padding-bottom: 0px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 20px;
     margin-top: 20px;
     text-align: center;
+  }
+
+  li {
+    font-size: 8px;
   }
 
   form {
