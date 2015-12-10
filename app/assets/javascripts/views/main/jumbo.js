@@ -11,9 +11,10 @@ GameUp.Views.Jumbo = Backbone.View.extend({
   initialize: function () {
     this.currentUser = new GameUp.Models.User({id: GameUp.currentUser.userId});
     this.listenTo(this.currentUser, "sync", this.render);
+    this.currentUser.num_my_events = undefined;
     this.currentUser.fetch({
       data: {flag: "index-jumbo"},
-      success: function (user) {
+      success: function (user, response, options) {
         this.render();
       }.bind(this)
     });
@@ -21,7 +22,7 @@ GameUp.Views.Jumbo = Backbone.View.extend({
 
   render: function () {
     this.$el.html(this.template({currentUser: this.currentUser}));
-    if (!this.currentUser.num_my_events) {
+    if (this.currentUser.num_my_events === 0) {
       this.$el.find('.next-event-info').removeClass('next-event-hover');
       this.$el.find('.calendar-image').remove();
       this.$el.find('.next-event-fields').remove();

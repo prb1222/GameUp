@@ -24,11 +24,13 @@ GameUp.Models.User = Backbone.Model.extend({
 
     if (response.next_event) {
       this.next_event = response.next_event;
-      this.next_event.date = moment(this.next_event.date);
+      if (this.next_event.date) {
+        this.next_event.date = moment(this.next_event.date);
+      }
       delete response.next_event;
     }
 
-    if (response.num_my_events) {
+    if (response.num_my_events || response.num_my_events === 0) {
       this.num_my_events = response.num_my_events;
       delete response.num_my_events;
     }

@@ -7,14 +7,14 @@
       </div>
       <div class="calendar-image col-md-3 col-xs-3">
         <div class="top-calendar">
-          <% if (currentUser.next_event) {%>
+          <% if (currentUser.next_event && currentUser.next_event.date) {%>
             <%= currentUser.next_event.date.format("MMM") %>
           <% } else { %>
             <%= "JAN" %>
           <% } %>
         </div>
         <div class="bottom-calendar">
-          <% if (currentUser.next_event) {%>
+          <% if (currentUser.next_event && currentUser.next_event.date) {%>
             <%= currentUser.next_event.date.format("DD") %>
           <% } else { %>
             <%= "1" %>
@@ -38,7 +38,7 @@
         </div>
         <div class="next-event-more">
           <div class="next-event-time col-md-8 col-xs-8">
-            <% if (currentUser.next_event) {%>
+            <% if (currentUser.num_my_events && currentUser.next_event.date) {%>
               <%= currentUser.next_event.date.format("dddd MMMM Do YYYY, [at] hh:mm a") %>
             <% } else { %>
               <%= "Loading event date . . . " %>
