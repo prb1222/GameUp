@@ -59,7 +59,7 @@ Adds views to the main page which allow for querying groups based on their geogr
 [Details][phase-five]
 
 ### Bonus Features (TBD)
-- [ ] Create tags and allow tags to belong to both users and groups
+- [X] Create tags and allow tags to belong to both users and groups
 - [X] Add pictures for blogs and users
 
 [phase-one]: ./docs/phases/phase1.md
